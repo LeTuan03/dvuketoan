@@ -1,4 +1,4 @@
-﻿export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
 import { articleService, settingService } from '@/services';
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: isEn
         ? 'The latest news on VTAX activities and veterinary industry events.'
         : 'Cập nhật tin tức mới nhất về các hoạt động của VTAX và sự kiện ngành thú y.',
-      url: `https://VTAX.com.vn${localePath(locale, '/tin-tuc')}`,
+      url: `https://vtax.com.vn${localePath(locale, '/tin-tuc')}`,
       images: [
         {
           url: '/images/about.svg',
@@ -47,7 +47,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
   // Single flat news feed — no internal / industry split.
   const allNews = localizeAll(
     articles
-      .filter((a: ArticleSummary) => !a.isDraft && (a.category === 'tin-noi-bo' || a.category === 'tin-nganh'))
+      .filter((a: ArticleSummary) => !a.isDraft && (a.category === 'kien-thuc' || a.category === 'tin-nganh'))
       .sort((a: ArticleSummary, b: ArticleSummary) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()),
     locale,
   );
@@ -69,8 +69,8 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
              {allNews.map((a: ArticleSummary, index: number) => (
                <Reveal key={a.id} direction="left" distance={56} delay={index * 0.1}>
                <article className="card-elegant group flex flex-col md:flex-row gap-8 p-6">
-                  <Link href={localePath(locale, `/bai-viet/${a.slug}`)} className="w-full md:w-2/5 aspect-[16/10] relative overflow-hidden rounded-2xl shrink-0">
-                     <img src={a.thumbnail} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Link href={localePath(locale, `/kien-thuc/${a.slug}`)} className="w-full md:w-2/5 aspect-[16/10] relative overflow-hidden rounded-2xl shrink-0">
+                     <img src={a.thumbnail || '/images/default-article.svg'} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </Link>
                   <div className="flex flex-col justify-center py-2 flex-1">
                      <div className="flex items-center gap-2 text-ink-soft text-[0.7rem] font-montserrat font-semibold mb-4 uppercase tracking-[0.16em]">
@@ -82,7 +82,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
                      <p className="text-ink-soft text-sm line-clamp-2 mb-6">
                         {a.excerpt}
                      </p>
-                     <Link href={localePath(locale, `/bai-viet/${a.slug}`)} className="link-underline inline-flex items-center gap-2 text-primary font-montserrat font-semibold text-xs uppercase tracking-[0.16em] self-start">
+                     <Link href={localePath(locale, `/kien-thuc/${a.slug}`)} className="link-underline inline-flex items-center gap-2 text-primary font-montserrat font-semibold text-xs uppercase tracking-[0.16em] self-start">
                         {locale === 'en' ? 'Read more' : 'Đọc tiếp'} <ChevronRight size={16} />
                      </Link>
                   </div>

@@ -121,7 +121,7 @@ export default function ContactContent({ settings }: { settings: any }) {
                         </div>
                         <div>
                            <h4 className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-2">Website</h4>
-                           <a href={settings?.website || 'https://VTAX.com/'} target="_blank" rel="noopener" className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{(settings?.website || 'https://VTAX.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
+                           <a href={settings?.website || 'https://vtax.com/'} target="_blank" rel="noopener" className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{(settings?.website || 'https://vtax.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
                         </div>
                      </div>
                   </div>

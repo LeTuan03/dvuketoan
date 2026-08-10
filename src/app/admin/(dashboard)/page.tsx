@@ -16,8 +16,8 @@ import { Article } from '@/types';
 export default function AdminDashboard() {
   const [data, setData] = React.useState<{
     stats: {
-      products: number;
-      categories: number;
+      lookupItems: number;
+      contactRequests: number;
       articles: number;
     };
     latestArticles: Article[];
@@ -39,16 +39,16 @@ export default function AdminDashboard() {
 
   const stats = [
     {
-      title: 'Dịch vụ',
-      value: data?.stats.products ?? 0,
-      icon: <ShoppingOutlined />,
+      title: 'Tra cứu ngành nghề',
+      value: data?.stats.lookupItems ?? 0,
+      icon: <AppstoreOutlined />,
       tileBg: '#eaf1f9',
       iconColor: '#0a4d8c',
     },
     {
-      title: 'Danh mục',
-      value: data?.stats.categories ?? 0,
-      icon: <AppstoreOutlined />,
+      title: 'Yêu cầu liên hệ',
+      value: data?.stats.contactRequests ?? 0,
+      icon: <ShoppingOutlined />,
       tileBg: '#eaf1f9',
       iconColor: '#0a4d8c',
     },
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
                        {data?.latestArticles.slice(0, 4).map((a, i) => (
                          <div key={a.id} className="flex items-center gap-4 group cursor-pointer p-3 rounded-xl hover:bg-[#f7f9fc] transition-all border border-transparent hover:border-[#eef1f5]">
                             <div className="w-16 h-16 bg-[#f3f6fb] rounded-xl overflow-hidden shrink-0">
-                               <img src={a.thumbnail} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                               <img src={a.thumbnail || '/images/default-article.svg'} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                             </div>
                             <div className="flex flex-col flex-1">
                                <span className="text-[10px] font-semibold text-primary uppercase tracking-wide mb-1">{a.category}</span>

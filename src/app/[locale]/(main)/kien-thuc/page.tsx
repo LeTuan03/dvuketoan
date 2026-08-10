@@ -15,20 +15,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-// Dummy data
-const articles = [
-  { id: '1', slug: 'nhung-thay-doi-luat-thue-2026', title: 'Những thay đổi quan trọng về Luật Thuế năm 2026', category: 'Thuế', date: '10/08/2026' },
-  { id: '2', slug: 'huong-dan-quyet-toan-thue', title: 'Hướng dẫn chi tiết quyết toán thuế TNDN', category: 'Kế toán', date: '05/08/2026' },
-  { id: '3', slug: 'luu-y-khi-thanh-lap-cong-ty', title: '5 lưu ý pháp lý sống còn khi thành lập công ty', category: 'Pháp lý', date: '01/08/2026' },
-  { id: '4', slug: 'chinh-sach-bao-hiem-xa-hoi', title: 'Cập nhật chính sách Bảo hiểm xã hội mới nhất', category: 'Doanh nghiệp', date: '25/07/2026' },
-  { id: '5', slug: 'cach-tinh-thue-tncn', title: 'Cách tính thuế thu nhập cá nhân (TNCN) chuẩn xác', category: 'Thuế', date: '20/07/2026' },
-  { id: '6', slug: 'quy-trinh-hoan-thue-gtgt', title: 'Quy trình và thủ tục hoàn thuế GTGT cập nhật', category: 'Kế toán', date: '15/07/2026' },
-];
-
+import { articleService } from '@/services';
+import { ArticleSummary } from '@/types';
 export default async function KnowledgePage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = resolveLocale((await params).locale);
   const en = locale === 'en';
   const dict = getDictionary(locale);
+
+  const allArticles = await articleService.getAllSummary();
+  const articles = allArticles.filter((a: ArticleSummary) => a.category === 'kien-thuc' && !a.isDraft);
 
   return (
     <div className="w-full bg-paper min-h-screen">
@@ -49,21 +44,18 @@ export default async function KnowledgePage({ params }: { params: Promise<{ loca
               <StaggerItem key={article.id}>
                 <article className="card-elegant h-full flex flex-col group overflow-hidden bg-white">
                   <Link href={localePath(locale, `/kien-thuc/${article.slug}`)} className="block aspect-[16/10] bg-gray-100 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-finance opacity-10" />
-                    <div className="absolute inset-0 flex items-center justify-center text-primary/20 group-hover:scale-110 transition-transform duration-700">
-                      <span className="font-display text-4xl font-bold opacity-30">VTAX</span>
-                    </div>
+                    <img src={article.thumbnail || '/images/default-article.svg'} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </Link>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex items-center gap-4 mb-4 text-xs font-montserrat uppercase tracking-wider text-ink-soft">
-                      <span className="text-secondary font-bold">{article.category}</span>
-                      <span className="flex items-center gap-1.5"><Calendar size={12}/> {article.date}</span>
+                      <span className="text-secondary font-bold">{en ? 'Knowledge' : 'Kiến thức'}</span>
+                      <span className="flex items-center gap-1.5"><Calendar size={12}/> {article.publishDate}</span>
                     </div>
                     <h3 className="font-display text-[1.1rem] font-semibold text-ink leading-snug mb-4 group-hover:text-primary transition-colors">
-                      <Link href={localePath(locale, `/kien-thuc/${article.slug}`)}>{article.title}</Link>
+                      <Link href={localePath(locale, `/kien-thuc/${article.slug}`)}>{en ? article.titleEn || article.title : article.title}</Link>
                     </h3>
                     <p className="text-sm text-ink-soft line-clamp-2 mb-6 flex-grow">
-                      {en ? 'A comprehensive guide on the latest updates and what they mean for your business operations.' : 'Bài viết cung cấp những thông tin, quy định mới nhất và hướng dẫn chi tiết áp dụng cho doanh nghiệp.'}
+                      {en ? article.excerptEn || article.excerpt : article.excerpt}
                     </p>
                     <Link
                       href={localePath(locale, `/kien-thuc/${article.slug}`)}

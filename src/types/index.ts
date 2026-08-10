@@ -1,31 +1,3 @@
-export interface ProductSpecification {
-  title: string;
-  content: string;
-}
-
-export interface Product {
-  id: bigint;
-  slug: string;
-  name: string;
-  nameEn?: string | null;
-  categoryId: bigint;
-  image: string;
-  images?: string[] | null;
-  featured?: boolean | null;
-  registrationNumber?: string | null;
-  description?: string | null;
-  descriptionEn?: string | null;
-  specifications: any; // Prisma returns JsonValue, frontend expects array
-  specificationsEn?: any; // English override; falls back to `specifications` when empty
-}
-
-export interface Category {
-  id: bigint;
-  name: string;
-  nameEn?: string | null;
-  slug: string;
-}
-
 export interface Article {
   id: bigint;
   slug: string;
@@ -43,22 +15,6 @@ export interface Article {
 }
 
 export type ArticleSummary = Omit<Article, 'content' | 'contentEn'>;
-export type ProductSummary = Omit<Product, 'description' | 'descriptionEn'>;
-
-export interface Job {
-  id: bigint;
-  slug: string;
-  title: string;
-  titleEn?: string | null;
-  location: string;
-  locationEn?: string | null;
-  date: string;
-  description: string;
-  descriptionEn?: string | null;
-  status?: string | null;
-}
-
-export type JobSummary = Omit<Job, 'description'>;
 
 export interface Banner {
   id: bigint;
@@ -163,4 +119,15 @@ export interface Setting {
   aboutPage?: AboutPageContent;
   /** English About page content (edited independently in the admin). */
   aboutPageEn?: AboutPageContent;
+}
+
+export interface LookupItem {
+  id: bigint;
+  code: string;
+  name: string;
+  nameEn?: string | null;
+  description?: string | null;
+  descriptionEn?: string | null;
+  isConditional: boolean;
+  status: boolean;
 }

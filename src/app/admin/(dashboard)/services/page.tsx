@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Table, Button, Space, Tag, Input, Modal, Form, Switch, Checkbox, Tooltip, Row, Col, App, DatePicker, Tabs, Select } from 'antd';
+import { Table, Button, Space, Tag, Input, Modal, Form, Switch, Checkbox, Tooltip, Row, Col, App, DatePicker, Tabs } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, FileTextOutlined, CheckCircleOutlined, FormOutlined, StarOutlined } from '@ant-design/icons';
 import AdminPageHeader from '@/components/admin/AdminPageHeader';
 import AdminStatCard from '@/components/admin/AdminStatCard';
@@ -16,7 +16,7 @@ import CKEditor from '@/components/admin/CKEditor';
 import ImageUpload from '@/components/admin/ImageUpload';
 import { useAdminLoading } from '@/lib/AdminLoadingContext';
 
-function AdminNewsPageContent() {
+function AdminServicesPageContent() {
   const { modal, message } = App.useApp();
   const { setLoading: setGlobalLoading } = useAdminLoading();
   const router = useRouter();
@@ -26,12 +26,11 @@ function AdminNewsPageContent() {
   const page = parseInt(searchParams.get('page') || '1');
   const statusFilter = searchParams.get('status') || '';
   const featuredFilter = searchParams.get('featured') || '';
-  const categoryFilter = searchParams.get('category') || '';
 
   const [allArticles, setAllArticles] = useState<ArticleSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingNews, setEditingNews] = useState<ArticleSummary | null>(null);
+  const [editingService, setEditingService] = useState<ArticleSummary | null>(null);
   const [form] = Form.useForm();
 
   // Load data from API
@@ -52,31 +51,30 @@ function AdminNewsPageContent() {
     fetchData();
   }, [fetchData]);
 
-  // Derived news list
-  const news = useMemo(() => {
-    return allArticles.filter((a) => a.category === 'tin-nganh' || a.category === 'tin-nganh' || a.category === 'kien-thuc');
+  // Derived services list
+  const servicesData = useMemo(() => {
+    return allArticles.filter((a) => a.category === 'dich-vu');
   }, [allArticles]);
 
   // Summary metrics (shown as stat cards)
   const stats = useMemo(() => ({
-    total: news.length,
-    published: news.filter((n) => !n.isDraft).length,
-    draft: news.filter((n) => n.isDraft).length,
-    featured: news.filter((n) => n.featured).length,
-  }), [news]);
+    total: servicesData.length,
+    published: servicesData.filter((n) => !n.isDraft).length,
+    draft: servicesData.filter((n) => n.isDraft).length,
+    featured: servicesData.filter((n) => n.featured).length,
+  }), [servicesData]);
 
   // Derived filtered data
   const filteredData = useMemo(() => {
-    return news.filter(item => {
+    return servicesData.filter(item => {
       const matchesQuery =
         item.title.toLowerCase().includes(query.toLowerCase()) ||
         item.category.toLowerCase().includes(query.toLowerCase());
       const matchesStatus = !statusFilter || (statusFilter === 'draft' ? !!item.isDraft : !item.isDraft);
       const matchesFeatured = !featuredFilter || (featuredFilter === 'yes' ? !!item.featured : !item.featured);
-      const matchesCategory = !categoryFilter || item.category === categoryFilter;
-      return matchesQuery && matchesStatus && matchesFeatured && matchesCategory;
+      return matchesQuery && matchesStatus && matchesFeatured;
     });
-  }, [news, query, statusFilter, featuredFilter, categoryFilter]);
+  }, [servicesData, query, statusFilter, featuredFilter]);
 
   const updateUrl = (params: Record<string, string | number | undefined>) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -98,7 +96,7 @@ function AdminNewsPageContent() {
 
   const columns = [
     {
-      title: 'Bài viết',
+      title: 'Tên Dịch vụ',
       dataIndex: 'title',
       key: 'title',
       render: (text: string, record: any) => (
@@ -114,15 +112,6 @@ function AdminNewsPageContent() {
           </div>
         </div>
       ),
-    },
-    {
-      title: 'Danh mục',
-      dataIndex: 'category',
-      key: 'category',
-      render: (cat: string) => {
-        if (cat === 'kien-thuc') return <Tag color="purple">Kiến thức</Tag>;
-        return <Tag color="orange">Tin tức</Tag>;
-      }
     },
     {
       title: 'Nổi bật',
@@ -193,7 +182,7 @@ function AdminNewsPageContent() {
   };
 
   const handleEdit = async (record: ArticleSummary) => {
-    setEditingNews(record);
+    setEditingService(record);
     setIsModalOpen(true);
     form.resetFields();
     try {
@@ -205,14 +194,14 @@ function AdminNewsPageContent() {
         publishDate: full.publishDate ? dayjs(full.publishDate, 'DD/MM/YYYY') : dayjs(),
       });
     } catch (error: any) {
-      message.error(error.message || 'Không thể tải chi tiết bài viết');
+      message.error(error.message || 'Không thể tải chi tiết dịch vụ');
     }
   };
 
   const handleDelete = (id: bigint) => {
     modal.confirm({
       title: 'Xác nhận xóa',
-      content: 'Bạn có chắc chắn muốn xóa bài viết này không?',
+      content: 'Bạn có chắc chắn muốn xóa dịch vụ này không?',
       okText: 'Xóa',
       okType: 'danger',
       cancelText: 'Hủy',
@@ -229,7 +218,7 @@ function AdminNewsPageContent() {
           });
           if (res.ok) {
             await fetchData();
-            message.success('Đã xóa bài viết thành công');
+            message.success('Đã xóa dịch vụ thành công');
           } else {
             const errorData = await res.json();
             throw new Error(errorData.error || 'Lỗi khi xóa dữ liệu');
@@ -244,7 +233,7 @@ function AdminNewsPageContent() {
   };
 
   const handleAdd = () => {
-    setEditingNews(null);
+    setEditingService(null);
     form.resetFields();
     form.setFieldsValue({
       publishDate: dayjs(),
@@ -259,7 +248,7 @@ function AdminNewsPageContent() {
         publishDate: values.publishDate ? values.publishDate.format('DD/MM/YYYY') : dayjs().format('DD/MM/YYYY'),
       };
 
-      const action = editingNews ? 'update' : 'create';
+      const action = editingService ? 'update' : 'create';
 
       // Save to API
       setGlobalLoading(true);
@@ -273,13 +262,13 @@ function AdminNewsPageContent() {
               ...formattedValues,
               slug: values.slug || values.title.toLowerCase().replaceAll(' ', '-').replaceAll(/[^\w-]/g, ''),
             },
-            id: editingNews?.id.toString()
+            id: editingService?.id.toString()
           }),
         });
 
         if (res.ok) {
           await fetchData();
-          message.success(editingNews ? 'Cập nhật thành công' : 'Thêm mới thành công');
+          message.success(editingService ? 'Cập nhật thành công' : 'Thêm mới thành công');
           setIsModalOpen(false);
         } else {
           const errorData = await res.json();
@@ -300,10 +289,10 @@ function AdminNewsPageContent() {
       className="space-y-6 pb-0"
     >
       <AdminPageHeader
-        title="Quản lý Tin tức"
+        title="Quản lý Dịch vụ"
         breadcrumbItems={[
           { title: 'Admin', href: '/admin' },
-          { title: 'Quản lý Tin tức' },
+          { title: 'Quản lý Dịch vụ' },
         ]}
       />
 
@@ -311,7 +300,7 @@ function AdminNewsPageContent() {
         <Col xs={24} sm={12} lg={6}>
           <AdminStatCard
             index={0}
-            label="Tổng bài viết"
+            label="Tổng dịch vụ"
             value={stats.total}
             valueColor="#0a4d8c"
             tileBg="#eaf1f9"
@@ -363,15 +352,6 @@ function AdminNewsPageContent() {
               ],
             },
             {
-              key: 'category',
-              placeholder: 'Danh mục',
-              value: categoryFilter || undefined,
-              options: [
-                { label: 'Tin tức', value: 'tin-nganh' },
-                { label: 'Kiến thức', value: 'kien-thuc' },
-              ],
-            },
-            {
               key: 'featured',
               placeholder: 'Nổi bật',
               value: featuredFilter || undefined,
@@ -384,7 +364,7 @@ function AdminNewsPageContent() {
           onChange={(patch) => updateUrl(patch)}
           search={{ defaultValue: query }}
           primaryAction={{
-            label: 'Thêm tin tức mới',
+            label: 'Thêm dịch vụ mới',
             onClick: handleAdd,
             icon: <PlusOutlined />
           }}
@@ -408,10 +388,10 @@ function AdminNewsPageContent() {
         title={
           <div className="flex items-center gap-3 px-2">
             <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-              {editingNews ? <EditOutlined /> : <PlusOutlined />}
+              {editingService ? <EditOutlined /> : <PlusOutlined />}
             </div>
             <span className="text-2xl font-semibold tracking-tight text-[#0c2236]">
-              {editingNews ? 'Chỉnh sửa tin tức' : 'Thêm tin tức mới'}
+              {editingService ? 'Chỉnh sửa dịch vụ' : 'Thêm dịch vụ mới'}
             </span>
           </div>
         }
@@ -427,7 +407,7 @@ function AdminNewsPageContent() {
           },
         }}
         centered
-        okText={editingNews ? "Cập nhật bài viết" : "Thêm mới bài viết"}
+        okText={editingService ? "Cập nhật dịch vụ" : "Thêm mới dịch vụ"}
         cancelText="Hủy bỏ"
         okButtonProps={{ className: "rounded-xl h-11 px-8 font-semibold uppercase tracking-wide text-[11px] border-none shadow-lg shadow-primary/20" }}
         cancelButtonProps={{ className: "rounded-xl h-11 px-8 font-semibold uppercase tracking-wide text-[11px]" }}
@@ -437,21 +417,12 @@ function AdminNewsPageContent() {
           layout="vertical"
           className="mt-6 px-4"
         >
+          {/* Category is fixed to dich-vu for services */}
+          <Form.Item name="category" initialValue="dich-vu" hidden>
+            <Input />
+          </Form.Item>
           <Row gutter={24}>
-            <Col span={8}>
-              <Form.Item
-                name="category"
-                label="Danh mục"
-                rules={[{ required: true, message: 'Vui lòng chọn danh mục' }]}
-                initialValue="tin-nganh"
-              >
-                <Select className="rounded-xl h-10">
-                  <Select.Option value="tin-nganh">Tin tức</Select.Option>
-                  <Select.Option value="kien-thuc">Kiến thức</Select.Option>
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={8}>
+            <Col span={16}>
               <Form.Item
                 name="publishDate"
                 label="Ngày đăng bài"
@@ -474,7 +445,7 @@ function AdminNewsPageContent() {
 
           <Form.Item
             name="thumbnail"
-            label="Hình ảnh bài viết"
+            label="Hình ảnh dịch vụ"
           >
             <ImageUpload label="Chọn ảnh đại diện" aspectRatio="16/9" />
           </Form.Item>
@@ -489,24 +460,24 @@ function AdminNewsPageContent() {
                   <>
                     <Form.Item
                       name="title"
-                      label="Tiêu đề bài viết"
-                      rules={[{ required: true, message: 'Vui lòng nhập tiêu đề' }]}
+                      label="Tên dịch vụ"
+                      rules={[{ required: true, message: 'Vui lòng nhập tên' }]}
                     >
-                      <Input className="rounded-xl py-2 font-bold" placeholder="Nhập tiêu đề tin tức..." />
+                      <Input className="rounded-xl py-2 font-bold" placeholder="Nhập tên dịch vụ..." />
                     </Form.Item>
 
                     <Form.Item
                       name="excerpt"
-                      label="Mô tả ngắn (Trích dẫn)"
+                      label="Mô tả ngắn"
                     >
-                      <Input.TextArea autoSize={{ minRows: 6, maxRows: 12 }} className="rounded-xl p-3" placeholder="Nhập đoạn mô tả ngắn cho bài viết..." />
+                      <Input.TextArea autoSize={{ minRows: 6, maxRows: 12 }} className="rounded-xl p-3" placeholder="Nhập đoạn mô tả ngắn cho dịch vụ..." />
                     </Form.Item>
 
                     <Form.Item
                       name="content"
                       label="Nội dung chi tiết"
                     >
-                      <CKEditor placeholder="Nhập nội dung chi tiết bài viết..." />
+                      <CKEditor placeholder="Nhập nội dung chi tiết dịch vụ..." />
                     </Form.Item>
                   </>
                 ),
@@ -519,7 +490,7 @@ function AdminNewsPageContent() {
                   <>
                     <Form.Item
                       name="titleEn"
-                      label="Tiêu đề (EN)"
+                      label="Tên dịch vụ (EN)"
                     >
                       <Input className="rounded-xl py-2 font-bold" placeholder="English title..." />
                     </Form.Item>
@@ -553,10 +524,10 @@ function AdminNewsPageContent() {
 }
 
 
-export default function AdminNewsPage() {
+export default function AdminServicesPage() {
   return (
     <React.Suspense fallback={<div className="p-8 text-center text-gray-500">Đang tải dữ liệu...</div>}>
-      <AdminNewsPageContent />
+      <AdminServicesPageContent />
     </React.Suspense>
   );
 }

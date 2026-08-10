@@ -26,13 +26,13 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
+    default: "VTAX - KẾ TOÁN THUẾ",
     template: "%s | VTAX"
   },
-  description: "VTAX tự hào là đơn vị tiên phong trong sản xuất và phân phối dược thú y trang trại tại Việt Nam với công nghệ tiên tiến từ Hoa Kỳ. Nhà máy đạt tiêu chuẩn GMP-WHO.",
-  keywords: ["dược thú y", "VTAX", "chăn nuôi", "gmp-who", "phòng bệnh vật nuôi", "điều trị bệnh thú y"],
+  description: "Dịch vụ kế toán, thuế chuyên nghiệp uy tín tại Hà Nội. Hỗ trợ doanh nghiệp tận tâm, hiệu quả.",
+  keywords: ["dịch vụ kế toán", "dịch vụ thuế", "VTAX", "kế toán Hà Nội", "thuế doanh nghiệp"],
   authors: [{ name: "VTAX Team" }],
-  metadataBase: new URL("https://VTAX.com.vn"),
+  metadataBase: new URL("https://vtax.com.vn"),
   robots: {
     index: true,
     follow: true,
@@ -47,23 +47,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://VTAX.com.vn",
+    url: "https://vtax.com.vn",
     siteName: "VTAX",
-    title: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
-    description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam. Nhà máy đạt chuẩn GMP-WHO.",
+    title: "VTAX - KẾ TOÁN THUẾ",
+    description: "Dịch vụ kế toán, thuế chuyên nghiệp uy tín tại Hà Nội. Hỗ trợ doanh nghiệp tận tâm, hiệu quả.",
     images: [
       {
         url: "/images/about.svg",
         width: 1200,
         height: 630,
-        alt: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
+        alt: "VTAX - KẾ TOÁN THUẾ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
-    description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam.",
+    title: "VTAX - KẾ TOÁN THUẾ",
+    description: "Dịch vụ kế toán, thuế chuyên nghiệp uy tín tại Hà Nội. Hỗ trợ doanh nghiệp tận tâm, hiệu quả.",
     images: ["/images/about.svg"],
   },
   icons: {
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     google: 'chW742CBbHiq1N1wt4y4l9zpfbcqZhjEOaXaOTVDbcI',
   },
   alternates: {
-    canonical: "https://VTAX.com.vn",
+    canonical: "https://vtax.com.vn",
   },
   category: "veterinary",
   classification: "Pharmaceutical",
@@ -140,11 +140,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://VTAX.com.vn",
+              "url": "https://vtax.com.vn",
               "name": "VTAX",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://VTAX.com/search?q={search_term_string}",
+                "target": "https://vtax.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

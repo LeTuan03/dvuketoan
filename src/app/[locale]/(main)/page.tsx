@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import {
   ArrowRight, ArrowUpRight, Award, Briefcase, MapPin, Users,
-  ShieldCheck, PhoneCall, Quote, CheckCircle2
+  ShieldCheck, PhoneCall, CheckCircle2
 } from 'lucide-react';
 import BannerSlider from '@/components/home/BannerSlider';
 import Reveal from '@/components/shared/Reveal';
@@ -13,26 +13,10 @@ import SectionHeading from '@/components/shared/SectionHeading';
 import Monogram from '@/components/shared/Monogram';
 import { resolveLocale, localePath } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/getDictionary';
+import { articleService, settingService, bannerService, mediaService } from '@/services';
 
-// MOCK DATA for VTAX home page
-const featuredServices = [
-  { slug: 'dich-vu-ke-toan-tron-goi', title: 'Dịch vụ kế toán trọn gói', desc: 'Kiểm soát số liệu kế toán minh bạch, tiết kiệm thời gian.' },
-  { slug: 'bao-cao-thue-thang-quy', title: 'Báo cáo thuế tháng/quý', desc: 'Kê khai, nộp thuế đúng quy định, tránh rủi ro phạt.' },
-  { slug: 'quyet-toan-thue-nam', title: 'Quyết toán thuế', desc: 'Tối ưu hóa số thuế phải nộp, hoàn thiện sổ sách năm.' },
-  { slug: 'tu-van-thanh-lap-doanh-nghiep', title: 'Tư vấn thành lập', desc: 'Hỗ trợ pháp lý nhanh chóng để bắt đầu kinh doanh.' }
-];
-
-const customerReviews = [
-  { name: 'Nguyễn Văn A', role: 'Giám đốc Công ty ABC', content: 'VTAX đã giúp chúng tôi giải quyết hoàn toàn nỗi lo về sổ sách và thuế. Dịch vụ rất chuyên nghiệp và tận tâm.' },
-  { name: 'Trần Thị B', role: 'CEO Startup XYZ', content: 'Đội ngũ tư vấn của VTAX nắm rất rõ các luật thuế mới. Họ đã tư vấn cho chúng tôi những chiến lược tối ưu chi phí cực kỳ hiệu quả.' },
-  { name: 'Lê Hoàng C', role: 'Chủ hộ kinh doanh', content: 'Tôi rất hài lòng với dịch vụ thành lập doanh nghiệp của VTAX. Rất nhanh, gọn và minh bạch chi phí.' }
-];
-
-const latestNews = [
-  { slug: 'luat-doanh-nghiep-2026', title: '5 Điểm mới trong Luật Doanh nghiệp áp dụng từ năm 2026', date: '10/08/2026', excerpt: 'Những thay đổi cốt lõi tác động đến thủ tục thành lập và quản trị doanh nghiệp mà các CEO cần nắm vững.' },
-  { slug: 'huong-dan-thue-gtgt', title: 'Hướng dẫn kê khai thuế GTGT theo quý mới nhất', date: '05/08/2026', excerpt: 'Chi tiết các bước thực hiện trên hệ thống thuế điện tử giúp kế toán tránh những sai sót không đáng có.' },
-  { slug: 'bao-hiem-xa-hoi', title: 'Cập nhật mức đóng BHXH, BHYT năm 2026', date: '01/08/2026', excerpt: 'Chính sách bảo hiểm y tế và xã hội cho người lao động được điều chỉnh bắt đầu từ tháng 7/2026.' }
-];
+// Services data — accounting & tax services offered by VTAX
+// Services data will be fetched from DB
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = resolveLocale((await params).locale);
@@ -42,21 +26,42 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const contactHref = localePath(locale, '/lien-he');
 
+  // Fetch real data from DB
+  const settings = await settingService.get();
+  const allArticles = await articleService.getAllSummary();
+  const featuredServices = allArticles
+    .filter((a: any) => a.category === 'dich-vu' && a.featured && !a.isDraft)
+    .slice(0, 4);
+
+  const latestArticles = allArticles
+    .filter((a: any) => a.category !== 'dich-vu' && !a.isDraft)
+    .slice(0, 3);
+
+  // Fetch Media
+  const images = await mediaService.getImages();
+  const videos = await mediaService.getVideos();
+  const activeImages = images.filter((img: any) => img.status === 'active').slice(0, 3);
+  const activeVideos = videos.filter((vid: any) => vid.status === 'active').slice(0, 3);
+
   // Hero slides
-  const activeBanners = [
-    {
-      id: 1,
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2000&auto=format&fit=crop',
+  const bannersData = await bannerService.getAll();
+  const activeBanners = bannersData
+    .filter((b) => b.status)
+    .map((b) => ({
+      id: b.id.toString(),
+      image: b.image || '/images/about.svg',
+      title: en ? (b.titleEn || b.title) : b.title,
+      ctaHref: b.link || localePath(locale, '/dich-vu'),
+    }));
+
+  if (activeBanners.length === 0) {
+    activeBanners.push({
+      id: "fallback-1",
+      image: '/images/about.svg',
       title: en ? 'Professional Accounting Services' : 'Dịch Vụ Kế Toán Chuyên Nghiệp',
       ctaHref: localePath(locale, '/dich-vu'),
-    },
-    {
-      id: 2,
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop',
-      title: en ? 'Tax Consulting Solutions' : 'Giải Pháp Tư Vấn Thuế Toàn Diện',
-      ctaHref: localePath(locale, '/dich-vu'),
-    }
-  ];
+    });
+  }
 
   const stats = [
     { icon: <Award size={26} />, value: '15+', label: en ? 'Years of experience' : 'Năm kinh nghiệm' },
@@ -66,7 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { icon: <Users size={26} />, value: '2000+', label: en ? 'Happy Clients' : 'Khách hàng hài lòng' },
   ];
 
-  const hotline = '1900 1234';
+  const hotline = settings?.hotline1 || '1900 6884';
 
   return (
     <div className="w-full bg-white">
@@ -109,10 +114,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <CheckCircle2 size={28} />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-ink mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
+                    {en ? service.titleEn : service.title}
                   </h3>
-                  <p className="text-ink-soft mb-6 flex-grow leading-relaxed">
-                    {service.desc}
+                  <p className="text-ink-soft mb-6 flex-grow leading-relaxed line-clamp-3">
+                    {en ? service.excerptEn || service.excerpt : service.excerpt}
                   </p>
                   <Link
                     href={localePath(locale, `/dich-vu/${service.slug}`)}
@@ -161,74 +166,40 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ════════ 4 · Customer Reviews ════════ */}
+      {/* ════════ 4 · Latest Knowledge & News ════════ */}
       <section className="py-24 lg:py-28 bg-paper overflow-hidden relative">
         <div className="container mx-auto px-4 relative z-10">
           <Reveal direction="down" className="mb-16">
             <SectionHeading
               align="center"
               divider
-              eyebrow={en ? 'Testimonials' : 'Đánh giá từ khách hàng'}
-              title={en ? 'What they ' : 'Khách hàng '}
-              accent={en ? 'say about us' : 'nói về VTAX'}
-              subtitle={en ? 'Success stories from businesses we have partnered with.' : 'Những câu chuyện thành công từ các đối tác của chúng tôi.'}
-              titleClassName="text-3xl lg:text-4xl"
-            />
-          </Reveal>
-          
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6" stagger={0.1}>
-            {customerReviews.map((review, i) => (
-              <StaggerItem key={i}>
-                <div className="card-elegant p-8 bg-white h-full relative">
-                  <Quote className="absolute top-6 right-6 text-primary/10" size={48} />
-                  <p className="text-ink-soft mb-8 leading-relaxed relative z-10">"{review.content}"</p>
-                  <div className="flex items-center gap-4 mt-auto">
-                    <div className="w-12 h-12 rounded-full bg-line flex items-center justify-center text-ink-soft font-display font-semibold">
-                      {review.name.charAt(0)}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-semibold text-ink text-sm">{review.name}</h4>
-                      <span className="text-xs text-ink-soft">{review.role}</span>
-                    </div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-      </section>
-
-      {/* ════════ 5 · News & Promos ════════ */}
-      <section className="py-24 lg:py-28 bg-white overflow-hidden relative border-t border-line">
-        <div className="container mx-auto px-4 relative z-10">
-          <Reveal direction="down" className="mb-16">
-            <SectionHeading
-              align="center"
-              divider
-              eyebrow={en ? 'Insights & News' : 'Tin tức & Ưu đãi'}
+              eyebrow={en ? 'Insights & News' : 'Kiến thức & Tin tức'}
               title={en ? 'Latest ' : 'Cập nhật '}
               accent={en ? 'Updates' : 'Mới Nhất'}
-              subtitle={en ? 'Important tax updates and knowledge to empower your business.' : 'Các quy định thuế mới và những ưu đãi dịch vụ đặc biệt.'}
+              subtitle={en ? 'Important tax updates and knowledge to empower your business.' : 'Các quy định thuế mới và kiến thức kế toán hữu ích cho doanh nghiệp.'}
               titleClassName="text-3xl lg:text-4xl"
             />
           </Reveal>
 
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8" stagger={0.1}>
-            {latestNews.map((news, i) => (
-              <StaggerItem key={i}>
+            {latestArticles.map((article: any, i: number) => (
+              <StaggerItem key={article.id?.toString() || i}>
                 <article className="group h-full flex flex-col">
-                  <Link href={localePath(locale, `/kien-thuc/${news.slug}`)} className="block aspect-[16/10] overflow-hidden rounded-2xl shadow-elegant-lg mb-6 bg-paper relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-4xl text-primary/10 font-bold group-hover:scale-110 transition-transform duration-700">VTAX</span>
-                    </div>
+                  <Link href={localePath(locale, `/kien-thuc/${article.slug}`)} className="block aspect-[16/10] overflow-hidden rounded-2xl shadow-elegant-lg mb-6 bg-paper relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={article.thumbnail || '/images/default-article.svg'} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </Link>
                   <span className="font-montserrat text-[0.62rem] font-bold uppercase tracking-[0.2em] text-secondary mb-3">
-                    {news.date}
+                    {article.publishDate}
                   </span>
                   <h3 className="font-display font-semibold text-xl leading-snug text-ink line-clamp-2 transition-colors group-hover:text-primary mb-3">
-                    <Link href={localePath(locale, `/kien-thuc/${news.slug}`)}>{news.title}</Link>
+                    <Link href={localePath(locale, `/kien-thuc/${article.slug}`)}>
+                      {en ? (article.titleEn || article.title) : article.title}
+                    </Link>
                   </h3>
-                  <p className="text-[0.95rem] leading-relaxed text-ink-soft line-clamp-3">{news.excerpt}</p>
+                  <p className="text-[0.95rem] leading-relaxed text-ink-soft line-clamp-3">
+                    {en ? (article.excerptEn || article.excerpt) : article.excerpt}
+                  </p>
                 </article>
               </StaggerItem>
             ))}
@@ -236,13 +207,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           <div className="text-center mt-16">
             <Link href={localePath(locale, '/kien-thuc')} className="btn btn-outline">
-              {en ? 'View all news' : 'Xem tất cả bài viết'} <ArrowRight size={16} />
+              {en ? 'View all articles' : 'Xem tất cả bài viết'} <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ════════ 6 · Closing CTA ════════ */}
+      {/* ════════ 5 · Closing CTA ════════ */}
       <section className="relative overflow-hidden box-footer text-white">
         <div className="absolute inset-0 bg-finance opacity-20 pointer-events-none" />
         <div className="absolute -top-10 -right-10 text-white/[0.05] pointer-events-none select-none hidden md:block">
@@ -279,6 +250,56 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
+
+      
+      {/* ════════ 6 · Media Gallery ════════ */}
+      {(activeImages.length > 0 || activeVideos.length > 0) && (
+        <section className="py-24 lg:py-28 bg-white overflow-hidden relative">
+          <div className="container mx-auto px-4 relative z-10">
+            <Reveal direction="down" className="mb-16">
+              <SectionHeading
+                align="center"
+                divider
+                eyebrow={en ? 'Media Gallery' : 'Thư viện & Truyền thông'}
+                title={en ? 'Our ' : 'Hình ảnh '}
+                accent={en ? 'Moments' : 'VTAX'}
+                subtitle={en ? 'Explore our activities and events.' : 'Khám phá các hoạt động và sự kiện của chúng tôi.'}
+                titleClassName="text-3xl lg:text-4xl"
+              />
+            </Reveal>
+
+            <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8" stagger={0.1}>
+              {activeImages.map((img: any, i: number) => (
+                <StaggerItem key={`img-${img.id || i}`}>
+                  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-elegant-sm bg-paper cursor-pointer border border-line">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.url || '/images/default-article.svg'} alt={img.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                      <h3 className="text-white font-display font-semibold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.title}</h3>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+              {activeVideos.map((vid: any, i: number) => (
+                <StaggerItem key={`vid-${vid.id || i}`}>
+                  <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-elegant-sm bg-paper cursor-pointer border border-line">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={vid.thumbnail || '/images/default-article.svg'} alt={vid.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-500 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-secondary/90 flex items-center justify-center text-white shadow-lg backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg>
+                      </div>
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <h3 className="text-white font-display font-semibold text-lg">{vid.title}</h3>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

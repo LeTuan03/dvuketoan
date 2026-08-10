@@ -35,7 +35,7 @@ function AdminMediaGalleryPageContent() {
   const [videos, setVideos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState<bigint | null>(null);
+  const [editingId, setEditingId] = useState<any>(null);
 
   // Load data from API
   const fetchData = React.useCallback(async () => {
@@ -111,7 +111,7 @@ function AdminMediaGalleryPageContent() {
     setIsModalOpen(true);
   };
 
-  const handleDeleteImage = (id: bigint) => {
+  const handleDeleteImage = (id: any) => {
     modal.confirm({
       title: 'Xóa hình ảnh?',
       content: 'Hình ảnh này sẽ không còn hiển thị ở Thư viện trang chủ.',
@@ -145,7 +145,7 @@ function AdminMediaGalleryPageContent() {
     });
   };
 
-  const handleDeleteVideo = (id: bigint) => {
+  const handleDeleteVideo = (id: any) => {
     modal.confirm({
       title: 'Xóa video?',
       content: 'Video này sẽ không còn hiển thị ở mục Gallery.',
@@ -179,7 +179,7 @@ function AdminMediaGalleryPageContent() {
     });
   };
 
-  const toggleStatus = async (id: bigint, type: 'images' | 'videos') => {
+  const toggleStatus = async (id: any, type: 'images' | 'videos') => {
     const item = type === 'images' ? images.find(img => img.id === id) : videos.find(v => v.id === id);
     if (!item) return;
 
@@ -222,9 +222,8 @@ function AdminMediaGalleryPageContent() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             action,
-            mediaType,
             id: editingId?.toString(),
-            data: values
+            data: { ...values, mediaType }
           }),
         });
 
@@ -288,7 +287,7 @@ function AdminMediaGalleryPageContent() {
                           hoverable
                           cover={
                             <div className="h-44 overflow-hidden bg-gray-50 flex items-center justify-center relative group">
-                              <img alt={img.title} src={img.url} className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${img.status === 'hidden' ? 'opacity-40 grayscale' : ''}`} />
+                              <img alt={img.title} src={img.url || '/images/default-article.svg'} className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${img.status === 'hidden' ? 'opacity-40 grayscale' : ''}`} />
                               <div className="absolute inset-0 bg-vtax-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 backdrop-blur-[2px]">
                                 <Button shape="circle" size="large" icon={<EyeOutlined />} onClick={() => handleView(img.url)} className="border-none shadow-lg" />
                                 <Button shape="circle" size="large" icon={<EditOutlined />} onClick={() => handleEdit(img)} className="border-none shadow-lg text-blue-500" />
@@ -350,7 +349,7 @@ function AdminMediaGalleryPageContent() {
                         >
                           <div className="flex flex-col sm:flex-row h-full">
                             <div className="w-full sm:w-56 h-48 bg-vtax-dark shrink-0 flex items-center justify-center relative overflow-hidden group">
-                              <img src={vid.thumbnail || null} className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${vid.status === 'hidden' ? 'opacity-20 grayscale' : 'opacity-60'}`} />
+                              <img src={vid.thumbnail || '/images/default-article.svg'} className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${vid.status === 'hidden' ? 'opacity-20 grayscale' : 'opacity-60'}`} />
                               <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-3xl group-hover:scale-110 group-hover:bg-primary transition-all shadow-xl">
                                 <PlayCircleOutlined />
                               </div>
@@ -496,7 +495,7 @@ function AdminMediaGalleryPageContent() {
 
       <div style={{ display: 'none' }}>
         <Image.PreviewGroup preview={{ open: previewOpen, onOpenChange: (vis) => setPreviewOpen(vis) }}>
-          {previewImage ? <Image src={previewImage} /> : null}
+          {previewImage ? <Image src={previewImage} fallback="/images/default-article.svg" /> : null}
         </Image.PreviewGroup>
       </div>
     </motion.div>

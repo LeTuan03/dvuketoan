@@ -1,34 +1,35 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Briefcase, ChevronRight, FileText, CheckCircle2 } from 'lucide-react';
 import PageHero from '@/components/shared/PageHero';
 import Reveal from '@/components/shared/Reveal';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
-
-// Mock data for business lines (Mã ngành nghề kinh doanh)
-const businessLines = [
-  { code: '6201', name: 'Lập trình máy vi tính', category: 'Công nghệ thông tin' },
-  { code: '6202', name: 'Tư vấn máy vi tính và quản trị hệ thống máy vi tính', category: 'Công nghệ thông tin' },
-  { code: '6209', name: 'Hoạt động dịch vụ công nghệ thông tin và dịch vụ khác liên quan đến máy vi tính', category: 'Công nghệ thông tin' },
-  { code: '6920', name: 'Hoạt động kế toán, kiểm toán và tư vấn về thuế', category: 'Tài chính - Kế toán' },
-  { code: '7020', name: 'Hoạt động tư vấn quản lý', category: 'Tư vấn' },
-  { code: '4610', name: 'Đại lý, môi giới, đấu giá', category: 'Thương mại' },
-  { code: '4690', name: 'Bán buôn tổng hợp', category: 'Thương mại' },
-  { code: '4791', name: 'Bán lẻ qua bưu điện hoặc internet', category: 'Thương mại' },
-  { code: '8299', name: 'Hoạt động dịch vụ hỗ trợ kinh doanh khác còn lại chưa được phân vào đâu', category: 'Dịch vụ' },
-];
 
 export default function TraCuuPage() {
   const { locale } = useLocale();
   const en = locale === 'en';
   
   const [searchTerm, setSearchTerm] = useState('');
+  const [businessLines, setBusinessLines] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchLines = async () => {
+      try {
+        const res = await fetch('/api/data/lookup');
+        const data = await res.json();
+        setBusinessLines(data || []);
+      } catch (error) {
+        console.error('Failed to fetch lookup items:', error);
+      }
+    };
+    fetchLines();
+  }, []);
   
   const filteredLines = businessLines.filter(line => 
     line.code.includes(searchTerm) || 
     line.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    line.category.toLowerCase().includes(searchTerm.toLowerCase())
+    (line.description && line.description.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (
@@ -102,8 +103,13 @@ export default function TraCuuPage() {
                         </h4>
                         <span className="inline-flex items-center gap-1.5 mt-2 text-xs font-montserrat uppercase tracking-wider text-secondary">
                           <Briefcase size={12} />
-                          {line.category}
+                          {line.isConditional ? (en ? 'Conditional Business' : 'Kinh doanh có điều kiện') : (en ? 'Standard Business' : 'Kinh doanh thông thường')}
                         </span>
+                        {line.description && (
+                          <p className="mt-2 text-sm text-ink-soft">
+                            {en ? line.descriptionEn || line.description : line.description}
+                          </p>
+                        )}
                       </div>
                       <div className="md:w-auto shrink-0 mt-2 md:mt-0">
                         <button className="btn btn-outline text-xs px-4 py-2">

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Briefcase, FileText, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Briefcase } from 'lucide-react';
 import PageHero from '@/components/shared/PageHero';
 import SectionHeading from '@/components/shared/SectionHeading';
 import Reveal from '@/components/shared/Reveal';
@@ -16,20 +16,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-// Dummy data for the services list - could be replaced with API call
-const services = [
-  { id: '1', slug: 'dich-vu-ke-toan-tron-goi', title: 'Dịch vụ kế toán trọn gói', desc: 'Giải pháp kế toán toàn diện, chính xác và tuân thủ pháp luật.' },
-  { id: '2', slug: 'bao-cao-thue-thang-quy', title: 'Báo cáo thuế tháng/quý', desc: 'Lập và nộp báo cáo thuế định kỳ đúng hạn, tối ưu chi phí.' },
-  { id: '3', slug: 'quyet-toan-thue-nam', title: 'Quyết toán thuế năm', desc: 'Thực hiện quyết toán thuế thu nhập doanh nghiệp cuối năm chuyên nghiệp.' },
-  { id: '4', slug: 'tu-van-thanh-lap-doanh-nghiep', title: 'Tư vấn thành lập doanh nghiệp', desc: 'Hỗ trợ thủ tục đăng ký kinh doanh nhanh chóng, tiết kiệm.' },
-  { id: '5', slug: 'hoan-thue', title: 'Hoàn thuế GTGT', desc: 'Hỗ trợ rà soát và lập hồ sơ hoàn thuế chính xác, tỷ lệ thành công cao.' },
-  { id: '6', slug: 'kiem-toan-noi-bo', title: 'Kiểm toán nội bộ', desc: 'Đánh giá độc lập hệ thống kiểm soát nội bộ và quản trị rủi ro.' },
-];
-
+import { articleService } from '@/services';
+import { ArticleSummary } from '@/types';
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = resolveLocale((await params).locale);
   const en = locale === 'en';
   const dict = getDictionary(locale);
+
+  const allArticles = await articleService.getAllSummary();
+  const services = allArticles.filter((a: ArticleSummary) => a.category === 'dich-vu' && !a.isDraft);
 
   return (
     <div className="w-full bg-paper">
@@ -63,10 +58,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                     <Briefcase size={28} />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-ink mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
+                    {en ? service.titleEn || service.title : service.title}
                   </h3>
-                  <p className="text-ink-soft mb-6 flex-grow leading-relaxed">
-                    {service.desc}
+                  <p className="text-ink-soft mb-6 flex-grow leading-relaxed line-clamp-3">
+                    {en ? service.excerptEn || service.excerpt : service.excerpt}
                   </p>
                   <Link
                     href={localePath(locale, `/dich-vu/${service.slug}`)}

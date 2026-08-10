@@ -1,18 +1,17 @@
-﻿/**
+/**
  * SEO Configuration
  * Centralized configuration for SEO-related settings
  */
 
 export const SEO_CONFIG = {
-  BASE_URL: "https://VTAX.com.vn",
+  BASE_URL: "https://vtax.com.vn",
   SITE_NAME: "VTAX",
-  SITE_DESCRIPTION: "VTAX - Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam",
-  COMPANY_NAME: "BIOTECHNOLOGY VETERINARY.,J.S.C",
+  SITE_DESCRIPTION: "VTAX - Chuyên cung cấp dịch vụ kế toán, báo cáo thuế và tư vấn doanh nghiệp uy tín",
+  COMPANY_NAME: "CÔNG TY DỊCH VỤ KẾ TOÁN VTAX",
   
   // Default Images
   DEFAULT_OG_IMAGE: "/images/about.svg",
   DEFAULT_ARTICLE_IMAGE: "/images/default-article.svg",
-  DEFAULT_PRODUCT_IMAGE: "/images/default-product.svg",
   LOGO_IMAGE: "/images/logo.png",
   
   // Social Media
@@ -33,25 +32,25 @@ export const SEO_CONFIG = {
   
   // SEO Keywords
   CORE_KEYWORDS: [
-    "dược thú y",
-    "VTAX",
-    "chăn nuôi",
-    "gmp-who",
-    "phòng bệnh vật nuôi",
-    "điều trị bệnh thú y",
-    "công nghệ usa",
+    "kế toán",
+    "dịch vụ kế toán",
+    "báo cáo thuế",
+    "thành lập doanh nghiệp",
+    "quyết toán thuế",
+    "tư vấn thuế",
+    "kế toán trọn gói",
     "VTAX"
   ],
   
   // Pages
   PAGES: {
     HOME: { path: "/", keywords: [] },
-    PRODUCTS: { path: "/san-pham", keywords: ["sản phẩm", "thuốc bổ trợ"] },
+    SERVICES: { path: "/dich-vu", keywords: ["dịch vụ", "kế toán trọn gói", "báo cáo thuế"] },
     ABOUT: { path: "/gioi-thieu", keywords: ["giới thiệu", "về chúng tôi"] },
-    NEWS: { path: "/tin-tuc", keywords: ["tin tức", "bài viết"] },
-    HANDBOOK: { path: "/cam-nang-chan-nuoi", keywords: ["cẩm nang", "kỹ thuật"] },
+    NEWS: { path: "/tin-tuc", keywords: ["tin tức", "sự kiện"] },
+    KNOWLEDGE: { path: "/kien-thuc", keywords: ["kiến thức", "thuế", "luật doanh nghiệp"] },
+    LOOKUP: { path: "/tra-cuu", keywords: ["tra cứu", "ngành nghề kinh doanh"] },
     CONTACT: { path: "/lien-he", keywords: ["liên hệ", "tư vấn"] },
-    GALLERY: { path: "/thu-vien", keywords: ["thư viện", "hình ảnh", "video"] },
   },
 };
 

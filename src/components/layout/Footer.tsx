@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from 'react';
 import Link from 'next/link';
@@ -13,25 +13,21 @@ export default function Footer() {
   const { locale, t } = useLocale();
   const [menus, setMenus] = React.useState<any[]>([]);
   const [settings, setSettings] = React.useState<any>(null);
-  const [categories, setCategories] = React.useState<any[]>([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const [menusRes, settingsRes, catRes] = await Promise.all([
+        const [menusRes, settingsRes] = await Promise.all([
           fetch('/api/data/menus'),
           fetch('/api/data/settings'),
-          fetch('/api/data/categories'),
         ]);
         const menusData = await menusRes.json();
         const settingsData = await settingsRes.json();
-        const catData = await catRes.json();
 
         if (Array.isArray(menusData)) {
           setMenus(menusData.filter((m: any) => m.position === 'footer' || m.position === 'both'));
         }
         setSettings(settingsData);
-        if (Array.isArray(catData)) setCategories(catData.slice(0, 10));
       } catch (error) {
         console.error('Failed to fetch footer data', error);
       }
@@ -47,7 +43,7 @@ export default function Footer() {
       {/* signature motif + monogram watermark */}
       <div className="absolute inset-0 bg-finance opacity-50 pointer-events-none" />
       <div className="absolute -right-16 -bottom-16 pointer-events-none hidden lg:block">
-        <Monogram size={360} withText text={locale === 'en' ? 'VTAX · HIGH-TECH VETERINARY · ' : undefined} tone="light" className="opacity-[0.05]" />
+        <Monogram size={360} withText text={locale === 'en' ? 'VTAX · ACCOUNTING SERVICES · ' : undefined} tone="light" className="opacity-[0.05]" />
       </div>
 
       {/* Signature top band */}
@@ -86,7 +82,7 @@ export default function Footer() {
             <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.headquarters')}:</strong> {locale === 'en' ? (settings?.addressHNEn || settings?.addressHN || 'Lien Phuong Industrial Cluster, Hong Van, Thuong Tin, Hanoi') : (settings?.addressHN || 'Cụm CN Liên Phương, Xã Hồng Vân, Hà Nội')}</p>
             <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.phone')}:</strong> <a href={`tel:${settings?.hotline1}`} className="hover:text-secondary transition-colors">{settings?.hotline1 || '0915 999 831'}</a> | <a href={`tel:${settings?.hotline2}`} className="hover:text-secondary transition-colors">{settings?.hotline2 || '024 3371 8653'}</a></p>
             <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.email')}:</strong> <a href={`mailto:${settings?.email}`} className="hover:text-secondary transition-colors">{settings?.email || 'pkd.VTAX@gmail.com'}</a></p>
-            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.website')}:</strong> <a href={settings?.website || 'https://VTAX.com/'} target="_blank" rel="noopener" className="hover:text-secondary transition-colors">{(settings?.website || 'https://VTAX.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></p>
+            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.website')}:</strong> <a href={settings?.website || 'https://vtax.com/'} target="_blank" rel="noopener" className="hover:text-secondary transition-colors">{(settings?.website || 'https://vtax.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></p>
             {settings?.addressHCM && (
               <p className="mt-4 pt-4 border-t border-white/10 text-white/70">
                 <strong className="text-white/80 font-semibold">{t('footer.southBranch')}:</strong><br />
@@ -95,7 +91,7 @@ export default function Footer() {
             )}
           </motion.div>
 
-          {/* Col 2 - Product Categories */}
+          {/* Col 2 - Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,17 +100,22 @@ export default function Footer() {
           >
             <h3 className={heading}>{t('footer.productsTitle')}</h3>
             <ul className="space-y-2.5">
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <Link href={localePath(locale, `/san-pham/danh-muc/${cat.slug}`)} className={linkClass}>
+              {[
+                { href: '/dich-vu/dich-vu-ke-toan-tron-goi', label: locale === 'en' ? 'Full Accounting' : 'Kế toán trọn gói' },
+                { href: '/dich-vu/bao-cao-thue-thang-quy', label: locale === 'en' ? 'Tax Reports' : 'Báo cáo thuế' },
+                { href: '/dich-vu/quyet-toan-thue-nam', label: locale === 'en' ? 'Tax Settlement' : 'Quyết toán thuế' },
+                { href: '/dich-vu/tu-van-thanh-lap-doanh-nghiep', label: locale === 'en' ? 'Business Setup' : 'Thành lập DN' },
+                { href: '/dich-vu/hoan-thue', label: locale === 'en' ? 'VAT Refund' : 'Hoàn thuế GTGT' },
+                { href: '/dich-vu/kiem-toan-noi-bo', label: locale === 'en' ? 'Internal Audit' : 'Kiểm toán nội bộ' },
+              ].map((svc) => (
+                <li key={svc.href}>
+                  <Link href={localePath(locale, svc.href)} className={linkClass}>
                     <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover/link:bg-secondary transition-colors" />
-                    {localize(cat, locale).name as string}
+                    {svc.label}
                   </Link>
                 </li>
               ))}
-              {categories.length === 0 && (
-                <li><Link href={localePath(locale, '/san-pham')} className="text-white/70 hover:text-secondary transition-colors">{t('footer.allProducts')}</Link></li>
-              )}
+              <li><Link href={localePath(locale, '/dich-vu')} className="text-white/70 hover:text-secondary transition-colors">{t('footer.allProducts')}</Link></li>
             </ul>
           </motion.div>
 
@@ -173,7 +174,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-white/45 text-[0.8rem]">
           <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
-          <p className="font-montserrat tracking-[0.18em] uppercase text-[0.66rem]">VTAX · GMP-WHO</p>
+          <p className="font-montserrat tracking-[0.18em] uppercase text-[0.66rem]">VTAX · ACCOUNTING SERVICES</p>
         </div>
       </div>
     </footer>

@@ -8,11 +8,20 @@ import { getDictionary } from '@/lib/i18n/getDictionary';
 // This is the SINGLE generic template for ALL services.
 // The content should dynamically load based on the `slug`, but for now we'll use placeholder content.
 
+import { notFound } from 'next/navigation';
+import { articleService } from '@/services';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
-  const en = resolveLocale((await params).locale) === 'en';
-  // In a real app, fetch the service by slug to get the title
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const en = locale === 'en';
+  const service = await articleService.getBySlug(slug);
+  
+  if (!service) return { title: 'Not Found' };
+  
   return {
-    title: en ? 'Service Details - VTAX' : 'Chi tiết dịch vụ - VTAX',
+    title: en ? (service.titleEn || service.title) : service.title,
+    description: en ? (service.excerptEn || service.excerpt) : service.excerpt,
   };
 }
 
@@ -22,8 +31,13 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const en = locale === 'en';
   const dict = getDictionary(locale);
 
-  // Mock fetching service details
-  const serviceName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const service = await articleService.getBySlug(slug);
+
+  if (!service) {
+    notFound();
+  }
+
+  const serviceName = en ? (service.titleEn || service.title) : service.title;
 
   return (
     <div className="w-full bg-white">
@@ -43,9 +57,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               {serviceName}
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed">
-              {en 
-                ? 'Providing professional, accurate, and fully compliant financial solutions to help your business operate with peace of mind.' 
-                : 'Cung cấp giải pháp tài chính chuyên nghiệp, chính xác và tuân thủ tuyệt đối quy định pháp luật, giúp doanh nghiệp an tâm hoạt động.'}
+              {en ? (service.excerptEn || service.excerpt) : service.excerpt}
             </p>
           </Reveal>
         </div>
@@ -57,44 +69,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <main className="w-full lg:w-2/3">
             <Reveal direction="up">
               <div className="prose prose-lg max-w-none text-ink-soft">
-                <h2 className="text-2xl font-display font-semibold text-ink mb-6">
-                  {en ? 'Overview' : 'Tổng quan dịch vụ'}
-                </h2>
-                <p>
-                  {en ? 'This is a shared template layout designed to dynamically display information for any service.' : 'Đây là giao diện dùng chung được thiết kế để hiển thị thông tin động cho bất kỳ dịch vụ nào. Thay vì thiết kế riêng lẻ, nội dung ở đây sẽ được tải dựa trên đường dẫn (slug) của dịch vụ.'}
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p>
-
-                <h3 className="text-xl font-display font-semibold text-ink mt-10 mb-6">
-                  {en ? 'Key Benefits' : 'Lợi ích mang lại'}
-                </h3>
-                <ul className="space-y-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-secondary shrink-0 mt-1" size={20} />
-                      <span>{en ? `Benefit point ${i} explaining the value of the service.` : `Điểm lợi ích ${i} giải thích giá trị cốt lõi mà dịch vụ mang lại cho doanh nghiệp.`}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <h3 className="text-xl font-display font-semibold text-ink mt-10 mb-6">
-                  {en ? 'Service Process' : 'Quy trình thực hiện'}
-                </h3>
-                <div className="space-y-6">
-                  {[1, 2, 3].map((step) => (
-                    <div key={step} className="flex gap-4 p-5 rounded-xl border border-line bg-paper/50">
-                      <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shrink-0">
-                        {step}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-ink mb-1">{en ? `Step ${step}` : `Bước ${step}`}</h4>
-                        <p className="text-sm">{en ? 'Detailed explanation of this step in the process.' : 'Giải thích chi tiết các công việc thực hiện trong bước này.'}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: en ? (service.contentEn || service.content || '') : (service.content || '') }} />
               </div>
             </Reveal>
           </main>

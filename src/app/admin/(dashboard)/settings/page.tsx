@@ -100,7 +100,7 @@ export default function AdminSettingsPage() {
                       <Input size="large" className="rounded-xl" prefix={<MailOutlined />} />
                     </Form.Item>
                     <Form.Item name="website" label="Website">
-                      <Input size="large" className="rounded-xl" prefix={<GlobalOutlined />} placeholder="https://VTAX.com/" />
+                      <Input size="large" className="rounded-xl" prefix={<GlobalOutlined />} placeholder="https://vtax.com/" />
                     </Form.Item>
                     <Button type="primary" size="large" htmlType="submit" className="rounded-xl px-10 font-semibold uppercase tracking-wide text-xs h-12 shadow-lg shadow-primary/20">Cập nhật ngay</Button>
                   </div>

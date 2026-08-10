@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: en
         ? 'Contact VTAX — technical support and consultation, 24/7.'
         : 'Liên hệ với VTAX – Hỗ trợ kỹ thuật và tư vấn 24/7.',
-      url: 'https://VTAX.com/lien-he',
+      url: 'https://vtax.com/lien-he',
       images: [
         {
           url: '/images/about.svg',

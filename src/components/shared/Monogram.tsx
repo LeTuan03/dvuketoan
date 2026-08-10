@@ -24,7 +24,7 @@ export default function Monogram({
   className = '',
   withText = true,
   tone = 'brand',
-  text = 'VTAX · THÚ Y CÔNG NGHỆ CAO · ',
+  text = 'VTAX · KẾ TOÁN THUẾ · ',
 }: MonogramProps) {
   const stroke =
     tone === 'light' ? '#ffffff' : tone === 'dark' ? '#06243f' : tone === 'currentColor' ? 'currentColor' : '#0a4d8c';
@@ -80,8 +80,8 @@ export default function Monogram({
         fill={stroke}
         letterSpacing="-4"
       >
-        B
-        <tspan fill={accent}>V</tspan>
+        V
+        <tspan fill={accent}>T</tspan>
       </text>
 
       {/* circular ring text */}

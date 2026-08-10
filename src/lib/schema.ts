@@ -1,9 +1,9 @@
-﻿/**
+/**
  * JSON-LD Schema Helpers for SEO
  * Provides structured data markup for search engines
  */
 
-const BASE_URL = "https://VTAX.com.vn";
+const BASE_URL = "https://vtax.com.vn";
 
 /**
  * Organization Schema
@@ -13,8 +13,8 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": BASE_URL,
   name: "VTAX",
-  alternateName: "VTAX",
-  description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam",
+  alternateName: "VTAX Accounting",
+  description: "Dịch vụ kế toán, tư vấn thuế chuyên nghiệp và uy tín",
   url: BASE_URL,
   logo: `${BASE_URL}/images/logo.png`,
   image: `${BASE_URL}/images/about.svg`,
@@ -29,7 +29,7 @@ export const organizationSchema = {
     email: "contact@VTAX.com.vn",
   },
   areaServed: "VN",
-  knowsAbout: ["Veterinary Medicine", "Animal Husbandry", "Livestock", "Pharmaceutical"],
+  knowsAbout: ["Accounting", "Tax Consulting", "Business Registration", "Financial Advisory"],
   founder: {
     "@type": "Organization",
     name: "VTAX",
@@ -67,7 +67,7 @@ export function articleSchema(article: {
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    "@id": `${BASE_URL}/bai-viet/${article.slug}`,
+    "@id": `${BASE_URL}/kien-thuc/${article.slug}`,
     headline: article.title,
     description: article.description,
     image: article.image || `${BASE_URL}/images/default-article.svg`,
@@ -88,39 +88,11 @@ export function articleSchema(article: {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${BASE_URL}/bai-viet/${article.slug}`,
+      "@id": `${BASE_URL}/kien-thuc/${article.slug}`,
     },
   };
 }
 
-/**
- * Product Schema
- */
-export function productSchema(product: {
-  id: string;
-  name: string;
-  description?: string;
-  image?: string;
-  price?: number;
-  slug: string;
-  category?: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": `${BASE_URL}/san-pham/${product.slug}`,
-    name: product.name,
-    description: product.description || product.name,
-    image: product.image || `${BASE_URL}/images/default-product.svg`,
-    manufacturer: {
-      "@type": "Organization",
-      name: "VTAX",
-      url: BASE_URL,
-    },
-    category: product.category || "Veterinary Medicine",
-    url: `${BASE_URL}/san-pham/${product.slug}`,
-  };
-}
 
 /**
  * FAQ Schema
@@ -149,7 +121,7 @@ export const localBusinessSchema = {
   "@id": BASE_URL,
   name: "VTAX",
   image: `${BASE_URL}/images/logo.png`,
-  description: "Nhà máy sản xuất dược thú y đạt chuẩn GMP-WHO",
+  description: "Công ty dịch vụ kế toán và tư vấn thuế uy tín",
   url: BASE_URL,
   telephone: "+84-xxx-xxx-xxx",
   address: {

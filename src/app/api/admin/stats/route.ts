@@ -3,9 +3,9 @@ import prisma from '@/lib/prisma';
 
 export async function GET() {
   try {
-    const [productsCount, categoriesCount, articlesCount, latestArticles] = await Promise.all([
-      prisma.product.count(),
-      prisma.category.count(),
+    const [lookupItemsCount, contactRequestsCount, articlesCount, latestArticles] = await Promise.all([
+      prisma.lookupItem.count(),
+      prisma.contactRequest.count(),
       prisma.article.count(),
       prisma.article.findMany({
         take: 4,
@@ -23,8 +23,8 @@ export async function GET() {
 
     return NextResponse.json({
       stats: {
-        products: productsCount,
-        categories: categoriesCount,
+        lookupItems: lookupItemsCount,
+        contactRequests: contactRequestsCount,
         articles: articlesCount,
       },
       latestArticles,

@@ -4,23 +4,19 @@ import React, { useState, useEffect } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  ShoppingOutlined,
-  AppstoreOutlined,
   DashboardOutlined,
-  PictureOutlined,
-  VideoCameraOutlined,
   MenuOutlined,
   SettingOutlined,
   UserOutlined,
   LogoutOutlined,
   InfoCircleOutlined,
-  BookOutlined,
   NotificationOutlined,
   HomeOutlined,
   MailOutlined,
-  FolderOpenOutlined,
   SearchOutlined,
-  StarOutlined,
+  FileTextOutlined,
+  PictureOutlined,
+  VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme, ConfigProvider, Avatar, Dropdown, App } from 'antd';
 import viVN from 'antd/locale/vi_VN';
@@ -85,12 +81,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   const contentItems: any[] = [
-    { key: '/admin/products',   icon: <ShoppingOutlined />,   label: 'Dịch vụ' },
-    { key: '/admin/categories', icon: <AppstoreOutlined />,   label: 'Danh mục' },
-    { key: '/admin/handbooks',  icon: <BookOutlined />,       label: 'Kiến thức' },
-    { key: '/admin/lookup',     icon: <SearchOutlined />,     label: 'Tra cứu ngành nghề' },
-    { key: '/admin/reviews',    icon: <StarOutlined />,       label: 'Đánh giá khách hàng' },
-    { key: '/admin/news',       icon: <NotificationOutlined />, label: 'Tin tức / Khuyến mãi' },
+    { key: '/admin/services', icon: <FileTextOutlined />, label: 'Dịch vụ' },
+    { key: '/admin/news', icon: <FileTextOutlined />, label: 'Bài viết / Tin & Kiến thức' },
+    { key: '/admin/lookup', icon: <SearchOutlined />, label: 'Tra cứu ngành nghề' },
   ];
 
   const interactionItems: any[] = [
@@ -98,19 +91,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   const systemItems: any[] = [
-    { key: '/admin/banners',       icon: <PictureOutlined />,    label: 'Banner / Slider' },
+    { key: '/admin/banners', icon: <PictureOutlined />, label: 'Banner / Slider' },
     { key: '/admin/media-gallery', icon: <VideoCameraOutlined />, label: 'Video & Hình ảnh' },
-    { key: '/admin/catalogue',     icon: <FolderOpenOutlined />, label: 'Catalogue & Tài liệu' },
-    { key: '/admin/menus',         icon: <MenuOutlined />,        label: 'Quản lý Menu' },
-    { key: '/admin/settings',      icon: <SettingOutlined />,     label: 'Thông tin chung' },
-    { key: '/admin/about',         icon: <InfoCircleOutlined />,  label: 'Trang Giới thiệu' },
+    { key: '/admin/menus', icon: <MenuOutlined />, label: 'Quản lý Menu' },
+    { key: '/admin/settings', icon: <SettingOutlined />, label: 'Thông tin chung' },
+    { key: '/admin/about', icon: <InfoCircleOutlined />, label: 'Trang Giới thiệu' },
   ];
 
   const userMenuItems = [
     // { key: 'profile',  label: 'Hồ sơ cá nhân',     icon: <UserOutlined /> },
     // { key: 'settings', label: 'Cài đặt tài khoản',  icon: <SettingOutlined /> },
     // { type: 'divider', key: 'div2' },
-    { key: 'logout',   label: 'Đăng xuất',          icon: <LogoutOutlined />, danger: true },
+    { key: 'logout', label: 'Đăng xuất', icon: <LogoutOutlined />, danger: true },
   ];
 
   const handleMenuClick = (e: { key: string }) => {

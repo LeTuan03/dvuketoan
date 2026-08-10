@@ -5,13 +5,19 @@ import path from 'path';
 export class MediaService {
   // Images
   async getImages() {
-    return prisma.mediaImage.findMany({ orderBy: { order: 'asc' } });
+    const items = await prisma.mediaGallery.findMany({ 
+      where: { mediaType: 'image' },
+      orderBy: { order: 'asc' } 
+    });
+    return items.map(item => ({ ...item, id: item.id.toString() }));
   }
 
-  async addImage(data: { url: string; title: string; order?: number; featured?: boolean }) {
-    const image = await prisma.mediaImage.create({ 
+  async addImage(data: any) {
+    const { id, mediaType, ...createData } = data;
+    const image = await prisma.mediaGallery.create({ 
       data: {
-        ...data,
+        ...createData,
+        mediaType: 'image',
         status: 'active'
       } 
     });
@@ -21,8 +27,8 @@ export class MediaService {
   async updateImage(id: any, data: any) {
     if (id === undefined || id === null) throw new Error('ID is required for updateImage');
     console.log(`[MediaService] Updating image ID: ${id}, Type: ${typeof id}`);
-    const { id: _, ...updateData } = data;
-    await prisma.mediaImage.update({ 
+    const { id: _, mediaType, ...updateData } = data;
+    await prisma.mediaGallery.update({ 
       where: { id: BigInt(id) as any }, 
       data: updateData 
     });
@@ -33,7 +39,7 @@ export class MediaService {
     if (id === undefined || id === null) throw new Error('ID is required for deleteImage');
     
     // 1. Get image info to get the file path
-    const image = await prisma.mediaImage.findUnique({
+    const image = await prisma.mediaGallery.findUnique({
       where: { id: BigInt(id) as any }
     });
 
@@ -52,21 +58,26 @@ export class MediaService {
 
     // 3. Delete from DB
     console.log(`[MediaService] Deleting image record ID: ${id}`);
-    await prisma.mediaImage.delete({ 
+    await prisma.mediaGallery.delete({ 
       where: { id: BigInt(id) as any } 
     });
   }
 
   // Videos
   async getVideos() {
-    return prisma.mediaVideo.findMany({ orderBy: { order: 'asc' } });
+    const items = await prisma.mediaGallery.findMany({ 
+      where: { mediaType: 'video' },
+      orderBy: { order: 'asc' } 
+    });
+    return items.map(item => ({ ...item, id: item.id.toString() }));
   }
 
-  async addVideo(data: { id?: any, url: string; title: string; thumbnail?: string; order?: number; featured?: boolean }) {
-    const { id, ...createData } = data;
-    const video = await prisma.mediaVideo.create({ 
+  async addVideo(data: any) {
+    const { id, mediaType, ...createData } = data;
+    const video = await prisma.mediaGallery.create({ 
       data: {
         ...createData,
+        mediaType: 'video',
         status: 'active'
       } 
     });
@@ -76,8 +87,8 @@ export class MediaService {
   async updateVideo(id: any, data: any) {
     if (id === undefined || id === null) throw new Error('ID is required for updateVideo');
     console.log(`[MediaService] Updating video ID: ${id}, Type: ${typeof id}`);
-    const { id: _, ...updateData } = data;
-    await prisma.mediaVideo.update({ 
+    const { id: _, mediaType, ...updateData } = data;
+    await prisma.mediaGallery.update({ 
       where: { id: BigInt(id) as any }, 
       data: updateData 
     });
@@ -88,7 +99,7 @@ export class MediaService {
     if (id === undefined || id === null) throw new Error('ID is required for deleteVideo');
     
     // 1. Get video info
-    const video = await prisma.mediaVideo.findUnique({
+    const video = await prisma.mediaGallery.findUnique({
       where: { id: BigInt(id) as any }
     });
 
@@ -111,7 +122,7 @@ export class MediaService {
     }
 
     // 2. Delete from DB
-    await prisma.mediaVideo.delete({ 
+    await prisma.mediaGallery.delete({ 
       where: { id: BigInt(id) as any } 
     });
   }

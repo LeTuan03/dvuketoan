@@ -5,9 +5,20 @@ import Reveal from '@/components/shared/Reveal';
 import { resolveLocale, localePath } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/getDictionary';
 
+import { notFound } from 'next/navigation';
+import { articleService } from '@/services';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
+  const { locale: rawLocale, slug } = await params;
+  const locale = resolveLocale(rawLocale);
+  const en = locale === 'en';
+  const article = await articleService.getBySlug(slug);
+  
+  if (!article) return { title: 'Not Found' };
+  
   return {
-    title: 'Bài viết kiến thức - VTAX',
+    title: en ? (article.titleEn || article.title) : article.title,
+    description: en ? (article.excerptEn || article.excerpt) : article.excerpt,
   };
 }
 
@@ -17,8 +28,13 @@ export default async function KnowledgeDetailPage({ params }: { params: Promise<
   const en = locale === 'en';
   const dict = getDictionary(locale);
 
-  // Mock
-  const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const article = await articleService.getBySlug(slug);
+
+  if (!article) {
+    notFound();
+  }
+
+  const title = en ? (article.titleEn || article.title) : article.title;
 
   return (
     <div className="w-full bg-white pb-24">
@@ -39,8 +55,8 @@ export default async function KnowledgeDetailPage({ params }: { params: Promise<
             </h1>
             
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-ink-soft">
-              <span className="flex items-center gap-2"><User size={16} className="text-primary"/> VTAX Expert</span>
-              <span className="flex items-center gap-2"><Calendar size={16} className="text-primary"/> 10/08/2026</span>
+              <span className="flex items-center gap-2"><User size={16} className="text-primary"/> VTAX</span>
+              <span className="flex items-center gap-2"><Calendar size={16} className="text-primary"/> {article.publishDate || ''}</span>
             </div>
           </Reveal>
         </div>
@@ -50,35 +66,7 @@ export default async function KnowledgeDetailPage({ params }: { params: Promise<
       <div className="container mx-auto px-4 mt-16 max-w-3xl">
         <Reveal direction="up">
           <div className="prose prose-lg prose-headings:font-display prose-headings:font-semibold prose-a:text-primary hover:prose-a:text-secondary max-w-none text-ink-soft">
-            <p className="lead text-xl text-ink font-medium mb-8">
-              {en ? 'This article provides an in-depth analysis of the topic, designed to help businesses navigate complex legal and tax landscapes.' : 'Bài viết này phân tích chuyên sâu các vấn đề, nhằm mục đích hỗ trợ doanh nghiệp vượt qua những rào cản pháp lý và thuế trong quá trình vận hành.'}
-            </p>
-            
-            <h2>{en ? '1. Introduction' : '1. Giới thiệu chung'}</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat ante, amet.
-            </p>
-            
-            <h2>{en ? '2. Key Changes and Impacts' : '2. Những điểm cốt lõi và tác động'}</h2>
-            <p>
-              Phasellus volutpat, metus eget egestas mollis, lacus lacus blandit dui, id egestas quam mauris ut lacus. Nullam non mi congue, rhoncus ex quis, rutrum eros.
-            </p>
-            <ul>
-              <li>{en ? 'Impact on corporate income tax' : 'Tác động đến Thuế Thu nhập doanh nghiệp (TNDN)'}</li>
-              <li>{en ? 'Personal income tax considerations' : 'Lưu ý về Thuế Thu nhập cá nhân (TNCN)'}</li>
-              <li>{en ? 'Value added tax (VAT) updates' : 'Cập nhật về Thuế Giá trị gia tăng (GTGT)'}</li>
-            </ul>
-
-            <blockquote>
-              <p>
-                {en ? '"Proper tax planning is essential for the sustainable growth of any enterprise." - VTAX Advisory' : '"Hoạch định thuế hợp lý là yếu tố sống còn cho sự phát triển bền vững của doanh nghiệp." - Chuyên gia VTAX'}
-              </p>
-            </blockquote>
-
-            <h2>{en ? '3. Conclusion' : '3. Kết luận'}</h2>
-            <p>
-              Suspendisse potenti. Aenean in ex euismod, faucibus dui sit amet, vestibulum lorem. Praesent eu fringilla massa. Morbi eleifend leo quis dui finibus congue.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: en ? (article.contentEn || article.content || '') : (article.content || '') }} />
           </div>
           
           <div className="mt-16 pt-8 border-t border-line flex items-center justify-between">

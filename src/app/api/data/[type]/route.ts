@@ -1,14 +1,12 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import {
-  productService,
-  categoryService,
   articleService,
   menuService,
   settingService,
   bannerService,
-  mediaService,
-  contactService
+  contactService,
+  mediaService
 } from '@/services';
 
 export async function GET(
@@ -30,7 +28,6 @@ export async function GET(
     if (id) {
       let item;
       switch (type) {
-        case 'products': item = await productService.getById(id); break;
         case 'articles': item = await articleService.getById(id); break;
         default:
           return NextResponse.json({ error: 'Invalid data type for id lookup' }, { status: 400 });
@@ -41,12 +38,6 @@ export async function GET(
 
     let data;
     switch (type) {
-      case 'products':
-        data = summary ? await productService.getAllSummary() : await productService.getAll();
-        break;
-      case 'categories':
-        data = await categoryService.getAll();
-        break;
       case 'articles':
         data = summary ? await articleService.getAllSummary() : await articleService.getAll();
         break;
@@ -59,14 +50,13 @@ export async function GET(
       case 'banners':
         data = await bannerService.getAll();
         break;
-      case 'media-gallery':
-        data = {
-          images: await mediaService.getImages(),
-          videos: await mediaService.getVideos()
-        };
-        break;
       case 'contact-requests':
         data = await contactService.getAll();
+        break;
+      case 'media-gallery':
+        const images = await mediaService.getImages();
+        const videos = await mediaService.getVideos();
+        data = { images, videos };
         break;
       default:
         return NextResponse.json({ error: 'Invalid data type' }, { status: 400 });
@@ -100,7 +90,7 @@ export async function POST(
     let data = body.data;
     let id = body.id || (data && typeof data === 'object' ? data.id : undefined);
 
-    if (!action && !data && type !== 'media-gallery') {
+    if (!action && !data) {
       data = body;
       // For settings, it's always an update
       if (type === 'settings') action = 'update';
@@ -109,12 +99,11 @@ export async function POST(
     // Helper function for CRUD operations
     const getService = () => {
       switch (type) {
-        case 'products': return productService;
-        case 'categories': return categoryService;
         case 'articles': return articleService;
         case 'menus': return menuService;
         case 'banners': return bannerService;
         case 'contact-requests': return contactService;
+        case 'media-gallery': return mediaService;
         default: return null;
       }
     };
@@ -128,18 +117,31 @@ export async function POST(
 
     // Handle media-gallery separately
     if (type === 'media-gallery') {
-      const { mediaType } = body; // 'image' or 'video'
-      if (mediaType === 'image') {
-        if (action === 'create') await mediaService.addImage(data);
-        else if (action === 'update') await mediaService.updateImage(id, data);
-        else if (action === 'delete') await mediaService.deleteImage(id);
-      } else if (mediaType === 'video') {
-        if (action === 'create') await mediaService.addVideo(data);
-        else if (action === 'update') await mediaService.updateVideo(id, data);
-        else if (action === 'delete') await mediaService.deleteVideo(id);
+      const mediaType = body.mediaType || (data && data.mediaType);
+      const numericId = id ? Number(id) : undefined;
+      
+      let result;
+      switch (action) {
+        case 'create':
+          if (mediaType === 'image') result = await mediaService.addImage(data);
+          else result = await mediaService.addVideo(data);
+          break;
+        case 'update':
+          if (!numericId) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+          if (mediaType === 'image') await mediaService.updateImage(numericId, data);
+          else await mediaService.updateVideo(numericId, data);
+          break;
+        case 'delete':
+          if (!numericId) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+          if (mediaType === 'image') await mediaService.deleteImage(numericId);
+          else await mediaService.deleteVideo(numericId);
+          break;
+        default:
+          return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
       }
+      
       revalidatePath('/', 'layout');
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ success: true, id: result });
     }
 
     const service = getService() as any;

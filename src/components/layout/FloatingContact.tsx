@@ -120,7 +120,7 @@ export default function FloatingContact({ settings }: { settings: any }) {
                </div>
                <div className="flex items-start gap-2.5 text-[0.9rem] text-gray-700">
                  <Globe size={16} className="mt-1 text-primary shrink-0" />
-                 <div><strong>Website:</strong> {(settings?.website || 'https://VTAX.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</div>
+                 <div><strong>Website:</strong> {(settings?.website || 'https://vtax.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</div>
                </div>
                <div className="flex items-start gap-2.5 text-[0.9rem] text-gray-700">
                  <MapPin size={16} className="mt-1 text-primary shrink-0" />

@@ -98,7 +98,7 @@ function AdminBannersPageContent() {
       width: 160,
       render: (text: string) => (
         <div className="bg-gray-50 border border-gray-100 rounded-xl p-1 overflow-hidden shadow-sm aspect-[2/1] flex items-center justify-center">
-          <img src={text} alt="banner" className="w-full h-full object-cover rounded-lg" />
+          <img src={text || '/images/default-article.svg'} alt="banner" className="w-full h-full object-cover rounded-lg" />
         </div>
       ),
     },

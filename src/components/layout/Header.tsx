@@ -11,7 +11,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { localePath, switchLocalePath, type Locale } from '@/lib/i18n/config';
 import { localize } from '@/lib/i18n/localize';
-import { NavMenu, Category, Setting } from '@/types';
+import { NavMenu, Setting } from '@/types';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
@@ -23,7 +23,6 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [menus, setMenus] = useState<NavMenu[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
   const [settings, setSettings] = useState<Setting | null>(null);
 
   const switchLocale = (next: Locale) => {
@@ -48,19 +47,16 @@ export default function Header() {
 
     const fetchData = async () => {
       try {
-        const [menusRes, settingsRes, categoriesRes] = await Promise.all([
+        const [menusRes, settingsRes] = await Promise.all([
           fetch('/api/data/menus'),
           fetch('/api/data/settings'),
-          fetch('/api/data/categories'),
         ]);
         const menusData = await menusRes.json();
         const settingsData = await settingsRes.json();
-        const categoriesData = await categoriesRes.json();
         if (Array.isArray(menusData)) {
           setMenus(menusData.filter((m: any) => m.position === 'header' || m.position === 'both'));
         }
         setSettings(settingsData);
-        if (Array.isArray(categoriesData)) setCategories(categoriesData);
       } catch (error) {
         console.error('Failed to fetch header data', error);
       }
@@ -72,25 +68,9 @@ export default function Header() {
 
   const nameOf = (m: any) => localize(m, locale).name as string;
 
-  // Resolve the sub-items for a top-level menu. "Products" pulls its list from
-  // the API (categories) instead of hard-coded child nav-menu rows; every other
-  // menu uses its explicit children (Cẩm nang & Tin tức are flat — no children).
+  // Resolve the sub-items for a top-level menu using child nav-menu rows.
   const childLinksFor = (menu: NavMenu): { id: string; href: string; label: string }[] => {
-    const link = menu.link || '';
-
-    // Sản phẩm → product categories  (/san-pham/danh-muc/{slug})
-    if (menu.hasMega || link === '/san-pham') {
-      return categories.map((cat) => ({
-        id: `cat-${cat.id}`,
-        href: localePath(locale, `/san-pham/danh-muc/${cat.slug}`),
-        label: localize(cat, locale).name as string,
-      }));
-    }
-
-    // Cẩm nang and Tin tức are flat sections — they fall through to the
-    // (empty) explicit-children path below and render as plain links.
-
-    // Everything else → explicit child nav-menu rows
+    // Explicit child nav-menu rows
     return menus
       .filter((m) => String(m.parent) === String(menu.id) && m.status)
       .sort((a, b) => a.order - b.order)
@@ -187,32 +167,7 @@ export default function Header() {
                   const childLinks = childLinksFor(menu);
                   const hasChildren = childLinks.length > 0;
 
-                  if (menu.hasMega) {
-                    return (
-                      <div key={menu.id} className="relative group p-0">
-                        <Link href={localePath(locale, menu.link)} className={`${navLinkBase} flex items-center gap-1`}>
-                          {nameOf(menu)} <ChevronDown size={13} className="group-hover:rotate-180 transition-transform opacity-60" />
-                        </Link>
-                        <div className="absolute top-full left-0 w-[290px] bg-white shadow-[0_30px_60px_-20px_rgba(6,36,63,0.28)] rounded-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 border border-line z-50 overflow-hidden">
-                          <div className="max-h-[70vh] overflow-y-auto custom-scrollbar px-2 space-y-0.5">
-                            {categories.map((cat) => (
-                              <DropdownItem
-                                key={cat.id}
-                                href={localePath(locale, `/san-pham/danh-muc/${cat.slug}`)}
-                                label={localize(cat, locale).name as string}
-                              />
-                            ))}
-                          </div>
-                          <div className="px-4 pt-3 mt-2 border-t border-line">
-                            <Link href={localePath(locale, '/san-pham')} className="text-[0.66rem] font-semibold text-primary uppercase tracking-[0.18em] hover:text-secondary transition-colors flex items-center justify-between group/all font-montserrat">
-                              {t('header.allProducts')}
-                              <ChevronRight size={13} className="group-hover/all:translate-x-1 transition-transform" />
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
+
 
                   if (hasChildren) {
                     return (
@@ -268,7 +223,7 @@ export default function Header() {
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (searchQuery.trim()) {
-                    router.push(localePath(locale, `/san-pham?search=${encodeURIComponent(searchQuery)}`));
+                    router.push(localePath(locale, `/kien-thuc?search=${encodeURIComponent(searchQuery)}`));
                   }
                 }}
                 className="relative flex items-center ml-3 group"
