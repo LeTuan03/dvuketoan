@@ -57,7 +57,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
                   className="transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06243f]/85 via-[#06243f]/20 to-transparent group-hover:from-[#06243f]/75 transition-all flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/40 bg-[#115E59]/60 group-hover:bg-[#115E59]/50 transition-all flex items-center justify-center">
                    <div className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 shadow-float group-hover:scale-110 group-hover:bg-secondary/90 group-hover:border-secondary transition-all duration-300">
                       <PlayCircle size={54} strokeWidth={1.5} className="text-white" />
                    </div>
@@ -95,7 +95,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
                   className="transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06243f]/85 via-[#06243f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-black/40 bg-[#115E59]/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
                    <div className="bg-secondary/90 text-white p-2.5 rounded-xl w-fit mb-3 transform -translate-y-4 group-hover:translate-y-0 transition-transform">
                       <ZoomIn size={18} />
                    </div>
@@ -118,7 +118,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
         >
           <button
             type="button"
-            className="absolute inset-0 bg-[#06243f]/80 backdrop-blur cursor-pointer"
+            className="absolute inset-0 bg-[#115E59]/80 backdrop-blur cursor-pointer"
             onClick={() => setSelectedItem(null)}
             aria-label="Close media viewer"
           />

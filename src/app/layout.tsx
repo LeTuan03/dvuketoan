@@ -150,7 +150,7 @@ export default function RootLayout({
             })
           }}
         />
-        <meta name="theme-color" content="#0a4d8c" />
+        <meta name="theme-color" content="#0d9488" />
       </head>
       <body className={`${beVietnamPro.className} antialiased min-h-screen`} suppressHydrationWarning>
         <NextTopLoader

@@ -43,14 +43,14 @@ export default function AdminDashboard() {
       value: data?.stats.lookupItems ?? 0,
       icon: <AppstoreOutlined />,
       tileBg: '#eaf1f9',
-      iconColor: '#0a4d8c',
+      iconColor: '#115E59',
     },
     {
       title: 'Yêu cầu liên hệ',
       value: data?.stats.contactRequests ?? 0,
       icon: <ShoppingOutlined />,
       tileBg: '#eaf1f9',
-      iconColor: '#0a4d8c',
+      iconColor: '#115E59',
     },
     {
       title: 'Tin tức & Bài viết',
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card variant="borderless" className="transition-all rounded-2xl overflow-hidden border border-[#eef1f5] shadow-[0_1px_2px_rgba(12,34,54,0.04),0_8px_24px_rgba(12,34,54,0.05)] hover:shadow-[0_4px_8px_rgba(12,34,54,0.06),0_12px_32px_rgba(12,34,54,0.08)]">
+              <Card variant="borderless" className="transition-all rounded-2xl overflow-hidden border border-[#eef1f5] shadow-[0_1px_2px_rgba(17, 94, 89,0.04),0_8px_24px_rgba(17, 94, 89,0.05)] hover:shadow-[0_4px_8px_rgba(17, 94, 89,0.06),0_12px_32px_rgba(17, 94, 89,0.08)]">
                 <div className="flex items-center gap-4 p-2">
                    <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
@@ -107,7 +107,7 @@ export default function AdminDashboard() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card variant="borderless" className="rounded-2xl overflow-hidden border border-[#eef1f5] shadow-[0_1px_2px_rgba(12,34,54,0.04),0_8px_24px_rgba(12,34,54,0.05)]">
+              <Card variant="borderless" className="rounded-2xl overflow-hidden border border-[#eef1f5] shadow-[0_1px_2px_rgba(17, 94, 89,0.04),0_8px_24px_rgba(17, 94, 89,0.05)]">
                  <div className="p-6">
                     <div className="flex justify-between items-center mb-8 pb-4 border-b border-[#eef1f5]">
                        <h3 className="font-display text-lg font-semibold text-[#0c2236] flex items-center gap-3">

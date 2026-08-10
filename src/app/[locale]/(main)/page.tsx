@@ -141,7 +141,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* ════════ 3 · Statistics band ════════ */}
       <section className="py-20 lg:py-24 bg-vtax-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-finance opacity-30" />
-        <div className="absolute inset-0 bg-[radial-gradient(40rem_40rem_at_80%_-10%,rgba(38,131,198,0.18),transparent_60%),radial-gradient(40rem_40rem_at_0%_110%,rgba(10,77,140,0.45),transparent_55%)]" />
+        <div className="absolute inset-0 bg-primary/5" />
         <div className="container mx-auto px-4 relative z-10">
           <Reveal direction="down" className="mb-14 text-center">
             <span className="eyebrow eyebrow--center text-secondary mb-4 justify-center">{en ? 'By the numbers' : 'Những con số'}</span>
@@ -274,7 +274,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-elegant-sm bg-paper cursor-pointer border border-line">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={img.url || '/images/default-article.svg'} alt={img.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <div className="absolute inset-0 bg-black/40 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                       <h3 className="text-white font-display font-semibold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.title}</h3>
                     </div>
                   </div>
@@ -290,7 +290,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg>
                       </div>
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                    <div className="absolute inset-x-0 bottom-0 p-6 bg-black/40 bg-black/60">
                       <h3 className="text-white font-display font-semibold text-lg">{vid.title}</h3>
                     </div>
                   </div>

@@ -33,7 +33,7 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-[#f6f4ef] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Soft navy radial wash */}
-      <div className="pointer-events-none absolute top-[-20%] left-1/2 -translate-x-1/2 w-[70%] h-[55%] bg-[radial-gradient(closest-side,rgba(10,77,140,0.10),transparent)]"></div>
+      <div className="pointer-events-none absolute top-[-20%] left-1/2 -translate-x-1/2 w-[70%] h-[55%] bg-primary/5"></div>
 
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-9">
@@ -41,11 +41,11 @@ export default function AdminLoginPage() {
             <div
               className="relative w-14 h-14 rounded-2xl flex items-center justify-center"
               style={{
-                background: 'linear-gradient(135deg, #0a4d8c 0%, #072e57 100%)',
-                boxShadow: '0 10px 28px rgba(10,77,140,0.28)',
+                background: 'linear-gradient(135deg, #115E59 0%, #134E4A 100%)',
+                boxShadow: '0 10px 28px rgba(13, 148, 136,0.28)',
               }}
             >
-              <span className="text-white text-2xl font-bold tracking-tight">B</span>
+              <span className="text-white text-2xl font-bold tracking-tight">V</span>
               <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#d9531f]"></span>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
           <p className="text-[#4a5a6a] text-sm mt-1.5">Hệ thống Quản trị nội dung</p>
         </div>
 
-        <Card className="rounded-2xl border border-[#eef1f5] shadow-[0_12px_40px_rgba(12,34,54,0.10)] p-2 md:p-5">
+        <Card className="rounded-2xl border border-[#eef1f5] shadow-[0_12px_40px_rgba(17, 94, 89,0.10)] p-2 md:p-5">
           <Form
             name="login_form"
             initialValues={{ remember: true }}

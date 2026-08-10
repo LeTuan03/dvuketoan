@@ -36,14 +36,14 @@ export default function FloatingContact({ settings }: { settings: any }) {
       <div className="floating-contact hidden md:flex fixed bottom-6 right-6 flex-col gap-3 z-[999]" suppressHydrationWarning>
         <a
           href={`tel:${(settings?.hotline1 || '0915999831').replace(/\s/g, '')}`}
-          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-gradient-to-br from-[#e53935] to-[#c62828] animate-bounce-slow"
+          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-black/40 bg-[#e53935] animate-bounce-slow"
           title="Gọi hotline"
         >
           <Phone size={22} />
         </a>
         <a 
           href={`mailto:${settings?.support?.doctorEmail}`} 
-          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-gradient-to-br from-accent to-[#e65100]"
+          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-black/40 bg-accent"
           title="Gửi email"
         >
           <Mail size={22} />
@@ -52,7 +52,7 @@ export default function FloatingContact({ settings }: { settings: any }) {
           href={`https://zalo.me/${settings?.social?.zalo}`} 
           target="_blank" 
           rel="noopener"
-          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-gradient-to-br from-[#0068ff] to-[#0052cc]"
+          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-black/40 bg-[#0068ff]"
           title="Chat Zalo"
         >
           <span className="text-[0.7rem] font-bold">Zalo</span>
@@ -61,14 +61,14 @@ export default function FloatingContact({ settings }: { settings: any }) {
           href={settings?.social?.facebook || 'https://www.facebook.com/BiotechVietNam1'}
           target="_blank" 
           rel="noopener"
-          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-gradient-to-br from-[#1877f2] to-[#0d47a1]"
+          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-black/40 bg-[#1877f2]"
           title="Facebook"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
         <button 
           onClick={() => setIsPopupOpen(true)}
-          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-gradient-to-br from-primary to-primary-dark"
+          className="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 bg-black/40 bg-primary"
           title="Liên hệ nhanh"
         >
           <MessageSquare size={22} />

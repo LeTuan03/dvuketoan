@@ -152,7 +152,7 @@ export default function AboutContent() {
       </nav>
 
       {/* ── 1. Overview ─────────────────────────────────────────────── */}
-      <section id="gioi-thieu" className="scroll-mt-32 py-20 lg:py-32 relative bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+      <section id="gioi-thieu" className="scroll-mt-32 py-20 lg:py-32 relative bg-black/40 from-white overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 rounded-l-[100px] blur-3xl -z-10" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -184,7 +184,7 @@ export default function AboutContent() {
                   alt="VTAX"
                   className="w-full h-[400px] lg:h-[550px] object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-black/40 bg-primary/60 opacity-80" />
               </div>
               
               {/* Floating Stat Cards */}
@@ -205,7 +205,7 @@ export default function AboutContent() {
       <section id="tam-nhin" className="scroll-mt-32 py-24 lg:py-32 bg-vtax-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/coso.png')] bg-cover bg-center opacity-10 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-finance opacity-60 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/50 via-vtax-dark to-primary-dark/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 bg-primary/40 pointer-events-none" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
@@ -223,7 +223,7 @@ export default function AboutContent() {
             
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
               <motion.div {...anim('up', 0.1)} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary to-yellow-600 flex items-center justify-center text-white mb-8 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-black/40 bg-secondary flex items-center justify-center text-white mb-8 shadow-lg">
                   <Target size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{content.tamNhin.visionTitle}</h3>
@@ -231,7 +231,7 @@ export default function AboutContent() {
               </motion.div>
               
               <motion.div {...anim('up', 0.2)} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors duration-300 sm:translate-y-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-primary flex items-center justify-center text-white mb-8 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-black/40 bg-blue-500 flex items-center justify-center text-white mb-8 shadow-lg">
                   <Heart size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{content.tamNhin.missionTitle}</h3>
@@ -276,13 +276,13 @@ export default function AboutContent() {
           )}
 
           <motion.div {...anim('up')} className="max-w-4xl mx-auto mt-28">
-            <div className="relative p-10 lg:p-14 rounded-[40px] bg-gradient-to-br from-white/10 to-white/5 border border-white/10 text-center overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+            <div className="relative p-10 lg:p-14 rounded-[40px] bg-black/40 bg-white/10 border border-white/10 text-center overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-black/40 from-transparent" />
               <Quote className="w-12 h-12 text-secondary/40 mx-auto mb-6" />
               <p className="font-display text-2xl lg:text-3xl text-white leading-relaxed whitespace-pre-line font-medium italic">{content.tamNhin.quoteText}</p>
               
               <div className="mt-10 flex items-center justify-center gap-5">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-yellow-600 flex items-center justify-center font-montserrat font-bold text-sm text-white shadow-lg">CEO</div>
+                <div className="w-14 h-14 rounded-full bg-black/40 bg-secondary flex items-center justify-center font-montserrat font-bold text-sm text-white shadow-lg">CEO</div>
                 <div className="text-left">
                   <div className="font-bold text-white text-lg">{content.tamNhin.quoteAuthor}</div>
                   <div className="text-xs uppercase font-montserrat font-semibold text-secondary tracking-widest mt-1">{content.tamNhin.quoteRole}</div>
@@ -305,7 +305,7 @@ export default function AboutContent() {
 
           <motion.div {...anim('up')} className="relative rounded-[2rem] overflow-hidden shadow-2xl group aspect-[16/9] lg:aspect-[21/9] w-full max-w-6xl mx-auto mb-16">
             <img src="/images/coso.png" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Văn phòng VTAX" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-8 lg:p-12 text-white">
+            <div className="absolute inset-0 bg-black/40 bg-primary/70 flex flex-col justify-end p-8 lg:p-12 text-white">
               <div className="max-w-2xl">
                 <span className="w-16 h-1 bg-secondary rounded-full mb-6 block" />
                 <h4 className="text-3xl lg:text-4xl text-white font-bold mb-4">{content.coSo.cardTitle}</h4>
@@ -341,13 +341,13 @@ export default function AboutContent() {
 
           <motion.div {...anim('up')} className="relative flex flex-col items-center mt-16 lg:mt-20">
             {/* Background connecting line */}
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-primary/50 to-line -z-10 rounded-full" />
+            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-black/40 bg-primary -z-10 rounded-full" />
             
             {content.coCau.roles.map((role, i) => {
               const isTop = i === 0;
               const isSecond = i === 1;
               const tone = isTop
-                ? 'bg-gradient-to-r from-vtax-dark to-primary text-white shadow-xl shadow-primary/20 scale-105'
+                ? 'bg-black/40 bg-vtax-dark text-white shadow-xl shadow-primary/20 scale-105'
                 : isSecond
                   ? 'bg-white text-primary border-2 border-primary shadow-lg shadow-primary/10'
                   : 'bg-white text-ink border border-line shadow-sm';
@@ -385,7 +385,7 @@ export default function AboutContent() {
       {/* ── Closing CTA ─────────────────────────────────────────────── */}
       <section className="py-16 lg:py-20 bg-vtax-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-finance opacity-50 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(34rem_34rem_at_80%_-10%,rgba(217,83,31,0.18),transparent_60%),radial-gradient(36rem_36rem_at_0%_120%,rgba(10,77,140,0.42),transparent_55%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-2xl">
           <div className="flex justify-center mb-5">
             <span className="eyebrow eyebrow--center">{en ? 'Partner with us' : 'Hợp tác cùng chúng tôi'}</span>

@@ -14,9 +14,9 @@ export default function LoginLayout({
       locale={viVN}
       theme={{
         token: {
-          colorPrimary: '#0a4d8c',
-          colorInfo: '#0a4d8c',
-          colorLink: '#0a4d8c',
+          colorPrimary: '#115E59',
+          colorInfo: '#115E59',
+          colorLink: '#115E59',
           borderRadius: 12,
           fontFamily: "var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif",
           colorTextHeading: '#0c2236',
@@ -25,13 +25,13 @@ export default function LoginLayout({
         components: {
           Input: {
             borderRadius: 12,
-            activeBorderColor: '#0a4d8c',
-            hoverBorderColor: '#0a4d8c',
+            activeBorderColor: '#115E59',
+            hoverBorderColor: '#115E59',
           },
           Button: {
             borderRadius: 12,
             fontWeight: 600,
-            primaryShadow: '0 6px 18px rgba(10,77,140,0.22)',
+            primaryShadow: '0 6px 18px rgba(13, 148, 136,0.22)',
           },
         },
       }}

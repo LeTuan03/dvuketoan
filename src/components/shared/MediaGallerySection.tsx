@@ -80,7 +80,7 @@ export default function MediaGallerySection() {
               <PictureOutlined />
             </span>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity">
              <p className="text-white text-sm font-semibold truncate">{img.title}</p>
           </div>
         </motion.div>
@@ -105,7 +105,7 @@ export default function MediaGallerySection() {
                <PlayCircleOutlined />
              </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-5 bg-black/40 bg-black/60">
              <h3 className="text-white font-semibold text-lg line-clamp-1">{vid.title}</h3>
           </div>
         </motion.div>

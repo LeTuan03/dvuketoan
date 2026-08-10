@@ -39,7 +39,7 @@ export default function IntroVideo({ video, youtubeUrl, poster, label = 'Phim gi
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className="transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06243f]/85 via-[#06243f]/20 to-transparent group-hover:from-[#06243f]/75 transition-all flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/40 bg-[#115E59]/60 group-hover:bg-[#115E59]/50 transition-all flex items-center justify-center">
           <span className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 shadow-float group-hover:scale-110 group-hover:bg-secondary/90 group-hover:border-secondary transition-all duration-300">
             <PlayCircle size={52} strokeWidth={1.5} className="text-white" />
           </span>
@@ -62,7 +62,7 @@ export default function IntroVideo({ video, youtubeUrl, poster, label = 'Phim gi
           >
             <button
               type="button"
-              className="absolute inset-0 bg-[#06243f]/80 backdrop-blur cursor-pointer"
+              className="absolute inset-0 bg-[#115E59]/80 backdrop-blur cursor-pointer"
               onClick={() => setOpen(false)}
               aria-label="Close video"
             />

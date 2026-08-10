@@ -313,7 +313,7 @@ function AdminNewsPageContent() {
             index={0}
             label="Tổng bài viết"
             value={stats.total}
-            valueColor="#0a4d8c"
+            valueColor="#115E59"
             tileBg="#eaf1f9"
             icon={<FileTextOutlined />}
           />

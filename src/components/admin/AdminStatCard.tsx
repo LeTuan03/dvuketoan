@@ -32,7 +32,7 @@ export default function AdminStatCard({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.06 }}
-      className="bg-white rounded-2xl border border-[#eef1f5] px-5 py-4 flex items-center justify-between gap-3 shadow-[0_1px_2px_rgba(12,34,54,0.04),0_8px_24px_rgba(12,34,54,0.05)] hover:shadow-[0_4px_8px_rgba(12,34,54,0.06),0_12px_32px_rgba(12,34,54,0.08)] transition-all"
+      className="bg-white rounded-2xl border border-[#eef1f5] px-5 py-4 flex items-center justify-between gap-3 shadow-[0_1px_2px_rgba(17, 94, 89,0.04),0_8px_24px_rgba(17, 94, 89,0.05)] hover:shadow-[0_4px_8px_rgba(17, 94, 89,0.06),0_12px_32px_rgba(17, 94, 89,0.08)] transition-all"
     >
       <div className="flex flex-col gap-1 min-w-0">
         <span className="text-[11px] font-semibold uppercase tracking-wide text-[#94a3b8] truncate">

@@ -27,7 +27,7 @@ export default function Monogram({
   text = 'VTAX · KẾ TOÁN THUẾ · ',
 }: MonogramProps) {
   const stroke =
-    tone === 'light' ? '#ffffff' : tone === 'dark' ? '#06243f' : tone === 'currentColor' ? 'currentColor' : '#0a4d8c';
+    tone === 'light' ? '#ffffff' : tone === 'dark' ? '#115E59' : tone === 'currentColor' ? 'currentColor' : '#0d9488';
   const accent =
     tone === 'light' ? '#ffffff' : tone === 'currentColor' ? 'currentColor' : '#d9531f';
   const uid = `mono-${size}-${tone}`;

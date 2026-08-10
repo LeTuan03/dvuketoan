@@ -97,8 +97,8 @@ export default function BannerSlider({
       </AnimatePresence>
 
       {/* ── Legibility scrims (directional, layered) ──────────────────── */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(95deg,rgba(4,20,38,0.92)_0%,rgba(5,28,51,0.74)_34%,rgba(6,36,63,0.30)_62%,rgba(6,36,63,0.08)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(0deg,rgba(4,20,38,0.78)_0%,transparent_38%,transparent_72%,rgba(4,20,38,0.28)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-black/30" />
+      <div className="absolute inset-0 pointer-events-none bg-black/30" />
       <div className="absolute inset-0 pointer-events-none bg-finance opacity-[0.5] mix-blend-soft-light" />
 
       {/* ── Editorial overlay ─────────────────────────────────────────── */}

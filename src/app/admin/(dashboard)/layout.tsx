@@ -127,10 +127,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       locale={viVN}
       theme={{
         token: {
-          colorPrimary: '#0a4d8c',
-          colorInfo: '#0a4d8c',
-          colorLink: '#0a4d8c',
-          colorLinkHover: '#072e57',
+          colorPrimary: '#115E59',
+          colorInfo: '#115E59',
+          colorLink: '#115E59',
+          colorLinkHover: '#134E4A',
           borderRadius: 10,
           fontFamily: "var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif",
           colorBgBase: '#ffffff',
@@ -143,9 +143,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         components: {
           Menu: {
             itemSelectedBg: '#eaf1f9',
-            itemSelectedColor: '#0a4d8c',
-            itemHoverBg: 'rgba(10,77,140,0.05)',
-            itemHoverColor: '#0a4d8c',
+            itemSelectedColor: '#115E59',
+            itemHoverBg: 'rgba(13, 148, 136,0.05)',
+            itemHoverColor: '#115E59',
             itemColor: '#5a6b7a',
             itemHeight: 42,
             itemMarginInline: 8,
@@ -158,22 +158,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             headerBg: '#ffffff',
             headerHeight: 64,
             bodyBg: '#f6f4ef',
-            siderBg: '#0a4d8c',
+            siderBg: '#134E4A',
           },
           Button: {
             borderRadius: 10,
             controlHeight: 40,
             fontWeight: 600,
-            primaryShadow: '0 2px 8px rgba(10,77,140,0.18)',
+            primaryShadow: '0 2px 8px rgba(13, 148, 136,0.18)',
           },
           Card: {
             borderRadiusLG: 16,
-            boxShadow: '0 1px 2px rgba(12,34,54,0.04), 0 8px 24px rgba(12,34,54,0.05)',
+            boxShadow: '0 1px 2px rgba(17, 94, 89,0.04), 0 8px 24px rgba(17, 94, 89,0.05)',
             colorBorderSecondary: '#eef1f5',
           },
           Table: {
             headerBg: '#f3f6fb',
-            headerColor: '#072e57',
+            headerColor: '#134E4A',
             headerSplitColor: 'transparent',
             borderColor: '#eef1f5',
             rowHoverBg: '#f7f9fc',
@@ -183,27 +183,27 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Input: {
             borderRadius: 10,
             controlHeight: 40,
-            activeBorderColor: '#0a4d8c',
-            hoverBorderColor: '#0a4d8c',
-            activeShadow: '0 0 0 2px rgba(10,77,140,0.10)',
+            activeBorderColor: '#115E59',
+            hoverBorderColor: '#115E59',
+            activeShadow: '0 0 0 2px rgba(13, 148, 136,0.10)',
           },
           Select: {
             borderRadius: 10,
             controlHeight: 40,
             optionSelectedBg: '#eaf1f9',
-            optionSelectedColor: '#0a4d8c',
+            optionSelectedColor: '#115E59',
           },
           DatePicker: {
             borderRadius: 10,
             controlHeight: 40,
-            activeBorderColor: '#0a4d8c',
-            hoverBorderColor: '#0a4d8c',
+            activeBorderColor: '#115E59',
+            hoverBorderColor: '#115E59',
           },
           Tabs: {
-            inkBarColor: '#0a4d8c',
-            itemSelectedColor: '#0a4d8c',
-            itemHoverColor: '#0a4d8c',
-            itemActiveColor: '#0a4d8c',
+            inkBarColor: '#115E59',
+            itemSelectedColor: '#115E59',
+            itemHoverColor: '#115E59',
+            itemActiveColor: '#115E59',
             titleFontSize: 14,
           },
           Tag: {
@@ -215,16 +215,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           },
           Pagination: {
             borderRadius: 10,
-            itemActiveBg: '#0a4d8c',
+            itemActiveBg: '#115E59',
           },
           Segmented: {
             borderRadius: 10,
             itemSelectedBg: '#ffffff',
-            itemSelectedColor: '#0a4d8c',
+            itemSelectedColor: '#115E59',
             trackBg: '#eef1f5',
           },
           Tooltip: {
-            colorBgSpotlight: '#06243f',
+            colorBgSpotlight: '#115E59',
             borderRadius: 8,
           },
         },
@@ -247,9 +247,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 position: 'sticky',
                 top: 0,
                 left: 0,
-                background: 'linear-gradient(180deg, #0a4d8c 0%, #083f73 52%, #072e57 100%)',
+                background: '#134E4A',
                 borderRight: '1px solid rgba(255,255,255,0.06)',
-                boxShadow: '1px 0 24px rgba(7,46,87,0.28)',
+                boxShadow: '1px 0 24px rgba(4, 47, 46,0.28)',
                 transition: 'width 0.2s cubic-bezier(0.4,0,0.2,1)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -283,7 +283,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     boxShadow: '0 4px 14px rgba(0,0,0,0.22)',
                   }}
                 >
-                  <span style={{ color: '#0a4d8c', fontWeight: 800, fontSize: 16, letterSpacing: '-0.5px' }}>B</span>
+                  <span style={{ color: '#115E59', fontWeight: 800, fontSize: 16, letterSpacing: '-0.5px' }}>B</span>
                   <span
                     style={{
                       position: 'absolute',
@@ -496,7 +496,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  boxShadow: '0 1px 3px rgba(12,34,54,0.04)',
+                  boxShadow: '0 1px 3px rgba(17, 94, 89,0.04)',
                   overflow: 'hidden',
                 }}
               >
@@ -540,8 +540,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       <Avatar
                         size={32}
                         style={{
-                          backgroundColor: '#0a4d8c',
-                          boxShadow: '0 2px 8px rgba(10,77,140,0.22)',
+                          backgroundColor: '#115E59',
+                          boxShadow: '0 2px 8px rgba(13, 148, 136,0.22)',
                         }}
                         icon={<UserOutlined />}
                       />

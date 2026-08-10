@@ -77,7 +77,7 @@ export default function PageHero({
       {dark ? (
         <>
           <div className="absolute inset-0 bg-finance opacity-70 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(38rem_38rem_at_85%_-20%,rgba(217,83,31,0.20),transparent_60%),radial-gradient(40rem_40rem_at_0%_120%,rgba(10,77,140,0.45),transparent_55%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
         </>
       ) : (
         <div className="absolute inset-0 bg-dots opacity-50 pointer-events-none" />
@@ -155,7 +155,7 @@ export default function PageHero({
                   alt={sideImageAlt}
                   className="w-full h-[340px] xl:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-vtax-dark/50 via-vtax-dark/10 to-transparent" />
+                <div className="absolute inset-0 bg-black/40 bg-vtax-dark/50" />
               </div>
             </div>
           )}

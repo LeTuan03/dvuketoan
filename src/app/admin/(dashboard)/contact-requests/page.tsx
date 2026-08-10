@@ -238,7 +238,7 @@ function AdminContactRequestsPageContent() {
 
       <div className="flex flex-wrap gap-4">
         <div className="bg-white px-5 py-4 rounded-2xl border border-[#eef1f5] shadow-sm flex items-center gap-3 min-w-[180px]">
-          <div className="w-10 h-10 rounded-xl bg-[#eaf1f9] text-[#0a4d8c] flex items-center justify-center"><UserOutlined /></div>
+          <div className="w-10 h-10 rounded-xl bg-[#eaf1f9] text-[#115E59] flex items-center justify-center"><UserOutlined /></div>
           <div>
             <div className="text-xl font-bold text-[#0c2236] leading-none">{requests.length}</div>
             <div className="text-xs text-[#94a3b8] mt-1">Tổng yêu cầu</div>

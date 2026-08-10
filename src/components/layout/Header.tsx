@@ -175,7 +175,7 @@ export default function Header() {
                         <Link href={localePath(locale, menu.link)} className={`${navLinkBase} flex items-center gap-1`}>
                           {nameOf(menu)} <ChevronDown size={13} className="group-hover:rotate-180 transition-transform opacity-60" />
                         </Link>
-                        <div className="absolute top-full left-0 w-[260px] bg-white shadow-[0_30px_60px_-20px_rgba(6,36,63,0.28)] rounded-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 border border-line z-50 overflow-hidden">
+                        <div className="absolute top-full left-0 w-[260px] bg-white shadow-[0_30px_60px_-20px_rgba(4, 47, 46,0.28)] rounded-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 border border-line z-50 overflow-hidden">
                           <div className="px-2 space-y-0.5">
                             {childLinks.map((child) => (
                               <Link
