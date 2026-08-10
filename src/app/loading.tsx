@@ -25,7 +25,7 @@ export default function Loading() {
             alt="Loading..."
             width={100} 
             height={100} 
-            className="h-auto w-auto grayscale brightness-110"
+            className="h-auto w-auto"
           />
         </div>
 

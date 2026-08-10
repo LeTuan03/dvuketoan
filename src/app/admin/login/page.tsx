@@ -38,18 +38,8 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-9">
           <div className="inline-flex items-center justify-center mb-5">
-            <div
-              className="relative w-14 h-14 rounded-2xl flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #115E59 0%, #134E4A 100%)',
-                boxShadow: '0 10px 28px rgba(13, 148, 136,0.28)',
-              }}
-            >
-              <span className="text-white text-2xl font-bold tracking-tight">V</span>
-              <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#d9531f]"></span>
-            </div>
+            <img src="/images/logo.png" alt="VTAX" className="h-24" />
           </div>
-          <h1 className="font-display text-3xl font-semibold text-ink tracking-tight">VTAX</h1>
           <p className="text-[#4a5a6a] text-sm mt-1.5">Hệ thống Quản trị nội dung</p>
         </div>
 

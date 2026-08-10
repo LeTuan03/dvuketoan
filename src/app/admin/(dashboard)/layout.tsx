@@ -275,43 +275,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     position: 'relative',
                     minWidth: 34,
                     height: 34,
-                    borderRadius: 10,
-                    background: '#ffffff',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 4px 14px rgba(0,0,0,0.22)',
                   }}
                 >
-                  <span style={{ color: '#115E59', fontWeight: 800, fontSize: 16, letterSpacing: '-0.5px' }}>B</span>
-                  <span
-                    style={{
-                      position: 'absolute',
-                      top: 5,
-                      right: 5,
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: '#d9531f',
-                    }}
-                  />
+                  <img src="/images/logo.png" alt="VTAX" className="h-12" />
                 </div>
 
                 {/* Brand name — hide when collapsed */}
                 {!collapsed && (
                   <div style={{ overflow: 'hidden' }}>
-                    <div
-                      style={{
-                        fontWeight: 700,
-                        fontSize: 14,
-                        letterSpacing: '-0.1px',
-                        color: '#ffffff',
-                        lineHeight: 1.15,
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      VTAX
-                    </div>
                     <div
                       style={{
                         fontSize: 10,
