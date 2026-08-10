@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useMemo } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
@@ -8,8 +8,8 @@ import AdminTableFilterBar from '@/components/admin/AdminTableFilterBar';
 import { useAdminLoading } from '@/lib/AdminLoadingContext';
 
 const initialUsers = [
-  { id: 1, name: 'VTAX Admin', email: 'admin@VTAX.com.vn', role: 'SuperAdmin', lastActive: '10 ph�t tru?c', avatar: null },
-  { id: 2, name: 'Editor 01', email: 'editor@VTAX.com.vn', role: 'Editor', lastActive: '2 gi? tru?c', avatar: null },
+  { id: 1, name: 'VTAX Admin', email: 'admin@vtax.com.vn', role: 'SuperAdmin', lastActive: '10 phút trước', avatar: null },
+  { id: 2, name: 'Editor 01', email: 'editor@vtax.com.vn', role: 'Editor', lastActive: '2 giờ trước', avatar: null },
 ];
 
 function AdminUsersPageContent() {
@@ -76,16 +76,16 @@ function AdminUsersPageContent() {
       try {
         if (selectedUser && !isPassModalOpen) {
           setUsers(users.map((u) => (u.id === selectedUser.id ? { ...u, ...values } : u)));
-          msg.success('C?p nh?t t�i kho?n th�nh c�ng');
+          msg.success('Cập nhật tài khoản thành công');
         } else {
           const newUser = {
             ...values,
             id: Math.max(...users.map((u) => u.id), 0) + 1,
-            lastActive: 'V?a xong',
+            lastActive: 'Vừa xong',
             avatar: null,
           };
           setUsers([...users, newUser]);
-          msg.success('Th�m t�i kho?n m?i th�nh c�ng');
+          msg.success('Thêm tài khoản mới thành công');
         }
         setIsModalOpen(false);
       } finally {
@@ -104,7 +104,7 @@ function AdminUsersPageContent() {
     passForm.validateFields().then(async () => {
       setGlobalLoading(true);
       try {
-        msg.success(`�� d?i m?t kh?u cho t�i kho?n ${selectedUser.email}`);
+        msg.success(`Đã đổi mật khẩu cho tài khoản ${selectedUser.email}`);
         setIsPassModalOpen(false);
       } finally {
         setGlobalLoading(false);
@@ -114,7 +114,7 @@ function AdminUsersPageContent() {
 
   const columns = [
     {
-      title: 'T�i kho?n',
+      title: 'Tài khoản',
       key: 'user',
       render: (_: any, record: any) => (
         <Space size="middle">
@@ -127,7 +127,7 @@ function AdminUsersPageContent() {
       ),
     },
     {
-      title: 'Ph�n quy?n',
+      title: 'Phân quyền',
       dataIndex: 'role',
       key: 'role',
       render: (role: string) => (
@@ -137,38 +137,38 @@ function AdminUsersPageContent() {
       ),
     },
     {
-      title: 'Ho?t d?ng l?n cu?i',
+      title: 'Ho?t động lần cuối',
       dataIndex: 'lastActive',
       key: 'lastActive',
     },
     {
-      title: 'Thao t�c',
+      title: 'Thao tác',
       key: 'action',
       render: (_: any, record: any) => (
         <Space size="middle">
-          <Tooltip title="�?i m?t kh?u">
+          <Tooltip title="Đổi mật khẩu">
             <Button icon={<LockOutlined />} onClick={() => handleOpenPassModal(record)} />
           </Tooltip>
-          <Tooltip title="Ch?nh s?a">
+          <Tooltip title="Chỉnh sửa">
             <Button type="primary" ghost icon={<EditOutlined />} onClick={() => showModal(record)} />
           </Tooltip>
-          <Tooltip title="X�a">
+          <Tooltip title="Xóa">
             <Button 
                 danger 
                 icon={<DeleteOutlined />} 
                 disabled={record.role === 'SuperAdmin'}
                 onClick={() => {
                    modal.confirm({
-                      title: 'X�c nh?n x�a t�i kho?n?',
-                      content: `B?n c� ch?c mu?n x�a t�i kho?n ${record.name}?`,
-                      okText: 'X�a ngay',
-                      cancelText: 'H?y',
+                      title: 'Xác nhận xóa tài khoản?',
+                      content: `Bạn có chắc muốn xóa tài khoản ${record.name}?`,
+                      okText: 'Xóa ngay',
+                      cancelText: 'Hủy',
                       okType: 'danger',
                       onOk: async () => {
                          setGlobalLoading(true);
                          try {
                             setUsers(users.filter(u => u.id !== record.id));
-                            msg.success('�� x�a t�i kho?n');
+                            msg.success('Đã xóa tài khoản');
                          } finally {
                             setGlobalLoading(false);
                          }
@@ -186,15 +186,15 @@ function AdminUsersPageContent() {
     <div className="space-y-6">
       <div className="flex justify-between items-center gap-4 flex-wrap">
         <div className="flex flex-col gap-1.5">
-          <Breadcrumb items={[{ title: 'Admin', href: '/admin' }, { title: 'Qu?n l� Ngu?i d�ng' }]} className="text-[11px] text-[#94a3b8]" />
-          <h1 className="font-display text-2xl font-semibold text-[#0c2236] tracking-tight">T�i kho?n Qu?n tr? vi�n</h1>
+          <Breadcrumb items={[{ title: 'Admin', href: '/admin' }, { title: 'Quản lý Người dùng' }]} className="text-[11px] text-[#94a3b8]" />
+          <h1 className="font-display text-2xl font-semibold text-[#0c2236] tracking-tight">Tài khoản Quản trị viên</h1>
         </div>
       </div>
 
       <div className="bg-white p-8 rounded-2xl shadow-[0_1px_2px_rgba(17, 94, 89,0.04),0_8px_24px_rgba(17, 94, 89,0.05)] border border-[#eef1f5]">
         <div className="flex items-center gap-3 mb-8 p-4 rounded-xl text-[#c0461a]" style={{ background: '#f9ece4', border: '1px solid #f3d9cc' }}>
           <SafetyCertificateOutlined />
-          <span className="font-medium text-sm">C?nh b�o: Ch? SuperAdmin m?i c� quy?n t?o m?i ho?c ph�n quy?n cho c�c t�i kho?n kh�c.</span>
+          <span className="font-medium text-sm">Cảnh báo: Chỉ SuperAdmin mới có quyền tạo mới hoặc phân quyền cho các tài khoản khác.</span>
         </div>
 
         <AdminTableFilterBar
@@ -202,7 +202,7 @@ function AdminUsersPageContent() {
           filters={[
             {
               key: 'role',
-              placeholder: 'Ph�n quy?n',
+              placeholder: 'Phân quyền',
               value: roleFilter || undefined,
               options: [
                 { label: 'SuperAdmin', value: 'SuperAdmin' },
@@ -212,11 +212,11 @@ function AdminUsersPageContent() {
           ]}
           onChange={(patch) => updateUrl(patch)}
           search={{
-            placeholder: 'T�m ki?m user...',
+            placeholder: 'Tìm kiếm user...',
             defaultValue: query,
           }}
           primaryAction={{
-            label: 'C?p t�i kho?n m?i',
+            label: 'Cấp tài khoản mới',
             onClick: () => showModal(),
             icon: <PlusOutlined />
           }}
@@ -235,54 +235,54 @@ function AdminUsersPageContent() {
       </div>
 
       <Modal
-        title={selectedUser ? "C?p nh?t t�i kho?n" : "C?p m?i t�i kho?n truy c?p"}
+        title={selectedUser ? "Cập nhật tài khoản" : "Cấp mới tài khoản truy cập"}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={() => setIsModalOpen(false)}
-        okText={selectedUser ? "C?p nh?t" : "T?o t�i kho?n"}
-        cancelText="H?y"
+        okText={selectedUser ? "Cập nhật" : "Tạo tài khoản"}
+        cancelText="Hủy"
       >
          <Form form={form} layout="vertical" className="mt-6">
-            <Form.Item label="H? v� t�n" name="name" rules={[{ required: true, message: 'Vui l�ng nh?p h? t�n' }]}>
-               <Input placeholder="VD: Nguy?n Van A" />
+            <Form.Item label="Họ và tên" name="name" rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}>
+               <Input placeholder="VD: Nguyễn Văn A" />
             </Form.Item>
-            <Form.Item label="Email dang nh?p" name="email" rules={[{ required: true, type: 'email', message: 'Vui l�ng nh?p email h?p l?' }]}>
+            <Form.Item label="Email đăng nhập" name="email" rules={[{ required: true, type: 'email', message: 'Vui lòng nhập email hợp lệ' }]}>
                <Input placeholder="email@VTAX.com.vn" />
             </Form.Item>
             {!selectedUser && (
-              <Form.Item label="M?t kh?u t?m th?i" name="password" rules={[{ required: true, message: 'Vui l�ng nh?p m?t kh?u' }]}>
+              <Form.Item label="Mật khẩu tạm thời" name="password" rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}>
                  <Input.Password prefix={<LockOutlined className="text-gray-300" />} />
               </Form.Item>
             )}
-            <Form.Item label="Quy?n h?n" name="role" initialValue="Editor">
+            <Form.Item label="Quyền hạn" name="role" initialValue="Editor">
                <Select>
-                  <Select.Option value="SuperAdmin">SuperAdmin (To�n quy?n)</Select.Option>
-                  <Select.Option value="Editor">Editor (Ch? s?a n?i dung)</Select.Option>
+                  <Select.Option value="SuperAdmin">SuperAdmin (Toàn quyền)</Select.Option>
+                  <Select.Option value="Editor">Editor (Chỉ sửa nội dung)</Select.Option>
                </Select>
             </Form.Item>
          </Form>
       </Modal>
 
       <Modal
-        title={<span>�?i m?t kh?u cho <b>{selectedUser?.name}</b></span>}
+        title={<span>Đặt lại mật khẩu cho <b>{selectedUser?.name}</b></span>}
         open={isPassModalOpen}
         onOk={handleChangePassword}
         onCancel={() => setIsPassModalOpen(false)}
-        okText="C?p nh?t m?t kh?u"
-        cancelText="B? qua"
+        okText="Cập nhật mật khẩu"
+        cancelText="Bỏ qua"
       >
          <Form form={passForm} layout="vertical" className="mt-6">
-            <Form.Item label="M?t kh?u m?i" name="newPassword" rules={[{ required: true, min: 6, message: 'M?t kh?u t?i thi?u 6 k� t?' }]}>
+            <Form.Item label="M?t kh?u m?i" name="newPassword" rules={[{ required: true, min: 6, message: 'Mật khẩu tối thiểu 6 ký tự' }]}>
                <Input.Password prefix={<LockOutlined className="text-gray-300" />} />
             </Form.Item>
-            <Form.Item label="X�c nh?n m?t kh?u" name="confirmPassword" dependencies={['newPassword']} rules={[
-               { required: true, message: 'Vui l�ng x�c nh?n m?t kh?u' },
+            <Form.Item label="Xác nhận mật khẩu" name="confirmPassword" dependencies={['newPassword']} rules={[
+               { required: true, message: 'Vui lòng xác nhận mật khẩu' },
                ({ getFieldValue }) => ({
                   validator(_, value) {
                      if (!value || getFieldValue('newPassword') === value) {
                         return Promise.resolve();
                      }
-                     return Promise.reject(new Error('M?t kh?u kh�ng kh?p!'));
+                     return Promise.reject(new Error('Mật khẩu không khớp!'));
                   },
                }),
             ]}>
@@ -297,7 +297,7 @@ function AdminUsersPageContent() {
 
 export default function AdminUsersPage() {
   return (
-    <React.Suspense fallback={<div className="p-8 text-center text-gray-500">�ang t?i d? li?u...</div>}>
+    <React.Suspense fallback={<div className="p-8 text-center text-gray-500">Đang tải dữ liệu...</div>}>
       <AdminUsersPageContent />
     </React.Suspense>
   );
