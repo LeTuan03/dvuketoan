@@ -33,7 +33,7 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-[#f6f4ef] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Soft navy radial wash */}
-      <div className="pointer-events-none absolute top-[-20%] left-1/2 -translate-x-1/2 w-[70%] h-[55%] bg-primary/5"></div>
+      <div className="pointer-events-none absolute top-[-20%] left-1/2 -translate-x-1/2 h-screen w-full bg-primary/5"></div>
 
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-9">
