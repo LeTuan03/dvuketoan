@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -53,7 +53,7 @@ export default function Preloader() {
             >
               <img
                 src="/images/logo.png"
-                alt="BINOVET"
+                alt="VTAX"
                 width={150} 
                 height={150} 
                 className="h-auto w-auto max-w-[150px]"

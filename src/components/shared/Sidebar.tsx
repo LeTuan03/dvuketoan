@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -105,7 +105,7 @@ export default function Sidebar({ showProducts = true, showNews = true, showQuic
       {/* Quick Links */}
       {showQuickLinks && (
         <div className="box-footer p-7 rounded-2xl text-white relative overflow-hidden">
-          <div className="bg-molecule absolute inset-0 opacity-50 pointer-events-none" />
+          <div className="bg-finance absolute inset-0 opacity-50 pointer-events-none" />
           <div className="relative z-10">
             <h3 className="font-display font-semibold text-lg mb-6 border-b border-white/10 pb-4 text-white">{locale === 'en' ? 'Quick links' : 'Liên kết nhanh'}</h3>
             <ul className="space-y-1.5">

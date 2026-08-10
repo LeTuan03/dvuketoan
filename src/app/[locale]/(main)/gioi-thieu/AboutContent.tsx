@@ -103,21 +103,21 @@ export default function AboutContent() {
     <div className="bg-white">
       <PageHero
         locale={locale}
-        eyebrow={en ? 'The binovet story' : 'Câu chuyện binovet'}
+        eyebrow={en ? 'The VTAX story' : 'Câu chuyện VTAX'}
         title={
           <>
             {en ? 'About ' : 'Về '}
-            <span className="text-secondary">Binovet</span>
+            <span className="text-secondary">VTAX</span>
           </>
         }
         subtitle={
           en
-            ? 'A 20-year journey alongside Vietnamese farmers, creating sustainable value and delivering comprehensive veterinary solutions.'
-            : 'Hành trình 20 năm đồng hành cùng người chăn nuôi Việt Nam, kiến tạo những giá trị bền vững và mang lại giải pháp thú y toàn diện.'
+            ? 'A 15-year journey alongside Vietnamese enterprises, creating sustainable value and delivering comprehensive accounting solutions.'
+            : 'Hành trình 15 năm đồng hành cùng doanh nghiệp Việt Nam, kiến tạo những giá trị bền vững và mang lại giải pháp tài chính - kế toán toàn diện.'
         }
         breadcrumb={[{ label: en ? 'About' : 'Giới thiệu' }]}
         sideImage="/images/gioithieu.webp"
-        sideImageAlt={en ? 'About Binovet' : 'Giới thiệu Binovet'}
+        sideImageAlt={en ? 'About VTAX' : 'Giới thiệu VTAX'}
       />
 
       {/* Sticky scrollspy section nav */}
@@ -173,8 +173,8 @@ export default function AboutContent() {
                 </div>
               </div>
               <div className="mt-9 flex flex-wrap gap-4">
-                <Link href={localePath(locale, '/san-pham')} className="btn btn-primary">
-                  {en ? 'Our products' : 'Sản phẩm'} <ArrowRight size={16} />
+                <Link href={localePath(locale, '/dich-vu')} className="btn btn-primary">
+                  {en ? 'Our services' : 'Dịch vụ'} <ArrowRight size={16} />
                 </Link>
                 <Link href={localePath(locale, '/lien-he')} className="btn btn-outline">
                   {en ? 'Contact us' : 'Liên hệ'}
@@ -186,7 +186,7 @@ export default function AboutContent() {
               <div className="relative rounded-2xl overflow-hidden border border-line shadow-elegant-lg group">
                 <img
                   src="/images/about.webp"
-                  alt="binovet"
+                  alt="VTAX"
                   className="w-full h-[360px] lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06243f]/55 via-[#06243f]/10 to-transparent" />
@@ -208,8 +208,8 @@ export default function AboutContent() {
       </section>
 
       {/* ── 3. Vision & Mission (dark centerpiece) ──────────────────── */}
-      <section id="tam-nhin" className="scroll-mt-32 py-20 lg:py-28 bg-binovet-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-molecule opacity-60 pointer-events-none" />
+      <section id="tam-nhin" className="scroll-mt-32 py-20 lg:py-28 bg-vtax-dark text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-finance opacity-60 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(36rem_36rem_at_85%_-10%,rgba(217,83,31,0.18),transparent_60%),radial-gradient(40rem_40rem_at_0%_120%,rgba(10,77,140,0.45),transparent_55%)] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div {...anim('down')}>
@@ -302,7 +302,7 @@ export default function AboutContent() {
 
             <motion.div {...anim('right', 0.15)} className="order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden border border-line shadow-elegant-lg group aspect-[4/3]">
-                <img src="/images/coso.webp" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Nhà máy GMP" />
+                <img src="/images/coso.webp" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Văn phòng VTAX" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06243f] via-[#06243f]/35 to-transparent flex flex-col justify-end p-8 text-white">
                   <span className="w-12 h-px bg-secondary mb-4" />
                   <h4 className="text-2xl text-white/80 font-semibold mb-2">{content.coSo.cardTitle}</h4>
@@ -329,7 +329,7 @@ export default function AboutContent() {
           <motion.div {...anim('up')} className="flex flex-col items-center mt-14">
             {content.coCau.roles.map((role, i) => {
               const tone = i === 0
-                ? 'bg-binovet-dark text-white'
+                ? 'bg-vtax-dark text-white'
                 : i === 1
                   ? 'bg-primary text-white'
                   : 'bg-paper text-ink border border-line';
@@ -347,7 +347,7 @@ export default function AboutContent() {
           <motion.div {...anim('up')} className="max-w-4xl mx-auto mt-16">
             <div className="card-elegant bg-cream p-9 md:p-12 flex flex-col md:flex-row items-center gap-8">
               <div className="w-24 h-24 shrink-0 rounded-2xl bg-white border border-line flex items-center justify-center p-4">
-                <img src="/images/logo.png" className="w-full h-full object-contain opacity-70" alt="binovet" />
+                <img src="/images/logo.png" className="w-full h-full object-contain opacity-70" alt="VTAX" />
               </div>
               <div className="relative">
                 <Quote className="w-9 h-9 text-secondary/30 mb-3" />
@@ -359,24 +359,24 @@ export default function AboutContent() {
       </section>
 
       {/* ── Closing CTA ─────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-binovet-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-molecule opacity-50 pointer-events-none" />
+      <section className="py-16 lg:py-20 bg-vtax-dark text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-finance opacity-50 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(34rem_34rem_at_80%_-10%,rgba(217,83,31,0.18),transparent_60%),radial-gradient(36rem_36rem_at_0%_120%,rgba(10,77,140,0.42),transparent_55%)] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-2xl">
           <div className="flex justify-center mb-5">
             <span className="eyebrow eyebrow--center">{en ? 'Partner with us' : 'Hợp tác cùng chúng tôi'}</span>
           </div>
           <h2 className="text-3xl lg:text-4xl font-semibold text-white">
-            {en ? 'Partner with Binovet' : 'Sẵn sàng đồng hành cùng Binovet'}
+            {en ? 'Partner with VTAX' : 'Sẵn sàng đồng hành cùng VTAX'}
           </h2>
           <p className="text-white/75 mt-5 leading-relaxed">
             {en
-              ? 'Discover our full portfolio of GMP-WHO veterinary solutions, or reach out — our specialists are ready to support you.'
-              : 'Khám phá danh mục giải pháp thú y đạt chuẩn GMP-WHO, hoặc liên hệ ngay — đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn.'}
+              ? 'Discover our full portfolio of financial and accounting solutions, or reach out — our specialists are ready to support you.'
+              : 'Khám phá danh mục giải pháp kế toán và đại lý thuế chuyên nghiệp, hoặc liên hệ ngay — đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn.'}
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
-            <Link href={localePath(locale, '/san-pham')} className="btn btn-accent">
-              {en ? 'Explore products' : 'Khám phá sản phẩm'} <ArrowRight size={16} />
+            <Link href={localePath(locale, '/dich-vu')} className="btn btn-accent">
+              {en ? 'Explore services' : 'Khám phá dịch vụ'} <ArrowRight size={16} />
             </Link>
             <Link href={localePath(locale, '/lien-he')} className="btn btn-ghost-light">
               {en ? 'Contact us' : 'Liên hệ ngay'}

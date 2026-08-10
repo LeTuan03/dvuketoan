@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox, Card, App } from 'antd';
@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
               <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#d9531f]"></span>
             </div>
           </div>
-          <h1 className="font-display text-3xl font-semibold text-ink tracking-tight">BINOVET</h1>
+          <h1 className="font-display text-3xl font-semibold text-ink tracking-tight">VTAX</h1>
           <p className="text-[#4a5a6a] text-sm mt-1.5">Hệ thống Quản trị nội dung</p>
         </div>
 
@@ -107,7 +107,7 @@ export default function AdminLoginPage() {
 
         <div className="text-center mt-8">
           <p className="text-[#94a3b8] text-xs font-medium">
-            &copy; 2026 Bản quyền thuộc về BINOVET.
+            &copy; 2026 Bản quyền thuộc về VTAX.
           </p>
         </div>
       </div>

@@ -106,7 +106,7 @@ function AdminBannersPageContent() {
       title: 'Tên Banner / Ghi chú',
       dataIndex: 'title',
       key: 'title',
-      render: (text: string) => <span className="font-semibold text-binovet-dark text-sm">{text}</span>
+      render: (text: string) => <span className="font-semibold text-vtax-dark text-sm">{text}</span>
     },
     {
       title: 'Kích thước',

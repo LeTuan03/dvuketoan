@@ -36,7 +36,7 @@ export default function BannerSlider({
   secondaryLabel,
   secondaryHref = '#',
   scrollLabel = 'Cuộn xuống',
-  fallbackTitle = 'BINOVET',
+  fallbackTitle = 'VTAX',
 }: BannerSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -66,7 +66,7 @@ export default function BannerSlider({
   const primaryHref = active?.ctaHref || secondaryHref;
 
   return (
-    <section className="relative w-full bg-binovet-dark overflow-hidden h-[88vh] min-h-[560px] max-h-[940px] group/banner">
+    <section className="relative w-full bg-vtax-dark overflow-hidden h-[88vh] min-h-[560px] max-h-[940px] group/banner">
       {/* ── Cinematic imagery (Ken Burns) ─────────────────────────────── */}
       <AnimatePresence initial={false}>
         {slides.map((slide, index) => {
@@ -99,7 +99,7 @@ export default function BannerSlider({
       {/* ── Legibility scrims (directional, layered) ──────────────────── */}
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(95deg,rgba(4,20,38,0.92)_0%,rgba(5,28,51,0.74)_34%,rgba(6,36,63,0.30)_62%,rgba(6,36,63,0.08)_100%)]" />
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(0deg,rgba(4,20,38,0.78)_0%,transparent_38%,transparent_72%,rgba(4,20,38,0.28)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none bg-molecule opacity-[0.5] mix-blend-soft-light" />
+      <div className="absolute inset-0 pointer-events-none bg-finance opacity-[0.5] mix-blend-soft-light" />
 
       {/* ── Editorial overlay ─────────────────────────────────────────── */}
       <div className="absolute inset-0 z-20 flex items-center">

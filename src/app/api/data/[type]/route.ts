@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import {
   productService,
@@ -86,7 +86,7 @@ export async function POST(
   
   // Basic security check for modification requests
   const authHeader = request.headers.get('authorization');
-  const expectedToken = process.env.ADMIN_SECRET_TOKEN || 'binovet-dev-token';
+  const expectedToken = process.env.ADMIN_SECRET_TOKEN || 'VTAX-dev-token';
   
   if (authHeader !== `Bearer ${expectedToken}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

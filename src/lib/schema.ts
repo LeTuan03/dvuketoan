@@ -1,9 +1,9 @@
-/**
+﻿/**
  * JSON-LD Schema Helpers for SEO
  * Provides structured data markup for search engines
  */
 
-const BASE_URL = "https://binovet.com.vn";
+const BASE_URL = "https://VTAX.com.vn";
 
 /**
  * Organization Schema
@@ -12,27 +12,27 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": BASE_URL,
-  name: "BINOVET",
-  alternateName: "binovet",
+  name: "VTAX",
+  alternateName: "VTAX",
   description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam",
   url: BASE_URL,
   logo: `${BASE_URL}/images/logo.png`,
   image: `${BASE_URL}/images/about.svg`,
   sameAs: [
-    "https://www.facebook.com/binovet",
-    "https://www.youtube.com/binovet",
+    "https://www.facebook.com/VTAX",
+    "https://www.youtube.com/VTAX",
   ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "Customer Support",
     telephone: "+84-xxx-xxx-xxx",
-    email: "contact@binovet.com.vn",
+    email: "contact@VTAX.com.vn",
   },
   areaServed: "VN",
   knowsAbout: ["Veterinary Medicine", "Animal Husbandry", "Livestock", "Pharmaceutical"],
   founder: {
     "@type": "Organization",
-    name: "BINOVET",
+    name: "VTAX",
   },
 };
 
@@ -75,12 +75,12 @@ export function articleSchema(article: {
     dateModified: article.publishDate,
     author: {
       "@type": "Organization",
-      name: article.author || "binovet Editorial Team",
+      name: article.author || "VTAX Editorial Team",
       url: BASE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "BINOVET",
+      name: "VTAX",
       logo: {
         "@type": "ImageObject",
         url: `${BASE_URL}/images/logo.png`,
@@ -114,7 +114,7 @@ export function productSchema(product: {
     image: product.image || `${BASE_URL}/images/default-product.svg`,
     manufacturer: {
       "@type": "Organization",
-      name: "BINOVET",
+      name: "VTAX",
       url: BASE_URL,
     },
     category: product.category || "Veterinary Medicine",
@@ -147,7 +147,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": BASE_URL,
-  name: "BINOVET",
+  name: "VTAX",
   image: `${BASE_URL}/images/logo.png`,
   description: "Nhà máy sản xuất dược thú y đạt chuẩn GMP-WHO",
   url: BASE_URL,
@@ -158,8 +158,8 @@ export const localBusinessSchema = {
     addressRegion: "Vietnam",
   },
   sameAs: [
-    "https://www.facebook.com/binovet",
-    "https://www.youtube.com/binovet",
+    "https://www.facebook.com/VTAX",
+    "https://www.youtube.com/VTAX",
   ],
 };
 

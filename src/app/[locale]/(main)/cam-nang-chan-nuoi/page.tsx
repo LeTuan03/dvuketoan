@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Link from 'next/link';
 import { articleService } from '@/services';
 import { ArticleSummary } from '@/types';
@@ -13,18 +13,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = resolveLocale(p.locale);
   const isEn = locale === 'en';
   return {
-    title: isEn ? 'Farming Handbook - Knowledge & Techniques - binovet' : 'Cẩm Nang Chăn Nuôi - Kiến Thức & Kỹ Thuật - binovet',
+    title: isEn ? 'Farming Handbook - Knowledge & Techniques - VTAX' : 'Cẩm Nang Chăn Nuôi - Kiến Thức & Kỹ Thuật - VTAX',
     description: isEn
       ? 'Sharing effective farming knowledge, techniques and experience from leading experts. Detailed guides for livestock and poultry.'
       : 'Chia sẻ kiến thức, kỹ thuật và kinh nghiệm chăn nuôi hiệu quả từ các chuyên gia hàng đầu. Hướng dẫn chi tiết cho gia súc, gia cầm.',
-    keywords: ['cẩm nang chăn nuôi', 'kỹ thuật chăn nuôi', 'kiến thức gia súc', 'gia cầm', 'binovet', 'hướng dẫn nuôi cấp'],
+    keywords: ['cẩm nang chăn nuôi', 'kỹ thuật chăn nuôi', 'kiến thức gia súc', 'gia cầm', 'VTAX', 'hướng dẫn nuôi cấp'],
     robots: 'index, follow',
     openGraph: {
-      title: isEn ? 'Farming Handbook - binovet' : 'Cẩm Nang Chăn Nuôi - binovet',
+      title: isEn ? 'Farming Handbook - VTAX' : 'Cẩm Nang Chăn Nuôi - VTAX',
       description: isEn
         ? 'Sharing effective farming knowledge, techniques and experience from leading experts.'
         : 'Chia sẻ kiến thức, kỹ thuật và kinh nghiệm chăn nuôi hiệu quả từ các chuyên gia hàng đầu.',
-      url: `https://binovet.com.vn${localePath(locale, '/cam-nang-chan-nuoi')}`,
+      url: `https://VTAX.com.vn${localePath(locale, '/cam-nang-chan-nuoi')}`,
       images: [
         {
           url: '/images/about.svg',

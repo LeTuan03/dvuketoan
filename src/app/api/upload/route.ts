@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 import { getSupabaseAdmin, STORAGE_BUCKET } from '@/lib/supabase-server';
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     // Check authorization
     const authHeader = req.headers.get('Authorization');
     const token = authHeader?.split(' ')[1];
-    const expectedToken = process.env.NEXT_PUBLIC_ADMIN_SECRET_TOKEN || 'binovet-dev-token';
+    const expectedToken = process.env.NEXT_PUBLIC_ADMIN_SECRET_TOKEN || 'VTAX-dev-token';
 
     if (token !== expectedToken) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
@@ -131,7 +131,7 @@ export async function DELETE(req: NextRequest) {
     // Check authorization
     const authHeader = req.headers.get('Authorization');
     const token = authHeader?.split(' ')[1];
-    const expectedToken = process.env.NEXT_PUBLIC_ADMIN_SECRET_TOKEN || 'binovet-dev-token';
+    const expectedToken = process.env.NEXT_PUBLIC_ADMIN_SECRET_TOKEN || 'VTAX-dev-token';
 
     if (token !== expectedToken) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });

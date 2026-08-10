@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface MonogramProps {
   /** pixel size of the square seal */
@@ -13,7 +13,7 @@ interface MonogramProps {
 }
 
 /**
- * BINOVET signature seal — an interlocked "BV" monogram inside a
+ * VTAX signature seal — an interlocked "BV" monogram inside a
  * double ring, optionally wrapped with circular brand text. Pure SVG,
  * server-component safe. Used as a recurring brand "signature" across
  * heroes, the footer and section accents (often at low opacity as a
@@ -24,7 +24,7 @@ export default function Monogram({
   className = '',
   withText = true,
   tone = 'brand',
-  text = 'BINOVET · THÚ Y CÔNG NGHỆ CAO · ',
+  text = 'VTAX · THÚ Y CÔNG NGHỆ CAO · ',
 }: MonogramProps) {
   const stroke =
     tone === 'light' ? '#ffffff' : tone === 'dark' ? '#06243f' : tone === 'currentColor' ? 'currentColor' : '#0a4d8c';

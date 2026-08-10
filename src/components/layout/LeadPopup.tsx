@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
-import { X, Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
+import { X, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 
-const STORAGE_KEY = 'binovet:lead-popup:until';
+const STORAGE_KEY = 'VTAX:lead-popup:until';
 const HIDE_MS = 24 * 60 * 60 * 1000; // hiện lại sau 1 ngày
 const OPEN_DELAY_MS = 2000;
 
@@ -161,7 +161,7 @@ export default function LeadPopup() {
                   <div>
                     <span className="eyebrow mb-1">{en ? 'Free consultation' : 'Tư vấn miễn phí'}</span>
                     <h3 className="text-2xl font-semibold text-ink leading-tight">
-                      {en ? 'Get advice from Binovet' : 'Nhận tư vấn từ Binovet'}
+                      {en ? 'Get advice from VTAX' : 'Nhận tư vấn từ VTAX'}
                     </h3>
                   </div>
                 </div>

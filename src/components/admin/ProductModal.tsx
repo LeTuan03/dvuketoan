@@ -147,7 +147,7 @@ const LangPanel: React.FC<{ cfg: LangCfg }> = ({ cfg }) => (
 // Nhãn tiêu đề cho từng khối — giúp phân biệt rõ vùng "dùng chung" và vùng "theo ngôn ngữ".
 const SectionLabel: React.FC<{ children: React.ReactNode; hint?: string }> = ({ children, hint }) => (
   <div className="flex items-center gap-3 mt-4">
-    <span className="text-[12px] font-black uppercase tracking-widest text-binovet-dark">{children}</span>
+    <span className="text-[12px] font-black uppercase tracking-widest text-vtax-dark">{children}</span>
     {hint && (
       <span className="text-[10px] font-bold text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full uppercase tracking-wider">
         {hint}
@@ -172,7 +172,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
           <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
             {editingId ? <EditOutlined /> : <PlusOutlined />}
           </div>
-          <span className="text-2xl font-black uppercase italic tracking-tighter text-binovet-dark">
+          <span className="text-2xl font-black uppercase italic tracking-tighter text-vtax-dark">
             {editingId ? 'Chỉnh sửa Sản phẩm' : 'Thêm Sản phẩm mới'}
           </span>
         </div>

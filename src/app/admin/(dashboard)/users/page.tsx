@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useMemo } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
@@ -8,8 +8,8 @@ import AdminTableFilterBar from '@/components/admin/AdminTableFilterBar';
 import { useAdminLoading } from '@/lib/AdminLoadingContext';
 
 const initialUsers = [
-  { id: 1, name: 'binovet Admin', email: 'admin@binovet.com.vn', role: 'SuperAdmin', lastActive: '10 phút trước', avatar: null },
-  { id: 2, name: 'Editor 01', email: 'editor@binovet.com.vn', role: 'Editor', lastActive: '2 giờ trước', avatar: null },
+  { id: 1, name: 'VTAX Admin', email: 'admin@VTAX.com.vn', role: 'SuperAdmin', lastActive: '10 phút trước', avatar: null },
+  { id: 2, name: 'Editor 01', email: 'editor@VTAX.com.vn', role: 'Editor', lastActive: '2 giờ trước', avatar: null },
 ];
 
 function AdminUsersPageContent() {
@@ -247,7 +247,7 @@ function AdminUsersPageContent() {
                <Input placeholder="VD: Nguyễn Văn A" />
             </Form.Item>
             <Form.Item label="Email đăng nhập" name="email" rules={[{ required: true, type: 'email', message: 'Vui lòng nhập email hợp lệ' }]}>
-               <Input placeholder="email@binovet.com.vn" />
+               <Input placeholder="email@VTAX.com.vn" />
             </Form.Item>
             {!selectedUser && (
               <Form.Item label="Mật khẩu tạm thời" name="password" rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}>

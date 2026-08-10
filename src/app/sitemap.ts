@@ -1,8 +1,8 @@
-import { MetadataRoute } from 'next';
+﻿import { MetadataRoute } from 'next';
 import { productService, articleService, categoryService } from '@/services';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://binovet.com.vn';
+  const baseUrl = 'https://VTAX.com.vn';
 
   // Static routes
   const staticRoutes = [

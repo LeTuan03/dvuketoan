@@ -60,7 +60,7 @@ export default function PageHero({
   return (
     <section
       className={`relative overflow-hidden ${
-        dark ? 'bg-binovet-dark text-white' : 'bg-cream text-ink'
+        dark ? 'bg-vtax-dark text-white' : 'bg-cream text-ink'
       }`}
     >
       {/* background image (faint) */}
@@ -76,7 +76,7 @@ export default function PageHero({
       {/* motifs */}
       {dark ? (
         <>
-          <div className="absolute inset-0 bg-molecule opacity-70 pointer-events-none" />
+          <div className="absolute inset-0 bg-finance opacity-70 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(38rem_38rem_at_85%_-20%,rgba(217,83,31,0.20),transparent_60%),radial-gradient(40rem_40rem_at_0%_120%,rgba(10,77,140,0.45),transparent_55%)] pointer-events-none" />
         </>
       ) : (
@@ -86,7 +86,7 @@ export default function PageHero({
       {/* monogram watermark — suppressed when a side image occupies the right */}
       {!hasSide && (
         <div className="absolute -right-10 top-1/2 -translate-y-1/2 pointer-events-none hidden md:block">
-          <Monogram size={320} withText text={locale === 'en' ? 'BINOVET · HIGH-TECH VETERINARY · ' : undefined} tone={dark ? 'light' : 'brand'} className={dark ? 'opacity-[0.09]' : 'opacity-[0.07]'} />
+          <Monogram size={320} withText text={locale === 'en' ? 'VTAX · HIGH-TECH VETERINARY · ' : undefined} tone={dark ? 'light' : 'brand'} className={dark ? 'opacity-[0.09]' : 'opacity-[0.07]'} />
         </div>
       )}
 
@@ -155,7 +155,7 @@ export default function PageHero({
                   alt={sideImageAlt}
                   className="w-full h-[340px] xl:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-binovet-dark/50 via-binovet-dark/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-vtax-dark/50 via-vtax-dark/10 to-transparent" />
               </div>
             </div>
           )}

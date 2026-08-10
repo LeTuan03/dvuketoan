@@ -41,10 +41,10 @@ export default function ContactContent() {
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <section className="bg-binovet-dark text-white py-20 relative overflow-hidden">
+      <section className="bg-vtax-dark text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('/images/farm.png')] bg-cover bg-center"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
-           <h1 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-wider italic">Liên Hệ binovet</h1>
+           <h1 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-wider italic">Liên Hệ VTAX</h1>
            <p className="text-xl text-primary-light max-w-2xl mx-auto font-medium">Chúng tôi luôn sẵn sàng lắng nghe và giải đáp mọi thắc mắc của bạn 24/7.</p>
         </div>
       </section>
@@ -53,43 +53,43 @@ export default function ContactContent() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Information Column */}
           <div className="space-y-12">
-             <h2 className="text-3xl font-black text-binovet-dark uppercase italic mb-8 tracking-tight">Thông Tin Trụ Sở</h2>
+             <h2 className="text-3xl font-black text-vtax-dark uppercase italic mb-8 tracking-tight">Thông Tin Trụ Sở</h2>
              
              <div className="space-y-8">
                 <div className="flex gap-6 items-start group">
-                   <div className="w-14 h-14 bg-binovet-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                   <div className="w-14 h-14 bg-VTAX-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                       <MapPin size={24} />
                    </div>
                    <div>
                       <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Địa chỉ trụ sở chính</h4>
-                      <p className="text-lg font-bold text-binovet-dark leading-relaxed">Cụm CN Liên Phương, Xã Hồng Vân, Thường Tín, Hà Nội</p>
+                      <p className="text-lg font-bold text-vtax-dark leading-relaxed">Cụm CN Liên Phương, Xã Hồng Vân, Thường Tín, Hà Nội</p>
                    </div>
                 </div>
 
                 <div className="flex gap-6 items-start group">
-                   <div className="w-14 h-14 bg-binovet-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                   <div className="w-14 h-14 bg-VTAX-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                       <Phone size={24} />
                    </div>
                    <div>
                       <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Điện thoại hỗ trợ</h4>
-                      <p className="text-lg font-bold text-binovet-dark leading-relaxed">024 66861629 / 097 499 9204</p>
+                      <p className="text-lg font-bold text-vtax-dark leading-relaxed">024 66861629 / 097 499 9204</p>
                    </div>
                 </div>
 
                 <div className="flex gap-6 items-start group">
-                   <div className="w-14 h-14 bg-binovet-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                   <div className="w-14 h-14 bg-VTAX-alt rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                       <Mail size={24} />
                    </div>
                    <div>
                       <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email phản hồi</h4>
-                      <p className="text-lg font-bold text-binovet-dark leading-relaxed underline">pkd.binovet@gmail.com</p>
+                      <p className="text-lg font-bold text-vtax-dark leading-relaxed underline">pkd.VTAX@gmail.com</p>
                    </div>
                 </div>
              </div>
 
              {/* Branch Information */}
-             <div className="bg-binovet-alt p-10 rounded-[40px] border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-black text-binovet-dark mb-4 uppercase tracking-wider">Chi nhánh Miền Nam</h3>
+             <div className="bg-VTAX-alt p-10 rounded-[40px] border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-black text-vtax-dark mb-4 uppercase tracking-wider">Chi nhánh Miền Nam</h3>
                 <div className="space-y-4">
                    <p className="text-gray-600 font-medium leading-relaxed flex items-center gap-3"><MapPin size={16} className="text-primary" /> Hố Nai, Trảng Bom, Đồng Nai</p>
                    <p className="text-gray-600 font-medium flex items-center gap-3"><Phone size={16} className="text-primary" /> 0936 100 008</p>
@@ -101,7 +101,7 @@ export default function ContactContent() {
                 <a href="https://www.facebook.com/BiotechVietNam1" target="_blank" className="flex items-center gap-3 bg-blue-600 text-white font-black py-4 px-8 rounded-full text-xs uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
                    <FacebookOutlined className="text-xl" /> Kết nối Facebook
                 </a>
-                <a href="https://youtube.com/binovet" target="_blank" className="flex items-center gap-3 bg-red-600 text-white font-black py-4 px-8 rounded-full text-xs uppercase tracking-widest hover:bg-red-700 transition-all shadow-lg shadow-red-200">
+                <a href="https://youtube.com/VTAX" target="_blank" className="flex items-center gap-3 bg-red-600 text-white font-black py-4 px-8 rounded-full text-xs uppercase tracking-widest hover:bg-red-700 transition-all shadow-lg shadow-red-200">
                    <YoutubeOutlined className="text-xl" /> Kênh YouTube
                 </a>
              </div>
@@ -116,7 +116,7 @@ export default function ContactContent() {
                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
                       <Send size={40} className="animate-bounce" />
                    </div>
-                   <h3 className="text-3xl font-black text-binovet-dark uppercase italic mb-4">Gửi Thành Công!</h3>
+                   <h3 className="text-3xl font-black text-vtax-dark uppercase italic mb-4">Gửi Thành Công!</h3>
                    <p className="text-gray-500 font-medium max-w-xs leading-relaxed">Cảm ơn bạn đã liên hệ. Chúng tôi đã nhận được thông tin và sẽ phản hồi sớm nhất có thể.</p>
                    <button 
                       onClick={() => setStatus('idle')}
@@ -131,7 +131,7 @@ export default function ContactContent() {
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
                        <MessageSquare size={24} />
                     </div>
-                    <h3 className="text-2xl font-black text-binovet-dark uppercase tracking-tight italic">Gửi Tin Nhắn</h3>
+                    <h3 className="text-2xl font-black text-vtax-dark uppercase tracking-tight italic">Gửi Tin Nhắn</h3>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -180,7 +180,7 @@ export default function ContactContent() {
              allowFullScreen 
              loading="lazy" 
              referrerPolicy="no-referrer-when-downgrade"
-             title="Bản đồ binovet - Cụm CN Liên Phương, Xã Hồng Vân, Thường Tín, Hà Nội"
+             title="Bản đồ VTAX - Cụm CN Liên Phương, Xã Hồng Vân, Thường Tín, Hà Nội"
            />
         </div>
       </div>

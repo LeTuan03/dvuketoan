@@ -324,7 +324,7 @@ function AdminCatalogueContent() {
       >
         <Form form={form} layout="vertical" className="mt-6 px-4">
           <Form.Item name="title" label="Tên tài liệu (VI)" rules={[{ required: true, message: 'Vui lòng nhập tên tài liệu tiếng Việt' }]}>
-            <Input className="rounded-xl py-2 font-bold" placeholder="VD: Catalogue sản phẩm biotechvet 2026" />
+            <Input className="rounded-xl py-2 font-bold" placeholder="VD: Catalogue dịch vụ kế toán 2026" />
           </Form.Item>
 
           <Form.Item name="titleEn" label="Tên tài liệu (EN)">

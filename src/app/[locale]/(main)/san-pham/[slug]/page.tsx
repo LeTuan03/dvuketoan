@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { productService, categoryService } from '@/services';
@@ -20,21 +20,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   if (!product) {
     return {
-      title: locale === 'en' ? 'Product not found - binovet' : 'Sản phẩm không tìm thấy - binovet',
+      title: locale === 'en' ? 'Product not found - VTAX' : 'Sản phẩm không tìm thấy - VTAX',
       description: locale === 'en' ? 'The product you are looking for does not exist.' : 'Sản phẩm bạn tìm kiếm không tồn tại.',
     };
   }
 
-  const canonicalUrl = 'https://binovet.com.vn' + localePath(locale, `/san-pham/${product.slug}`);
+  const canonicalUrl = 'https://VTAX.com.vn' + localePath(locale, `/san-pham/${product.slug}`);
 
   return {
-    title: locale === 'en' ? `${product.name} - binovet Veterinary Medicine` : `${product.name} - Dược Thú Y binovet`,
-    description: locale === 'en' ? `Details for ${product.name} from binovet - USA technology` : `Chi tiết sản phẩm ${product.name} từ binovet - Công nghệ USA`,
-    keywords: ['dược thú y', 'binovet', product.name, 'chăn nuôi', 'sản phẩm'],
+    title: locale === 'en' ? `${product.name} - VTAX Veterinary Medicine` : `${product.name} - Dược Thú Y VTAX`,
+    description: locale === 'en' ? `Details for ${product.name} from VTAX - USA technology` : `Chi tiết sản phẩm ${product.name} từ VTAX - Công nghệ USA`,
+    keywords: ['dược thú y', 'VTAX', product.name, 'chăn nuôi', 'sản phẩm'],
     robots: 'index, follow',
     openGraph: {
       type: "website",
-      title: `${product.name} - binovet`,
+      title: `${product.name} - VTAX`,
       description: locale === 'en' ? `Details for ${product.name}` : `Chi tiết sản phẩm ${product.name}`,
       url: canonicalUrl,
       images: [
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} - binovet`,
+      title: `${product.name} - VTAX`,
       description: locale === 'en' ? 'High-quality veterinary pharmaceuticals' : 'Sản phẩm dược thú y chất lượng cao',
       images: [product.image || '/images/default-product.svg'],
     },
@@ -102,19 +102,19 @@ export default async function ProductDetailPage({ params }: Readonly<{ params: P
                 "@type": "ListItem",
                 "position": 1,
                 "name": locale === 'en' ? 'Home' : 'Trang chủ',
-                "item": 'https://binovet.com.vn' + localePath(locale, '/')
+                "item": 'https://VTAX.com.vn' + localePath(locale, '/')
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": locale === 'en' ? 'Products' : 'Sản phẩm',
-                "item": 'https://binovet.com.vn' + localePath(locale, '/san-pham')
+                "item": 'https://VTAX.com.vn' + localePath(locale, '/san-pham')
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": product.name,
-                "item": 'https://binovet.com.vn' + localePath(locale, `/san-pham/${product.slug}`)
+                "item": 'https://VTAX.com.vn' + localePath(locale, `/san-pham/${product.slug}`)
               }
             ]
           })

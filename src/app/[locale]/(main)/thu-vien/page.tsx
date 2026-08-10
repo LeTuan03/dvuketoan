@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
 import PageHero from '@/components/shared/PageHero';
@@ -9,18 +9,18 @@ import DocumentList from './CatalogueClient';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const en = resolveLocale((await params).locale) === 'en';
-  const title = en ? 'Photo & Video Gallery - BINOVET' : 'Thư viện ảnh & Video - BINOVET';
+  const title = en ? 'Photo & Video Gallery - VTAX' : 'Thư viện ảnh & Video - VTAX';
   const description = en
-    ? "Photos and videos of BINOVET's factory, products and standout activities."
-    : 'Hình ảnh và video về nhà máy, sản phẩm và các hoạt động nổi bật của BINOVET.';
+    ? "Photos and videos of VTAX's factory, products and standout activities."
+    : 'Hình ảnh và video về nhà máy, sản phẩm và các hoạt động nổi bật của VTAX.';
   return {
     title,
     description,
-    alternates: { canonical: 'https://binovet.com/thu-vien' },
+    alternates: { canonical: 'https://VTAX.com/thu-vien' },
     openGraph: {
       title,
       description,
-      url: 'https://binovet.com/thu-vien',
+      url: 'https://VTAX.com/thu-vien',
     },
   };
 }
@@ -49,7 +49,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
         title={en ? 'Slide Gallery' : 'Thư viện ảnh & Video'}
         subtitle={en
           ? 'Photos and videos of our factory, products and standout activities.'
-          : 'Hình ảnh và video về nhà máy, sản phẩm và các hoạt động nổi bật của BINOVET.'}
+          : 'Hình ảnh và video về nhà máy, sản phẩm và các hoạt động nổi bật của VTAX.'}
         breadcrumb={[{ label: en ? 'Slide Gallery' : 'Thư viện ảnh' }]}
       />
       <div className="container mx-auto px-4 py-20">

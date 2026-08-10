@@ -102,12 +102,12 @@ export default function Header() {
   };
 
   const navLinkBase =
-    "relative px-3.5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.15em] text-binovet-dark/80 hover:text-primary transition-colors font-montserrat after:content-[''] after:absolute after:left-3.5 after:right-3.5 after:-bottom-0.5 after:h-px after:bg-secondary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100";
+    "relative px-3.5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.15em] text-vtax-dark/80 hover:text-primary transition-colors font-montserrat after:content-[''] after:absolute after:left-3.5 after:right-3.5 after:-bottom-0.5 after:h-px after:bg-secondary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100";
 
   return (
     <div className="w-full z-50 relative" suppressHydrationWarning>
       {/* Top Bar */}
-      <div className="bg-binovet-dark text-white text-[0.73rem] py-2 hidden md:block border-b border-white/5" suppressHydrationWarning>
+      <div className="bg-vtax-dark text-white text-[0.73rem] py-2 hidden md:block border-b border-white/5" suppressHydrationWarning>
         <div className="container mx-auto px-4 flex justify-between items-center" suppressHydrationWarning>
           <div className="flex items-center gap-5 flex-wrap">
             <a
@@ -133,7 +133,7 @@ export default function Header() {
             </a>
             <span className="flex items-center gap-2 text-white/80 border-l border-white/15 pl-5">
               <Mail size={13} className="shrink-0 text-secondary" />
-              <span className="text-white/85 tracking-wide">{settings?.email || 'pkd.binovet@gmail.com'}</span>
+              <span className="text-white/85 tracking-wide">{settings?.email || 'pkd.VTAX@gmail.com'}</span>
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -175,7 +175,7 @@ export default function Header() {
           <div className="flex justify-between items-center" suppressHydrationWarning>
             {/* Logo */}
             <Link href={localePath(locale, '/')} className="shrink-0 flex items-center gap-3">
-              <img src="/images/logo.png" alt="BINOVET" className={`transition-all duration-300 pl-2 ${isScrolled ? 'h-10' : 'h-12 md:h-[52px] scale-150'}`} />
+              <img src="/images/logo.png" alt="VTAX" className={`transition-all duration-300 pl-2 ${isScrolled ? 'h-10' : 'h-12 md:h-[52px] scale-150'}`} />
             </Link>
 
             {/* Desktop Nav */}
@@ -362,7 +362,7 @@ function MobileNavItem({ href, label, onClick, childLinks }: { href: string, lab
 
   if (!hasChildren) {
     return (
-      <Link href={href} className="py-4 text-[0.95rem] font-semibold text-binovet-dark border-b border-line flex justify-between items-center tracking-tight" onClick={onClick}>
+      <Link href={href} className="py-4 text-[0.95rem] font-semibold text-vtax-dark border-b border-line flex justify-between items-center tracking-tight" onClick={onClick}>
         {label} <ChevronRight size={16} className="text-gray-300" />
       </Link>
     );
@@ -372,7 +372,7 @@ function MobileNavItem({ href, label, onClick, childLinks }: { href: string, lab
     <div className="border-b border-line">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-4 text-[0.95rem] font-semibold text-binovet-dark flex justify-between items-center tracking-tight"
+        className="w-full py-4 text-[0.95rem] font-semibold text-vtax-dark flex justify-between items-center tracking-tight"
       >
         {label} <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-primary' : 'text-gray-300'}`} />
       </button>

@@ -10,7 +10,7 @@ const PdfFlipbook = dynamic(() => import('@/components/ui/PdfFlipbook'), {
 
 interface DocumentInfo {
   title: string;
-  titleEn: string;
+  titleEn: string | null;
   size: string;
   type: string;
   link: string;

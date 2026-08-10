@@ -39,7 +39,7 @@ export default function AdminDashboard() {
 
   const stats = [
     {
-      title: 'Sản phẩm',
+      title: 'Dịch vụ',
       value: data?.stats.products ?? 0,
       icon: <ShoppingOutlined />,
       tileBg: '#eaf1f9',

@@ -99,14 +99,14 @@ function ProductManagementContent() {
       form.resetFields();
       try {
         const res = await adminFetch(`/api/data/products?id=${record.id}`);
-        if (!res.ok) throw new Error('Không thể tải chi tiết sản phẩm');
+        if (!res.ok) throw new Error('Không thể tải chi tiết dịch vụ');
         const full: Product = await res.json();
         form.setFieldsValue({
           ...full,
           images: full.images || [],
         });
       } catch (error: any) {
-        message.error(error.message || 'Không thể tải chi tiết sản phẩm');
+        message.error(error.message || 'Không thể tải chi tiết dịch vụ');
       }
     } else {
       setEditingId(null);
@@ -137,7 +137,7 @@ function ProductManagementContent() {
 
         if (res.ok) {
           await fetchData();
-          message.success(editingId ? 'Cập nhật sản phẩm thành công' : 'Thêm sản phẩm mới thành công');
+          message.success(editingId ? 'Cập nhật dịch vụ thành công' : 'Thêm dịch vụ mới thành công');
           setIsModalOpen(false);
         } else {
           const errorData = await res.json();
@@ -155,7 +155,7 @@ function ProductManagementContent() {
   const handleDelete = (id: bigint) => {
     modal.confirm({
       title: 'Xác nhận xóa',
-      content: 'Bạn có chắc chắn muốn xóa sản phẩm này không?',
+      content: 'Bạn có chắc chắn muốn xóa dịch vụ này không?',
       okText: 'Xóa',
       okType: 'danger',
       cancelText: 'Hủy',
@@ -172,7 +172,7 @@ function ProductManagementContent() {
           });
           if (res.ok) {
             await fetchData();
-            message.success('Đã xóa sản phẩm');
+            message.success('Đã xóa dịch vụ');
           } else {
             const errorData = await res.json();
             throw new Error(errorData.error || 'Lỗi khi xóa dữ liệu');
@@ -189,7 +189,7 @@ function ProductManagementContent() {
 
   const columns = [
     {
-      title: 'Tên Sản phẩm',
+      title: 'Tên Dịch vụ',
       dataIndex: 'name',
       key: 'name',
       render: (text: string, record: ProductSummary) => (
@@ -198,7 +198,7 @@ function ProductManagementContent() {
             <img src={record?.image} alt={text} className="w-full h-full object-contain p-1" />
           </div>
           <div>
-            <div className="font-bold text-binovet-dark text-sm">{text}</div>
+            <div className="font-bold text-vtax-dark text-sm">{text}</div>
             <div className="flex items-center gap-2 mt-1">
               {record?.featured && <Tag color="gold" className="text-[9px] px-1.5 font-semibold border-none bg-amber-100 text-amber-700 m-0">NỔI BẬT</Tag>}
               {record?.images && record?.images.length > 0 && (
@@ -264,10 +264,10 @@ function ProductManagementContent() {
       className="space-y-6 pb-0"
     >
       <AdminPageHeader
-        title="Quản lý Sản phẩm"
+        title="Quản lý Dịch vụ"
         breadcrumbItems={[
           { title: 'Admin', href: '/admin' },
-          { title: 'Quản lý Sản phẩm' },
+          { title: 'Quản lý Dịch vụ' },
         ]}
       />
 
@@ -294,7 +294,7 @@ function ProductManagementContent() {
           onChange={(patch) => updateUrl(patch)}
           search={{ defaultValue: query }}
           primaryAction={{
-            label: 'Thêm Sản phẩm',
+            label: 'Thêm Dịch vụ',
             onClick: () => showModal(),
             icon: <PlusOutlined />
           }}

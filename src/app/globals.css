@@ -1,31 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand: refined navy-blue (primary) + terracotta/ember (accent) ────── */
-  --color-primary: #0a4d8c;        /* richer, slightly deeper brand blue */
-  --color-primary-dark: #072e57;   /* deep navy for surfaces / hover */
-  --color-primary-light: #eaf1f9;
+  /* ===== Brand ===== */
+  --color-primary: #143A6F;         /* Navy Blue */
+  --color-primary-dark: #0B2545;    /* Sidebar / Header Admin */
+  --color-primary-light: #EAF2FB;
 
-  --color-secondary: #d9531f;      /* terracotta / ember — earthy, premium */
-  --color-secondary-light: #f9ece4;
+  --color-secondary: #F2B300;       /* Logo Gold */
+  --color-secondary-dark: #D89A00;
+  --color-secondary-light: #FFF7DD;
 
-  --color-accent: #d9531f;
-  --color-accent-light: #f9ece4;
+  --color-accent: #F2B300;
+  --color-accent-light: #FFF7DD;
 
-  --color-binovet-alt: #f1f5fb;
-  --color-binovet-dark: #06243f; /* deeper, more refined navy ink */
+  /* ===== Layout ===== */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-sidebar: #0B2545;
 
-  /* Editorial neutrals — warm, premium, hairline restraint */
-  --color-ink: #0c2236;          /* heading ink */
-  --color-ink-soft: #4a5a6a;     /* body on light */
-  --color-paper: #f7f4ef;        /* warm bone / ivory alt surface */
-  --color-cream: #faf7f1;        /* warm editorial surface */
-  --color-line: #e7e2d8;         /* warm hairline divider */
-  --color-sand: #efe9df;         /* premium warm neutral block */
-  --color-brass: #b08542;        /* subtle metallic accent (hairlines, marks) */
+  /* ===== Text ===== */
+  --color-ink: #1E293B;
+  --color-ink-soft: #64748B;
+  --color-paper: #FFFFFF;
 
-  /* Single professional Vietnamese-first typeface (Be Vietnam Pro) for the whole
-     system — headings, body and labels all resolve to it. */
+  /* ===== Border ===== */
+  --color-line: #E2E8F0;
+  --color-border: #CBD5E1;
+
+  /* ===== Status ===== */
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
+  --color-info: #2563EB;
+
+  /* ===== Hover ===== */
+  --color-hover: #1D4E89;
+  --color-hover-light: #EEF5FD;
+
+  /* ===== Custom ===== */
+  --color-vtax-dark: #0B2545;
+
+  /* ===== Fonts ===== */
   --font-display: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
   --font-sans: var(--font-be-vietnam), 'Be Vietnam Pro', system-ui, sans-serif;
 }
@@ -207,6 +222,9 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+.bg-finance {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 /* Molecule / bond network — for dark hero & section backgrounds */
 .bg-molecule {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1.4'%3E%3Cline x1='60' y1='60' x2='150' y2='40'/%3E%3Cline x1='150' y1='40' x2='240' y2='90'/%3E%3Cline x1='150' y1='40' x2='120' y2='150'/%3E%3Cline x1='240' y1='90' x2='270' y2='200'/%3E%3Cline x1='120' y1='150' x2='220' y2='200'/%3E%3Cline x1='120' y1='150' x2='50' y2='220'/%3E%3Cline x1='220' y1='200' x2='270' y2='200'/%3E%3Cline x1='50' y1='220' x2='110' y2='290'/%3E%3Cline x1='220' y1='200' x2='190' y2='280'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3Ccircle cx='150' cy='40' r='6'/%3E%3Ccircle cx='240' cy='90' r='5'/%3E%3Ccircle cx='120' cy='150' r='6'/%3E%3Ccircle cx='270' cy='200' r='4'/%3E%3Ccircle cx='220' cy='200' r='5'/%3E%3Ccircle cx='50' cy='220' r='5'/%3E%3Ccircle cx='110' cy='290' r='4'/%3E%3Ccircle cx='190' cy='280' r='5'/%3E%3C/g%3E%3C/svg%3E");
@@ -314,7 +332,7 @@ body {
    FOOTER signature surface
    ============================================================ */
 .box-footer {
-  background-color: var(--color-binovet-dark);
+  background-color: var(--color-primary-dark);
   background-image:
     radial-gradient(60rem 60rem at 85% -10%, rgba(217, 83, 31, 0.16), transparent 60%),
     radial-gradient(50rem 50rem at 0% 110%, rgba(10, 77, 140, 0.42), transparent 55%),

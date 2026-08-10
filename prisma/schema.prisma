@@ -155,3 +155,35 @@ model ContactRequest {
   @@index([status])
   @@map("contact_requests")
 }
+
+model Review {
+  id        BigInt   @id @default(autoincrement())
+  author    String
+  authorEn  String?
+  company   String?
+  companyEn String?
+  content   String
+  contentEn String?
+  rating    Int      @default(5)
+  avatar    String   @default("")
+  status    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("reviews")
+}
+
+model LookupItem {
+  id            BigInt   @id @default(autoincrement())
+  code          String   @unique
+  name          String
+  nameEn        String?
+  description   String?
+  descriptionEn String?
+  isConditional Boolean  @default(false)
+  status        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("lookup_items")
+}

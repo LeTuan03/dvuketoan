@@ -19,6 +19,8 @@ import {
   HomeOutlined,
   MailOutlined,
   FolderOpenOutlined,
+  SearchOutlined,
+  StarOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme, ConfigProvider, Avatar, Dropdown, App } from 'antd';
 import viVN from 'antd/locale/vi_VN';
@@ -83,10 +85,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   const contentItems: any[] = [
-    { key: '/admin/products',   icon: <ShoppingOutlined />,   label: 'Sản phẩm' },
+    { key: '/admin/products',   icon: <ShoppingOutlined />,   label: 'Dịch vụ' },
     { key: '/admin/categories', icon: <AppstoreOutlined />,   label: 'Danh mục' },
-    { key: '/admin/handbooks',  icon: <BookOutlined />,       label: 'Cẩm nang chăn nuôi' },
-    { key: '/admin/news',       icon: <NotificationOutlined />, label: 'Tin tức' },
+    { key: '/admin/handbooks',  icon: <BookOutlined />,       label: 'Kiến thức' },
+    { key: '/admin/lookup',     icon: <SearchOutlined />,     label: 'Tra cứu ngành nghề' },
+    { key: '/admin/reviews',    icon: <StarOutlined />,       label: 'Đánh giá khách hàng' },
+    { key: '/admin/news',       icon: <NotificationOutlined />, label: 'Tin tức / Khuyến mãi' },
   ];
 
   const interactionItems: any[] = [
@@ -314,7 +318,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      BINOVET
+                      VTAX
                     </div>
                     <div
                       style={{

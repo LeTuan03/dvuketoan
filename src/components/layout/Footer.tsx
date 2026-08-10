@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 import Link from 'next/link';
@@ -45,9 +45,9 @@ export default function Footer() {
   return (
     <footer className="box-footer text-white pt-0 pb-8 text-[0.875rem] w-full relative overflow-hidden" suppressHydrationWarning>
       {/* signature motif + monogram watermark */}
-      <div className="absolute inset-0 bg-molecule opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 bg-finance opacity-50 pointer-events-none" />
       <div className="absolute -right-16 -bottom-16 pointer-events-none hidden lg:block">
-        <Monogram size={360} withText text={locale === 'en' ? 'BINOVET · HIGH-TECH VETERINARY · ' : undefined} tone="light" className="opacity-[0.05]" />
+        <Monogram size={360} withText text={locale === 'en' ? 'VTAX · HIGH-TECH VETERINARY · ' : undefined} tone="light" className="opacity-[0.05]" />
       </div>
 
       {/* Signature top band */}
@@ -56,7 +56,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Monogram size={52} withText={false} tone="light" className="opacity-90 shrink-0" />
             <div>
-              <p className="font-display text-xl font-semibold text-white leading-tight">BINOVET</p>
+              <p className="font-display text-xl font-semibold text-white leading-tight">VTAX</p>
               <p className="text-white/55 text-xs tracking-[0.18em] uppercase font-montserrat mt-1">
                 {locale === 'en' ? 'Advanced Veterinary Technology' : 'Advanced Veterinary Technology'}
               </p>
@@ -80,13 +80,13 @@ export default function Footer() {
             className="space-y-3"
           >
             <Link href={localePath(locale, '/')} className="inline-flex mb-3">
-              <img src="/images/logo.png" alt="BINOVET" className="h-12 brightness-0 invert" />
+              <img src="/images/logo.png" alt="VTAX" className="h-12 brightness-0 invert" />
             </Link>
             <p className="font-semibold text-white/90">{locale === 'en' ? (settings?.companyNameEn || settings?.companyName || 'BIOTECHNOLOGY VETERINARY.,J.S.C') : (settings?.companyName || 'BIOTECHNOLOGY VETERINARY.,J.S.C')}</p>
             <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.headquarters')}:</strong> {locale === 'en' ? (settings?.addressHNEn || settings?.addressHN || 'Lien Phuong Industrial Cluster, Hong Van, Thuong Tin, Hanoi') : (settings?.addressHN || 'Cụm CN Liên Phương, Xã Hồng Vân, Hà Nội')}</p>
             <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.phone')}:</strong> <a href={`tel:${settings?.hotline1}`} className="hover:text-secondary transition-colors">{settings?.hotline1 || '0915 999 831'}</a> | <a href={`tel:${settings?.hotline2}`} className="hover:text-secondary transition-colors">{settings?.hotline2 || '024 3371 8653'}</a></p>
-            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.email')}:</strong> <a href={`mailto:${settings?.email}`} className="hover:text-secondary transition-colors">{settings?.email || 'pkd.binovet@gmail.com'}</a></p>
-            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.website')}:</strong> <a href={settings?.website || 'https://binovet.com/'} target="_blank" rel="noopener" className="hover:text-secondary transition-colors">{(settings?.website || 'https://binovet.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></p>
+            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.email')}:</strong> <a href={`mailto:${settings?.email}`} className="hover:text-secondary transition-colors">{settings?.email || 'pkd.VTAX@gmail.com'}</a></p>
+            <p className="text-white/70"><strong className="text-white/80 font-semibold">{t('footer.website')}:</strong> <a href={settings?.website || 'https://VTAX.com/'} target="_blank" rel="noopener" className="hover:text-secondary transition-colors">{(settings?.website || 'https://VTAX.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></p>
             {settings?.addressHCM && (
               <p className="mt-4 pt-4 border-t border-white/10 text-white/70">
                 <strong className="text-white/80 font-semibold">{t('footer.southBranch')}:</strong><br />
@@ -173,7 +173,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-white/45 text-[0.8rem]">
           <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
-          <p className="font-montserrat tracking-[0.18em] uppercase text-[0.66rem]">Binovet · GMP-WHO</p>
+          <p className="font-montserrat tracking-[0.18em] uppercase text-[0.66rem]">VTAX · GMP-WHO</p>
         </div>
       </div>
     </footer>

@@ -2,19 +2,17 @@
   "nav": {
     "home": "Home",
     "about": "About Us",
-    "products": "Products",
-    "handbook": "Know-How",
-    "news": "News",
-    "catalogue": "Slide Gallery",
-    "recruitment": "Careers",
+    "services": "Services",
+    "knowledge": "Knowledge",
+    "lookup": "Lookup",
     "contact": "Contact"
   },
   "header": {
-    "consultBuy": "Sales consultation",
-    "slogan": "BINOVET - Partnering with the Global Livestock Industry",
-    "companyName": "BIOTECHNOLOGY VETERINARY.,J.S.C",
+    "consultBuy": "Consultation",
+    "slogan": "VTAX - Accounting & Tax Experts for Businesses",
+    "companyName": "VTAX ACCOUNTING SERVICES COMPANY",
     "searchPlaceholder": "Search...",
-    "allProducts": "All products"
+    "allProducts": "All services"
   },
   "common": {
     "readMore": "Read more",
@@ -28,48 +26,48 @@
   "home": {
     "about": {
       "eyebrow": "About Us",
-      "titleLine1": "BIOTECHNOLOGY",
-      "titleLine2": "VETERINARY.,J.S.C",
-      "paragraph": "Binovet Pharmaceuticals is proud to be a leader in applying American biotechnology to veterinary pharmaceutical production in Vietnam. We are committed to delivering optimal healthcare solutions that boost sustainable livestock productivity.",
-      "badgeYears": "Years Building Our Leadership",
-      "feature1Title": "GMP-WHO Quality",
-      "feature1Desc": "A modern production line with rigorous control processes meeting international standards.",
-      "feature2Title": "24/7 Technical Support",
-      "feature2Desc": "A team of experienced experts always ready to accompany farm owners.",
-      "ctaJourney": "Our journey",
-      "ctaCatalogue": "Photo & video gallery"
+      "titleLine1": "TAX AGENT",
+      "titleLine2": "VTAX",
+      "paragraph": "VTAX is proud to be a leading provider of accounting, tax, and corporate legal consulting services in Vietnam. We accompany the sustainable development of your business.",
+      "badgeYears": "Years Accompanying Businesses",
+      "feature1Title": "Professional & Accurate",
+      "feature1Desc": "Experienced experts with deep legal knowledge, ensuring transparent and accurate financial data.",
+      "feature2Title": "Dedicated Support",
+      "feature2Desc": "Always ready to consult, answer questions, and support your business 24/7.",
+      "ctaJourney": "Learn more",
+      "ctaCatalogue": "Company Profile"
     },
     "featured": {
-      "eyebrow": "Quality products",
+      "eyebrow": "Professional Services",
       "titleA": "Featured",
-      "titleB": "Products",
-      "sub": "Our best-selling veterinary pharmaceutical lines, widely trusted across the market",
-      "viewAll": "All products"
+      "titleB": "Services",
+      "sub": "Comprehensive financial, accounting, and tax solutions to help businesses grow with peace of mind.",
+      "viewAll": "All services"
     },
     "why": {
       "eyebrow": "Core values",
       "titleA": "Why Choose",
-      "titleB": "BINOVET?",
-      "sub": "Our mission is to deliver optimal medical solutions that protect and improve the productivity of livestock herds in Vietnam.",
+      "titleB": "VTAX?",
+      "sub": "Our mission is to protect financial security and optimize tax costs for businesses.",
       "features": [
-        { "title": "USA Technology", "desc": "Advanced American technology applied to veterinary pharmaceutical production" },
-        { "title": "GMP Certified", "desc": "Factory meeting GMP-WHO quality standards for pharmaceutical manufacturing" },
-        { "title": "200+ Products", "desc": "Quality solutions for animal husbandry. BTV has become a trusted companion for farmers" },
-        { "title": "20+ Years", "desc": "Founded in 2005 with the passion, intelligence and dedication of Vietnam's leading scientists in veterinary husbandry." },
-        { "title": "200+ Customers", "desc": "Tier-1 and tier-2 distributors across nearly 30 provinces spanning the North, Central, South and Mekong Delta regions." }
+        { "title": "Absolute Security", "desc": "100% commitment to the confidentiality of client information and financial data." },
+        { "title": "Reasonable Costs", "desc": "Offering diverse service packages suitable for the scale of each business." },
+        { "title": "High Responsibility", "desc": "VTAX takes full responsibility for explanations before the tax authorities." },
+        { "title": "Long-term Partnership", "desc": "Thousands of businesses have trusted and stayed with VTAX for many years." },
+        { "title": "Nationwide Network", "desc": "An extensive network of offices and branches ready to serve businesses anywhere, anytime." }
       ]
     },
     "disease": {
-      "titleA": "Husbandry",
-      "titleB": "Techniques",
-      "sub": "In-depth knowledge of common diseases, prevention methods and safe treatment protocols",
+      "titleA": "Legal",
+      "titleB": "Knowledge",
+      "sub": "Updates on the latest regulations regarding taxes, accounting, and corporate law.",
       "cta": "Discover",
-      "badge": "Know-How"
+      "badge": "Knowledge"
     },
     "news": {
-      "titleA": "Featured",
+      "titleA": "Market",
       "titleB": "News",
-      "sub": "Livestock market bulletins, company highlights and the latest updates",
+      "sub": "Financial news, new policies, and highlighted activities from VTAX.",
       "cta": "Read article"
     }
   },
@@ -79,29 +77,29 @@
     "email": "Email",
     "website": "Website",
     "southBranch": "Southern branch",
-    "productsTitle": "Products",
-    "vetOnly": "FOR VETERINARY USE ONLY",
-    "allProducts": "All products",
-    "techSupport": "Technical support",
+    "productsTitle": "Services",
+    "vetOnly": "PROFESSIONAL - DEDICATED",
+    "allProducts": "All services",
+    "techSupport": "Customer Support",
     "connectWithUs": "Connect with us",
     "quickLinks": "Quick links",
-    "copyright": "Copyright BINOVET - Veterinary Biotechnology JSC. All rights reserved."
+    "copyright": "Copyright VTAX. All rights reserved."
   },
   "admin": {
     "catalogue": {
       "page": {
-        "title": "Catalogue & Documents Management",
-        "breadcrumb": "Catalogue Management",
+        "title": "Document Management",
+        "breadcrumb": "Document Management",
         "add": "Add new document",
         "editTitle": "Edit document",
         "addTitle": "Add new document"
       },
       "filter": {
-        "searchPlaceholder": "Search by document title...",
+        "searchPlaceholder": "Search by title...",
         "type": "Format"
       },
       "table": {
-        "title": "Document title",
+        "title": "Title",
         "type": "Format",
         "size": "Size",
         "link": "Link",
@@ -114,27 +112,27 @@
         "confirmDelete": "Confirm delete",
         "deleteText": "Are you sure you want to delete \"{title}\"?",
         "deleteSuccess": "Deleted successfully",
-        "deleteError": "Failed to delete document",
+        "deleteError": "Failed to delete",
         "updateSuccess": "Updated successfully",
         "createSuccess": "Added successfully",
         "saveError": "Error saving data",
-        "fetchError": "Unable to load catalogue data",
+        "fetchError": "Unable to load data",
         "uploadSuccess": "Upload successful",
-        "uploadError": "Document upload failed",
-        "titleLabel": "Document title",
+        "uploadError": "Upload failed",
+        "titleLabel": "Title",
         "titleRequired": "Please enter the title",
         "typeLabel": "Format",
         "typeRequired": "Please select a format",
         "sizeLabel": "Size",
         "sizeRequired": "Please enter the size",
-        "uploadLabel": "Upload file (or enter the link below)",
+        "uploadLabel": "Upload file (or enter link below)",
         "linkLabel": "Document link (URL)",
         "linkRequired": "Please enter or upload a link",
         "cancel": "Cancel",
         "update": "Update",
         "add": "Add new",
         "chooseFile": "Choose file to upload",
-        "filePlaceholder": "Example: Biotechvet product catalogue 2026",
+        "filePlaceholder": "Example: VTAX Profile",
         "sizePlaceholder": "Example: 24.5 MB",
         "linkPlaceholder": "https://..."
       }

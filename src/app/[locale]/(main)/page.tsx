@@ -2,14 +2,10 @@ export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
 import {
-  ArrowRight, ArrowUpRight, BadgeCheck, Headset, Award, Package, Building2, MapPin, Users,
-  FlaskConical, ShieldCheck, PhoneCall, Sparkles,
+  ArrowRight, ArrowUpRight, Award, Briefcase, MapPin, Users,
+  ShieldCheck, PhoneCall, Quote, CheckCircle2
 } from 'lucide-react';
-import { productService, articleService, bannerService, mediaService, settingService, categoryService } from '@/services';
-import { ProductSummary, ArticleSummary, Category } from '@/types';
 import BannerSlider from '@/components/home/BannerSlider';
-import CategoryMarquee from '@/components/home/CategoryMarquee';
-import IntroVideo from '@/components/home/IntroVideo';
 import Reveal from '@/components/shared/Reveal';
 import { StaggerGroup, StaggerItem } from '@/components/shared/Stagger';
 import CountUp from '@/components/shared/CountUp';
@@ -17,7 +13,26 @@ import SectionHeading from '@/components/shared/SectionHeading';
 import Monogram from '@/components/shared/Monogram';
 import { resolveLocale, localePath } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/getDictionary';
-import { localize, localizeAll } from '@/lib/i18n/localize';
+
+// MOCK DATA for VTAX home page
+const featuredServices = [
+  { slug: 'dich-vu-ke-toan-tron-goi', title: 'Dịch vụ kế toán trọn gói', desc: 'Kiểm soát số liệu kế toán minh bạch, tiết kiệm thời gian.' },
+  { slug: 'bao-cao-thue-thang-quy', title: 'Báo cáo thuế tháng/quý', desc: 'Kê khai, nộp thuế đúng quy định, tránh rủi ro phạt.' },
+  { slug: 'quyet-toan-thue-nam', title: 'Quyết toán thuế', desc: 'Tối ưu hóa số thuế phải nộp, hoàn thiện sổ sách năm.' },
+  { slug: 'tu-van-thanh-lap-doanh-nghiep', title: 'Tư vấn thành lập', desc: 'Hỗ trợ pháp lý nhanh chóng để bắt đầu kinh doanh.' }
+];
+
+const customerReviews = [
+  { name: 'Nguyễn Văn A', role: 'Giám đốc Công ty ABC', content: 'VTAX đã giúp chúng tôi giải quyết hoàn toàn nỗi lo về sổ sách và thuế. Dịch vụ rất chuyên nghiệp và tận tâm.' },
+  { name: 'Trần Thị B', role: 'CEO Startup XYZ', content: 'Đội ngũ tư vấn của VTAX nắm rất rõ các luật thuế mới. Họ đã tư vấn cho chúng tôi những chiến lược tối ưu chi phí cực kỳ hiệu quả.' },
+  { name: 'Lê Hoàng C', role: 'Chủ hộ kinh doanh', content: 'Tôi rất hài lòng với dịch vụ thành lập doanh nghiệp của VTAX. Rất nhanh, gọn và minh bạch chi phí.' }
+];
+
+const latestNews = [
+  { slug: 'luat-doanh-nghiep-2026', title: '5 Điểm mới trong Luật Doanh nghiệp áp dụng từ năm 2026', date: '10/08/2026', excerpt: 'Những thay đổi cốt lõi tác động đến thủ tục thành lập và quản trị doanh nghiệp mà các CEO cần nắm vững.' },
+  { slug: 'huong-dan-thue-gtgt', title: 'Hướng dẫn kê khai thuế GTGT theo quý mới nhất', date: '05/08/2026', excerpt: 'Chi tiết các bước thực hiện trên hệ thống thuế điện tử giúp kế toán tránh những sai sót không đáng có.' },
+  { slug: 'bao-hiem-xa-hoi', title: 'Cập nhật mức đóng BHXH, BHYT năm 2026', date: '01/08/2026', excerpt: 'Chính sách bảo hiểm y tế và xã hội cho người lao động được điều chỉnh bắt đầu từ tháng 7/2026.' }
+];
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = resolveLocale((await params).locale);
@@ -25,300 +40,109 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const dict = getDictionary(locale);
   const h = dict.home;
 
-  const [productsRaw, articlesRaw, banners, mediaVideos, settings, categoriesRaw] = await Promise.all([
-    productService.getAllSummary(),
-    articleService.getAllSummary(),
-    bannerService.getAll(),
-    mediaService.getVideos(),
-    settingService.get(),
-    categoryService.getAll(),
-  ]);
-
-  const products = localizeAll(Array.isArray(productsRaw) ? productsRaw : [], locale) as ProductSummary[];
-  const articles = localizeAll(Array.isArray(articlesRaw) ? articlesRaw : [], locale) as ArticleSummary[];
-  const categories = localizeAll(Array.isArray(categoriesRaw) ? categoriesRaw : [], locale) as Category[];
-
   const contactHref = localePath(locale, '/lien-he');
 
-  // Hero slides — render the banner's own title as the headline, link as the CTA target.
-  const activeBanners = (Array.isArray(banners) ? banners : [])
-    .filter((b: any) => b.status)
-    .sort((a: any, b: any) => a.order - b.order)
-    .map((b: any) => {
-      const loc = localize(b, locale) as any;
-      return {
-        id: Number(b.id),
-        image: b.image,
-        title: loc.title as string,
-        ctaHref: localePath(locale, b.link || '/san-pham'),
-      };
-    });
-
-  // Latest news — every featured, non-draft handbook & news article, no item cap.
-  // Layout: 1 lead story + up to 4 stacked beside it; the rest flow into a compact grid below.
-  const latestNews = articles.filter(
-    (a) => (a.category === 'cam-nang' || a.category === 'tin-noi-bo' || a.category === 'tin-nganh') && !a.isDraft && a.featured,
-  );
-  const sideNews = latestNews.slice(1, 5);
-  const gridNews = latestNews.slice(5);
-
-  // Featured products — curated (featured first), topped up to a full grid.
-  const featuredProducts = [
-    ...products.filter((p) => p.featured),
+  // Hero slides
+  const activeBanners = [
+    {
+      id: 1,
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2000&auto=format&fit=crop',
+      title: en ? 'Professional Accounting Services' : 'Dịch Vụ Kế Toán Chuyên Nghiệp',
+      ctaHref: localePath(locale, '/dich-vu'),
+    },
+    {
+      id: 2,
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop',
+      title: en ? 'Tax Consulting Solutions' : 'Giải Pháp Tư Vấn Thuế Toàn Diện',
+      ctaHref: localePath(locale, '/dich-vu'),
+    }
   ];
 
-  const categoryName = (id: ProductSummary['categoryId']) =>
-    categories.find((c) => String(c.id) === String(id))?.name || '';
-
-  // Intro video — first active video (featured preferred).
-  const videos = Array.isArray(mediaVideos) ? mediaVideos.filter((v: any) => v.status === 'active') : [];
-  const introVideo = (videos.find((v: any) => v.featured) || videos[0]) as any;
-
-  // Representative image for each category = first product in that category.
-  const categoryImage = (cat: Category) => {
-    const prod = products.find((p) => String(p.categoryId) === String(cat.id));
-    return prod?.image || '/images/default-product.svg';
-  };
-
-  // Premium credential strip beneath the hero.
-  const trust = [
-    { icon: <FlaskConical size={22} />, title: en ? 'USA Technology' : 'Công nghệ Hoa Kỳ', sub: en ? 'Advanced biotech' : 'Sinh học tiên tiến' },
-    { icon: <ShieldCheck size={22} />, title: 'GMP-WHO', sub: en ? 'Certified factory' : 'Nhà máy đạt chuẩn' },
-    { icon: <Award size={22} />, title: '20+', sub: en ? 'Years of expertise' : 'Năm kinh nghiệm' },
-    { icon: <Users size={22} />, title: '1000+', sub: en ? 'Trusted partners' : 'Khách hàng tin dùng' },
-  ];
-
-  // Stats band — PLACEHOLDER figures, edit to real BINOVET numbers.
   const stats = [
-    { icon: <Award size={26} />, value: '20+', label: en ? 'Years of experience' : 'Năm kinh nghiệm' },
-    { icon: <Package size={26} />, value: `${Math.max(products.length, 100)}+`, label: en ? 'Products' : 'Sản phẩm' },
-    { icon: <Building2 size={26} />, value: 'GMP-WHO', label: en ? 'Factory standard' : 'Tiêu chuẩn nhà máy' },
-    { icon: <MapPin size={26} />, value: '63', label: en ? 'Provinces covered' : 'Tỉnh thành phủ sóng' },
-    { icon: <Users size={26} />, value: '1000+', label: en ? 'Trusted customers' : 'Khách hàng tin dùng' },
+    { icon: <Award size={26} />, value: '15+', label: en ? 'Years of experience' : 'Năm kinh nghiệm' },
+    { icon: <Briefcase size={26} />, value: '12+', label: en ? 'Core services' : 'Dịch vụ chuyên sâu' },
+    { icon: <ShieldCheck size={26} />, value: '100%', label: en ? 'Data Security' : 'Bảo mật dữ liệu' },
+    { icon: <MapPin size={26} />, value: '3', label: en ? 'Branches' : 'Chi nhánh' },
+    { icon: <Users size={26} />, value: '2000+', label: en ? 'Happy Clients' : 'Khách hàng hài lòng' },
   ];
 
-  const hotline = (settings as any)?.hotline1 || '024 6686 1629';
-
-  // Product-line ticker beneath the hero — real category names, curated fallback.
-  const marqueeFallback = en
-    ? ['Antibiotics', 'Veterinary vaccines', 'Antiparasitics', 'Vitamins & minerals', 'Disinfectants', 'Veterinary equipment', 'Animal feed', 'Respiratory', 'Digestive', 'Biologicals']
-    : ['Thuốc kháng sinh', 'Vaccine thú y', 'Thuốc ký sinh trùng', 'Vitamin & khoáng chất', 'Thuốc sát trùng', 'Dụng cụ thú y', 'Thức ăn chăn nuôi', 'Thuốc hô hấp', 'Thuốc tiêu hóa', 'Chế phẩm sinh học'];
-  const marqueeItems = categories.length ? categories.map((c) => c.name) : marqueeFallback;
+  const hotline = '1900 1234';
 
   return (
     <div className="w-full bg-white">
       {/* ════════ 1 · Cinematic hero ════════ */}
       <BannerSlider
         banners={activeBanners}
-        eyebrow={en ? 'Veterinary biotechnology' : 'Công nghệ sinh học thú y'}
+        eyebrow={en ? 'Corporate Financial Experts' : 'Chuyên Gia Tài Chính Doanh Nghiệp'}
         subtitle={
           en
-            ? 'Partnering with the global livestock industry — high-quality animal health solutions, every line manufactured to GMP-WHO standards.'
-            : 'Đồng hành cùng ngành chăn nuôi toàn cầu — giải pháp chăm sóc sức khỏe vật nuôi chất lượng cao, mỗi sản phẩm đạt chuẩn GMP-WHO.'
+            ? 'Providing accurate, compliant, and optimized accounting and tax solutions for your business.'
+            : 'Cung cấp giải pháp kế toán, thuế và tài chính minh bạch, chuẩn xác, tối ưu hóa lợi ích cho doanh nghiệp.'
         }
-        ctaLabel={en ? 'Explore products' : 'Khám phá sản phẩm'}
+        ctaLabel={en ? 'Explore services' : 'Khám phá dịch vụ'}
         secondaryLabel={en ? 'Talk to an expert' : 'Liên hệ tư vấn'}
         secondaryHref={contactHref}
         scrollLabel={en ? 'Scroll' : 'Cuộn xuống'}
-        fallbackTitle={en ? 'Partnering with the Global Livestock Industry' : 'Đồng hành cùng ngành chăn nuôi toàn cầu'}
+        fallbackTitle={en ? 'Partnering with your Business' : 'Đồng hành cùng sự phát triển của Doanh Nghiệp'}
       />
 
-      {/* ════════ 2 · Product-line ticker ════════ */}
-      <CategoryMarquee items={marqueeItems} />
-
-      {/* ════════ 3 · Company introduction + film ════════ */}
-      <section className="py-24 lg:py-28 bg-white overflow-hidden relative">
+      {/* ════════ 2 · Featured Services ════════ */}
+      <section className="py-24 lg:py-28 bg-white overflow-hidden relative border-b border-line">
         <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-center">
-              {/* Film + experience medallion — left */}
-              <Reveal direction="left" distance={64} className="w-full lg:w-1/2 relative">
-                <IntroVideo
-                  video={introVideo ? { url: introVideo.url, thumbnail: introVideo.thumbnail, title: introVideo.title } : null}
-                  youtubeUrl={(settings as any)?.social?.youtube}
-                  poster="/images/about.webp"
-                  label={en ? 'Company film' : 'Phim giới thiệu'}
-                />
-                {/* floating experience medallion */}
-                <div className="absolute -bottom-7 -right-4 sm:-right-7 z-20 float-slow">
-                  <div className="w-28 h-28 lg:w-32 lg:h-32 rounded-full bg-white shadow-float border border-line flex flex-col items-center justify-center text-center ring-1 ring-brass/30">
-                    <span className="font-display text-3xl lg:text-4xl font-semibold text-primary leading-none">20+</span>
-                    <span className="mt-1.5 font-montserrat text-[0.56rem] font-bold uppercase tracking-[0.18em] text-ink-soft px-3 leading-tight">
-                      {en ? 'Years of growth' : 'Năm phát triển'}
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Heading, intro & feature cards — right */}
-              <Reveal direction="right" delay={0.1} distance={64} className="w-full lg:w-1/2">
-                <span className="eyebrow mb-5">{en ? 'About us' : 'Về chúng tôi'}</span>
-                <h2 className="font-display font-semibold leading-[1.1] tracking-tight text-4xl lg:text-[2.9rem] text-ink">
-                  {h.about.titleLine1} <span className="text-primary italic">{h.about.titleLine2}</span>
-                </h2>
-
-                <p className="text-ink-soft mt-7 leading-relaxed text-lg">{h.about.paragraph}</p>
-
-                <div className="mt-9 space-y-4">
-                  <div className="group flex items-start gap-4 rounded-xl border border-line bg-paper/60 p-5 transition-all duration-300 hover:border-secondary/40 hover:shadow-elegant">
-                    <span className="w-12 h-12 rounded-full bg-secondary-light text-secondary flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                      <BadgeCheck size={24} />
-                    </span>
-                    <div>
-                      <h3 className="font-display font-semibold text-ink text-[1.02rem]">{h.about.feature1Title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{h.about.feature1Desc}</p>
-                    </div>
-                  </div>
-                  <div className="group flex items-start gap-4 rounded-xl border border-line bg-paper/60 p-5 transition-all duration-300 hover:border-secondary/40 hover:shadow-elegant">
-                    <span className="w-12 h-12 rounded-full bg-secondary-light text-secondary flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                      <Headset size={24} />
-                    </span>
-                    <div>
-                      <h3 className="font-display font-semibold text-ink text-[1.02rem]">{h.about.feature2Title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{h.about.feature2Desc}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-9 flex flex-wrap gap-4 items-center">
-                  <Link href={localePath(locale, '/gioi-thieu')} className="btn btn-primary">
-                    {h.about.ctaJourney} <ArrowRight size={16} />
-                  </Link>
-                  <Link href={localePath(locale, '/thu-vien')} className="btn btn-outline">
-                    {en ? 'Photo & video gallery' : 'Thư viện ảnh & video'}
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
-        </div>
-      </section>
-
-      {/* ════════ 4 · Signature products ════════ */}
-      {featuredProducts.length > 0 && (
-        <section className="py-24 lg:py-28 bg-paper border-t border-line relative overflow-hidden">
-          <div className="absolute inset-0 bg-helix opacity-60 pointer-events-none" />
-          <div className="container mx-auto px-4 relative z-10">
-            <Reveal direction="down" className="mb-16">
-              <SectionHeading
-                align="center"
-                divider
-                eyebrow={en ? 'Signature products' : 'Sản phẩm tiêu biểu'}
-                title={en ? 'Trusted on farms' : 'Được nhà nông tin dùng trên'}
-                accent={en ? 'nationwide' : 'mọi miền'}
-                subtitle={en ? 'A curated selection of our most trusted veterinary pharmaceutical lines.' : 'Tuyển chọn những dòng dược phẩm thú y được tin dùng rộng rãi nhất.'}
-                titleClassName="text-3xl lg:text-4xl"
-              />
-            </Reveal>
-
-            <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7" stagger={0.1}>
-              {featuredProducts.map((p) => (
-                <StaggerItem key={p.id}>
-                  <Link href={localePath(locale, `/san-pham/${p.slug}`)} className="card-elegant overflow-hidden group flex flex-col h-full">
-                    <div className="relative aspect-square bg-white overflow-hidden flex items-center justify-center">
-                      <img
-                        src={p.image || '/images/default-product.svg'}
-                        alt={p.name}
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                        className="p-6 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
-                      />
-                    </div>
-                    <div className="border-t border-line p-5 flex flex-col flex-1">
-                      {categoryName(p.categoryId) && (
-                        <span className="font-montserrat text-[0.6rem] font-bold uppercase tracking-[0.18em] text-secondary mb-2">
-                          {categoryName(p.categoryId)}
-                        </span>
-                      )}
-                      <h3 className="font-display font-semibold text-ink leading-snug line-clamp-2 transition-colors group-hover:text-primary">
-                        {p.name}
-                      </h3>
-                      <span className="mt-auto pt-4 inline-flex items-center gap-1.5 font-montserrat text-[0.66rem] font-bold uppercase tracking-[0.16em] text-primary">
-                        {en ? 'View details' : 'Xem chi tiết'}
-                        <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-
-            <div className="text-center mt-14">
-              <Link href={localePath(locale, '/san-pham')} className="btn btn-primary">
-                {h.featured.viewAll} <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ════════ 5 · Product category lines ════════ */}
-      <section className="py-24 lg:py-28 bg-white relative border-t border-line">
-        <div className="container mx-auto px-4">
           <Reveal direction="down" className="mb-16">
             <SectionHeading
               align="center"
               divider
-              eyebrow={en ? 'Product lines' : 'Dòng sản phẩm'}
-              title={en ? 'The leading veterinary medicine brand of' : 'Thương hiệu dược thú y chất lượng hàng đầu'}
-              accent={en ? 'Vietnam' : 'Việt Nam'}
-              subtitle={en ? 'A complete portfolio across every farming need — built on GMP-WHO standards.' : 'Danh mục đầy đủ cho mọi nhu cầu chăn nuôi — đạt tiêu chuẩn GMP-WHO.'}
+              eyebrow={en ? 'Outstanding Services' : 'Dịch vụ nổi bật'}
+              title={en ? 'Comprehensive ' : 'Giải pháp '}
+              accent={en ? 'Solutions' : 'Toàn diện'}
+              subtitle={en ? 'Tailored services to fit every business scale.' : 'Các dịch vụ được tinh chỉnh phù hợp với mọi quy mô doanh nghiệp.'}
               titleClassName="text-3xl lg:text-4xl"
             />
           </Reveal>
 
-          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" stagger={0.12}>
-            {categories.map((cat, i) => (
-              <StaggerItem key={cat.id}>
-                <Link
-                  href={localePath(locale, `/san-pham/danh-muc/${cat.slug}`)}
-                  className="card-elegant overflow-hidden group flex flex-col h-full"
-                >
-                  {/* Product line-up image */}
-                  <div className="aspect-[4/3] flex items-center justify-center bg-paper overflow-hidden relative">
-                    <span className="absolute top-4 right-5 font-display text-5xl font-semibold text-ink/[0.06] leading-none select-none">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="absolute inset-0 bg-gradient-to-t from-primary-light/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <img
-                      src={categoryImage(cat)}
-                      alt={cat.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      className="relative p-6 transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
-                    />
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.1}>
+            {featuredServices.map((service, i) => (
+              <StaggerItem key={i}>
+                <div className="card-elegant h-full flex flex-col p-8 group hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-2xl bg-secondary-light/30 flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 size={28} />
                   </div>
-
-                  {/* Prominent label bar — fills with brand color on hover */}
-                  <div className="relative mt-auto overflow-hidden border-t border-line">
-                    <span className="absolute inset-0 bg-secondary origin-bottom scale-y-0 transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100" />
-                    <h3 className="relative z-10 flex items-center justify-center gap-2 py-5 px-4 text-center font-display font-semibold text-[0.95rem] leading-snug text-ink transition-colors duration-300 group-hover:text-white">
-                      {cat.name}
-                      <ArrowRight
-                        size={16}
-                        className="shrink-0 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                      />
-                    </h3>
-                  </div>
-                </Link>
+                  <h3 className="font-display text-xl font-semibold text-ink mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-ink-soft mb-6 flex-grow leading-relaxed">
+                    {service.desc}
+                  </p>
+                  <Link
+                    href={localePath(locale, `/dich-vu/${service.slug}`)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-secondary hover:text-primary transition-colors mt-auto"
+                  >
+                    {en ? 'Learn more' : 'Tìm hiểu thêm'} <ArrowRight size={16} />
+                  </Link>
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
 
-          <div className="text-center mt-12">
-            <Link href={localePath(locale, '/san-pham')} className="btn btn-outline">
-              {h.featured.viewAll} <ArrowRight size={16} />
+          <div className="text-center mt-14">
+            <Link href={localePath(locale, '/dich-vu')} className="btn btn-primary">
+              {en ? 'View all services' : 'Xem tất cả dịch vụ'} <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ════════ 6 · Statistics band ════════ */}
-      <section className="py-20 lg:py-24 bg-binovet-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-molecule opacity-70" />
-        <div className="absolute inset-0 bg-[radial-gradient(40rem_40rem_at_80%_-10%,rgba(217,83,31,0.18),transparent_60%),radial-gradient(40rem_40rem_at_0%_110%,rgba(10,77,140,0.45),transparent_55%)]" />
+      {/* ════════ 3 · Statistics band ════════ */}
+      <section className="py-20 lg:py-24 bg-vtax-dark text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-finance opacity-30" />
+        <div className="absolute inset-0 bg-[radial-gradient(40rem_40rem_at_80%_-10%,rgba(38,131,198,0.18),transparent_60%),radial-gradient(40rem_40rem_at_0%_110%,rgba(10,77,140,0.45),transparent_55%)]" />
         <div className="container mx-auto px-4 relative z-10">
           <Reveal direction="down" className="mb-14 text-center">
             <span className="eyebrow eyebrow--center text-secondary mb-4 justify-center">{en ? 'By the numbers' : 'Những con số'}</span>
             <h2 className="font-display font-semibold text-white text-3xl lg:text-4xl">
-              {en ? 'A track record farmers ' : 'Thành tựu được nhà nông '}
-              <span className="text-secondary italic">{en ? 'trust' : 'tin tưởng'}</span>
+              {en ? 'Trust built over ' : 'Niềm tin được xây dựng qua '}
+              <span className="text-secondary italic">{en ? 'years' : 'năm tháng'}</span>
             </h2>
           </Reveal>
           <StaggerGroup className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6" stagger={0.1}>
@@ -337,126 +161,90 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ════════ 7 · Newsroom ════════ */}
-      {latestNews.length > 0 && (
-        <section className="py-24 lg:py-28 bg-white overflow-hidden relative">
-          <div className="container mx-auto px-4 relative z-10">
-            <Reveal direction="down" className="mb-16">
-              <SectionHeading
-                align="center"
-                divider
-                eyebrow={en ? 'Newsroom' : 'Bản tin'}
-                title={h.news.titleA}
-                accent={h.news.titleB}
-                subtitle={h.news.sub}
-                titleClassName="text-3xl lg:text-4xl"
-              />
-            </Reveal>
+      {/* ════════ 4 · Customer Reviews ════════ */}
+      <section className="py-24 lg:py-28 bg-paper overflow-hidden relative">
+        <div className="container mx-auto px-4 relative z-10">
+          <Reveal direction="down" className="mb-16">
+            <SectionHeading
+              align="center"
+              divider
+              eyebrow={en ? 'Testimonials' : 'Đánh giá từ khách hàng'}
+              title={en ? 'What they ' : 'Khách hàng '}
+              accent={en ? 'say about us' : 'nói về VTAX'}
+              subtitle={en ? 'Success stories from businesses we have partnered with.' : 'Những câu chuyện thành công từ các đối tác của chúng tôi.'}
+              titleClassName="text-3xl lg:text-4xl"
+            />
+          </Reveal>
+          
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6" stagger={0.1}>
+            {customerReviews.map((review, i) => (
+              <StaggerItem key={i}>
+                <div className="card-elegant p-8 bg-white h-full relative">
+                  <Quote className="absolute top-6 right-6 text-primary/10" size={48} />
+                  <p className="text-ink-soft mb-8 leading-relaxed relative z-10">"{review.content}"</p>
+                  <div className="flex items-center gap-4 mt-auto">
+                    <div className="w-12 h-12 rounded-full bg-line flex items-center justify-center text-ink-soft font-display font-semibold">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-display font-semibold text-ink text-sm">{review.name}</h4>
+                      <span className="text-xs text-ink-soft">{review.role}</span>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-              {/* Lead story — large */}
-              {latestNews[0] && (() => {
-                const a = latestNews[0];
-                const href = localePath(locale, `/bai-viet/${a.slug}`);
-                return (
-                  <Reveal direction="left" distance={56}>
-                    <article className="group h-full flex flex-col">
-                      <Link href={href} className="block aspect-[16/10] overflow-hidden rounded-2xl shadow-elegant-lg">
-                        <img
-                          src={a?.thumbnail || '/images/default-article.svg'}
-                          alt={a.title}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          className="transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </Link>
-                      <div className="mt-6">
-                        <span className="font-montserrat text-[0.62rem] font-bold uppercase tracking-[0.2em] text-secondary">
-                          {en ? 'Featured' : 'Tiêu điểm'}
-                        </span>
-                        <h3 className="mt-3 font-display font-semibold text-2xl lg:text-[1.7rem] leading-snug text-ink line-clamp-3 transition-colors group-hover:text-primary">
-                          <Link href={href}>{a.title}</Link>
-                        </h3>
-                        {a.excerpt && <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-soft line-clamp-3">{a.excerpt}</p>}
-                        <Link href={href} className="mt-5 inline-flex items-center gap-1.5 font-montserrat text-[0.68rem] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:text-secondary">
-                          {en ? 'Read article' : 'Đọc bài viết'} <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
-                        </Link>
-                      </div>
-                    </article>
-                  </Reveal>
-                );
-              })()}
+      {/* ════════ 5 · News & Promos ════════ */}
+      <section className="py-24 lg:py-28 bg-white overflow-hidden relative border-t border-line">
+        <div className="container mx-auto px-4 relative z-10">
+          <Reveal direction="down" className="mb-16">
+            <SectionHeading
+              align="center"
+              divider
+              eyebrow={en ? 'Insights & News' : 'Tin tức & Ưu đãi'}
+              title={en ? 'Latest ' : 'Cập nhật '}
+              accent={en ? 'Updates' : 'Mới Nhất'}
+              subtitle={en ? 'Important tax updates and knowledge to empower your business.' : 'Các quy định thuế mới và những ưu đãi dịch vụ đặc biệt.'}
+              titleClassName="text-3xl lg:text-4xl"
+            />
+          </Reveal>
 
-              {/* Secondary stories — stacked list (max 4, keeps the hero row balanced) */}
-              <div className="flex flex-col divide-y divide-line">
-                {sideNews.map((a, i) => {
-                  const href = localePath(locale, `/bai-viet/${a.slug}`);
-                  return (
-                    <Reveal key={a.id} direction="right" delay={i * 0.1} distance={56}>
-                      <article className={`group grid grid-cols-[7.5rem_1fr] sm:grid-cols-[10rem_1fr] gap-5 py-6 ${i === 0 ? 'pt-0' : ''} ${i === sideNews.length - 1 ? 'pb-0' : ''}`}>
-                        <Link href={href} className="block aspect-[4/3] overflow-hidden rounded-xl shadow-elegant">
-                          <img
-                            src={a?.thumbnail || '/images/default-article.svg'}
-                            alt={a.title}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            className="transition-transform duration-700 group-hover:scale-105"
-                          />
-                        </Link>
-                        <div className="flex flex-col justify-center">
-                          <h3 className="font-display font-semibold text-[1.05rem] lg:text-lg leading-snug text-ink line-clamp-3 transition-colors group-hover:text-primary">
-                            <Link href={href}>{a.title}</Link>
-                          </h3>
-                          <Link href={href} className="mt-2.5 inline-flex items-center gap-1.5 font-montserrat text-[0.62rem] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:text-secondary">
-                            {en ? 'See more' : 'Chi tiết'} <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
-                          </Link>
-                        </div>
-                      </article>
-                    </Reveal>
-                  );
-                })}
-              </div>
-            </div>
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8" stagger={0.1}>
+            {latestNews.map((news, i) => (
+              <StaggerItem key={i}>
+                <article className="group h-full flex flex-col">
+                  <Link href={localePath(locale, `/kien-thuc/${news.slug}`)} className="block aspect-[16/10] overflow-hidden rounded-2xl shadow-elegant-lg mb-6 bg-paper relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-display text-4xl text-primary/10 font-bold group-hover:scale-110 transition-transform duration-700">VTAX</span>
+                    </div>
+                  </Link>
+                  <span className="font-montserrat text-[0.62rem] font-bold uppercase tracking-[0.2em] text-secondary mb-3">
+                    {news.date}
+                  </span>
+                  <h3 className="font-display font-semibold text-xl leading-snug text-ink line-clamp-2 transition-colors group-hover:text-primary mb-3">
+                    <Link href={localePath(locale, `/kien-thuc/${news.slug}`)}>{news.title}</Link>
+                  </h3>
+                  <p className="text-[0.95rem] leading-relaxed text-ink-soft line-clamp-3">{news.excerpt}</p>
+                </article>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
 
-            {/* Remaining featured stories — compact card grid */}
-            {gridNews.length > 0 && (
-              <StaggerGroup className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7" stagger={0.08}>
-                {gridNews.map((a) => {
-                  const href = localePath(locale, `/bai-viet/${a.slug}`);
-                  return (
-                    <StaggerItem key={a.id}>
-                      <article className="group h-full flex flex-col">
-                        <Link href={href} className="block aspect-[16/10] overflow-hidden rounded-xl shadow-elegant">
-                          <img
-                            src={a?.thumbnail || '/images/default-article.svg'}
-                            alt={a.title}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            className="transition-transform duration-700 group-hover:scale-105"
-                          />
-                        </Link>
-                        <h3 className="mt-4 font-display font-semibold text-[0.95rem] lg:text-base leading-snug text-ink line-clamp-2 transition-colors group-hover:text-primary">
-                          <Link href={href}>{a.title}</Link>
-                        </h3>
-                        <Link href={href} className="mt-auto pt-2.5 inline-flex items-center gap-1.5 font-montserrat text-[0.62rem] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:text-secondary">
-                          {en ? 'See more' : 'Chi tiết'} <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
-                        </Link>
-                      </article>
-                    </StaggerItem>
-                  );
-                })}
-              </StaggerGroup>
-            )}
-
-            <div className="text-center mt-16">
-              <Link href={localePath(locale, '/tin-tuc')} className="btn btn-outline">
-                {h.news.cta} <ArrowRight size={16} />
-              </Link>
-            </div>
+          <div className="text-center mt-16">
+            <Link href={localePath(locale, '/kien-thuc')} className="btn btn-outline">
+              {en ? 'View all news' : 'Xem tất cả bài viết'} <ArrowRight size={16} />
+            </Link>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* ════════ 8 · Closing CTA ════════ */}
+      {/* ════════ 6 · Closing CTA ════════ */}
       <section className="relative overflow-hidden box-footer text-white">
-        <div className="absolute inset-0 bg-molecule opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 bg-finance opacity-20 pointer-events-none" />
         <div className="absolute -top-10 -right-10 text-white/[0.05] pointer-events-none select-none hidden md:block">
           <Monogram size={360} withText={false} tone="light" />
         </div>
@@ -464,17 +252,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="max-w-3xl">
             <span className="eyebrow text-secondary mb-5">{en ? 'Partner with us' : 'Đồng hành cùng chúng tôi'}</span>
             <h2 className="font-display font-semibold text-white leading-[1.12] tracking-tight text-3xl sm:text-4xl lg:text-[3rem]">
-              {en ? 'Ready to elevate ' : 'Sẵn sàng nâng tầm '}
-              <span className="text-secondary italic">{en ? 'your farm?' : 'trang trại của bạn?'}</span>
+              {en ? 'Ready to optimize ' : 'Sẵn sàng tối ưu hóa '}
+              <span className="text-secondary italic">{en ? 'your taxes?' : 'tài chính doanh nghiệp?'}</span>
             </h2>
             <p className="mt-6 text-white/75 text-base lg:text-lg leading-relaxed max-w-2xl">
               {en
-                ? 'Our veterinary experts are ready to advise on the right protocol for your herd — from prevention to treatment, anytime.'
-                : 'Đội ngũ chuyên gia thú y của chúng tôi luôn sẵn sàng tư vấn phác đồ phù hợp cho đàn vật nuôi — từ phòng bệnh đến điều trị, mọi lúc bạn cần.'}
+                ? 'Our accounting experts are ready to advise you anytime.'
+                : 'Đội ngũ chuyên gia kế toán và thuế của chúng tôi luôn sẵn sàng hỗ trợ doanh nghiệp bạn.'}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
               <Link href={contactHref} className="btn btn-accent">
-                {en ? 'Contact us' : 'Liên hệ tư vấn'} <ArrowUpRight size={16} />
+                {en ? 'Contact us' : 'Đăng ký tư vấn ngay'} <ArrowUpRight size={16} />
               </Link>
               <a href={`tel:${hotline.replace(/\s/g, '')}`} className="flex items-center gap-4 group">
                 <span className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">

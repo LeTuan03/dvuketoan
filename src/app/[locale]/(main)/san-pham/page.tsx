@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import { productService, categoryService } from '@/services';
 import { Category, ProductSummary } from '@/types';
@@ -16,21 +16,21 @@ import { localizeAll } from '@/lib/i18n/localize';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const en = resolveLocale((await params).locale) === 'en';
-  const title = en ? 'Products - binovet' : 'Danh mục Sản phẩm - binovet';
+  const title = en ? 'Products - VTAX' : 'Danh mục Sản phẩm - VTAX';
   const description = en
-    ? 'Catalogue of high-quality veterinary medicines, supplements and antibiotics from binovet. GMP-WHO standard products built on advanced USA technology.'
-    : 'Danh mục các loại dược thú y, thuốc bổ trợ, kháng sinh chất lượng cao từ binovet. Sản phẩm đạt chuẩn GMP-WHO với công nghệ tiên tiến từ USA.';
+    ? 'Catalogue of high-quality veterinary medicines, supplements and antibiotics from VTAX. GMP-WHO standard products built on advanced USA technology.'
+    : 'Danh mục các loại dược thú y, thuốc bổ trợ, kháng sinh chất lượng cao từ VTAX. Sản phẩm đạt chuẩn GMP-WHO với công nghệ tiên tiến từ USA.';
   return {
     title,
     description,
     keywords: en
-      ? ['veterinary medicine', 'supplements', 'antibiotics', 'binovet', 'livestock products']
-      : ['dược thú y', 'thuốc bổ trợ', 'kháng sinh', 'binovet', 'sản phẩm chăn nuôi'],
+      ? ['veterinary medicine', 'supplements', 'antibiotics', 'VTAX', 'livestock products']
+      : ['dược thú y', 'thuốc bổ trợ', 'kháng sinh', 'VTAX', 'sản phẩm chăn nuôi'],
     robots: 'index, follow',
     openGraph: {
       title,
       description,
-      url: 'https://binovet.com/san-pham',
+      url: 'https://VTAX.com/san-pham',
       images: [
         {
           url: '/images/about.svg',

@@ -153,7 +153,7 @@ function AdminMenusPageContent() {
       render: (text: string, record: any) => (
         <span style={{ paddingLeft: record.parent ? 32 : 0, fontWeight: record.parent ? 'normal' : 'bold' }}>
           {record.parent && <span className="text-gray-300 mr-2 text-xs">└─</span>}
-          <span className="text-binovet-dark">{text}</span>
+          <span className="text-vtax-dark">{text}</span>
         </span>
       ),
     },
@@ -340,7 +340,7 @@ function AdminMenusPageContent() {
 
           <Row gutter={24}>
             <Col span={12}>
-               <Form.Item name="hasMega" label="Mega Menu (Sản phẩm)">
+               <Form.Item name="hasMega" label="Mega Menu (Dịch vụ)">
                  <Select className="rounded-xl h-10">
                     <Select.Option value={false}>Không</Select.Option>
                     <Select.Option value={true}>Kích hoạt Mega Menu</Select.Option>

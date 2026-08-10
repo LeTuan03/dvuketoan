@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { Suspense } from 'react';
 import AboutContent from './AboutContent';
 import { resolveLocale } from '@/lib/i18n/config';
@@ -6,24 +6,24 @@ import { resolveLocale } from '@/lib/i18n/config';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const en = resolveLocale((await params).locale) === 'en';
   const title = en
-    ? 'About - BINOVET | Veterinary Biotechnology JSC'
-    : 'Giới Thiệu - BINOVET | BIOTECHNOLOGY VETERINARY.,J.S.C';
+    ? 'About - VTAX | Veterinary Biotechnology JSC'
+    : 'Giới Thiệu - VTAX | BIOTECHNOLOGY VETERINARY.,J.S.C';
   const description = en
-    ? 'Discover BINOVET - Veterinary Biotechnology JSC, a pioneer in USA-technology veterinary pharmaceutical manufacturing in Vietnam.'
-    : 'Tìm hiểu về BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C, đơn vị tiên phong trong sản xuất dược thú y công nghệ USA tại Việt Nam.';
+    ? 'Discover VTAX - Veterinary Biotechnology JSC, a pioneer in USA-technology veterinary pharmaceutical manufacturing in Vietnam.'
+    : 'Tìm hiểu về VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C, đơn vị tiên phong trong sản xuất dược thú y công nghệ USA tại Việt Nam.';
   return {
     title,
     description,
     keywords: en
-      ? ['about binovet', 'veterinary biotechnology', 'veterinary pharmaceutical factory', 'binovet history', 'vision mission']
-      : ['giới thiệu binovet', 'công ty việt anh', 'nhà máy dược thú y', 'lịch sử binovet', 'tầm nhìn sứ mệnh'],
+      ? ['about VTAX', 'veterinary biotechnology', 'veterinary pharmaceutical factory', 'VTAX history', 'vision mission']
+      : ['giới thiệu VTAX', 'công ty việt anh', 'nhà máy dược thú y', 'lịch sử VTAX', 'tầm nhìn sứ mệnh'],
     robots: 'index, follow',
     openGraph: {
-      title: en ? 'About - BINOVET' : 'Giới Thiệu - BINOVET',
+      title: en ? 'About - VTAX' : 'Giới Thiệu - VTAX',
       description: en
-        ? 'Discover BINOVET - a pioneer in USA-technology veterinary pharmaceutical manufacturing in Vietnam.'
-        : 'Tìm hiểu về BINOVET - Đơn vị tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam.',
-      url: 'https://binovet.com/gioi-thieu',
+        ? 'Discover VTAX - a pioneer in USA-technology veterinary pharmaceutical manufacturing in Vietnam.'
+        : 'Tìm hiểu về VTAX - Đơn vị tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam.',
+      url: 'https://VTAX.com/gioi-thieu',
       images: [
         {
           url: '/images/about.svg',

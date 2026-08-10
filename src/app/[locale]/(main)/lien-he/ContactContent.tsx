@@ -70,7 +70,7 @@ export default function ContactContent({ settings }: { settings: any }) {
          <PageHero
             locale={locale}
             eyebrow={locale === 'en' ? "Let's talk" : 'Kết nối'}
-            title={locale === 'en' ? 'Contact Binovet' : 'Liên Hệ Binovet'}
+            title={locale === 'en' ? 'Contact VTAX' : 'Liên Hệ VTAX'}
             subtitle={locale === 'en' ? 'We are always ready to listen and answer all your questions 24/7.' : 'Chúng tôi luôn sẵn sàng lắng nghe và giải đáp mọi thắc mắc của bạn 24/7.'}
             breadcrumb={[{ label: locale === 'en' ? 'Contact' : 'Liên hệ' }]}
          />
@@ -111,7 +111,7 @@ export default function ContactContent({ settings }: { settings: any }) {
                         </div>
                         <div>
                            <h4 className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-2">{locale === 'en' ? 'Feedback email' : 'Email phản hồi'}</h4>
-                           <p className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{settings?.email || 'pkd.binovet@gmail.com'}</p>
+                           <p className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{settings?.email || 'pkd.VTAX@gmail.com'}</p>
                         </div>
                      </div>
 
@@ -121,7 +121,7 @@ export default function ContactContent({ settings }: { settings: any }) {
                         </div>
                         <div>
                            <h4 className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-2">Website</h4>
-                           <a href={settings?.website || 'https://binovet.com/'} target="_blank" rel="noopener" className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{(settings?.website || 'https://binovet.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
+                           <a href={settings?.website || 'https://VTAX.com/'} target="_blank" rel="noopener" className="text-lg font-medium text-ink leading-relaxed link-underline inline-block">{(settings?.website || 'https://VTAX.com/').replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
                         </div>
                      </div>
                   </div>
@@ -137,18 +137,18 @@ export default function ContactContent({ settings }: { settings: any }) {
                      </div>
                   )}
 
-                  {/* Technical Support */}
+                  {/* Expert Consulting */}
                   <div className="card-elegant bg-cream p-8 lg:p-10">
-                     <h3 className="text-xl font-semibold text-ink mb-6">{locale === 'en' ? 'Technical Support' : 'Hỗ Trợ Kỹ Thuật'}</h3>
+                     <h3 className="text-xl font-semibold text-ink mb-6">{locale === 'en' ? 'Expert Consulting' : 'Chuyên gia Tư vấn'}</h3>
                      <div className="space-y-5">
                         <div className="flex gap-4 items-start">
                            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary shrink-0 border border-line">
                               <Phone size={18} />
                            </div>
                            <div>
-                              <p className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-1">{locale === 'en' ? 'Technical Director' : 'Giám đốc Kỹ thuật'}</p>
-                              <p className="text-ink font-medium">{settings?.support?.doctorName || 'ThS.BS Phùng Thanh Sơn'}</p>
-                              <p className="text-ink font-medium">{settings?.support?.doctorPhone || '0984 051 798'}</p>
+                              <p className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-1">{locale === 'en' ? 'Chief Tax Advisor' : 'Chuyên gia Thuế cấp cao'}</p>
+                              <p className="text-ink font-medium">{settings?.support?.doctorName || 'ThS. Nguyễn Văn Kế Toán'}</p>
+                              <p className="text-ink font-medium">{settings?.support?.doctorPhone || '0984 000 000'}</p>
                            </div>
                         </div>
                         <div className="flex gap-4 items-start">
@@ -157,7 +157,7 @@ export default function ContactContent({ settings }: { settings: any }) {
                            </div>
                            <div>
                               <p className="text-xs font-montserrat font-semibold text-ink-soft uppercase tracking-[0.12em] mb-1">{locale === 'en' ? 'Support email' : 'Email hỗ trợ'}</p>
-                              <p className="text-ink font-medium">{settings?.support?.doctorEmail || 'thanhson256@gmail.com'}</p>
+                              <p className="text-ink font-medium">{settings?.support?.doctorEmail || 'chuyengia@vtax.vn'}</p>
                            </div>
                         </div>
                      </div>
@@ -237,15 +237,15 @@ export default function ContactContent({ settings }: { settings: any }) {
             </div>
 
             {/* SLOGAN */}
-            <Reveal direction="up" className="bg-binovet-dark text-white p-12 lg:p-20 rounded-2xl relative overflow-hidden flex flex-col items-center justify-center text-center mt-20 lg:mt-28 shadow-elegant-lg">
-               <div className="absolute inset-0 bg-molecule opacity-60" />
+            <Reveal direction="up" className="bg-vtax-dark text-white p-12 lg:p-20 rounded-2xl relative overflow-hidden flex flex-col items-center justify-center text-center mt-20 lg:mt-28 shadow-elegant-lg">
+               <div className="absolute inset-0 bg-finance opacity-60" />
                <div className="relative z-10 flex flex-col items-center">
                   <div className="divider-diamond mb-6"><span /></div>
                   <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight mb-4">
-                     {locale === 'en' ? 'Partnering with the Global Livestock Industry' : 'Đồng hành cùng ngành chăn nuôi toàn cầu'}
+                     {locale === 'en' ? 'Partnering with Businesses Nationwide' : 'Đồng hành cùng Doanh nghiệp Việt'}
                   </h3>
                   <p className="text-lg text-white/75">
-                     {locale === 'en' ? 'BINOVET — high-quality animal health solutions to international standards.' : 'BINOVET — giải pháp chăm sóc sức khỏe vật nuôi chất lượng đạt chuẩn quốc tế.'}
+                     {locale === 'en' ? 'VTAX — professional and accurate financial and tax solutions.' : 'VTAX — Giải pháp tài chính và thuế chuyên nghiệp, chuẩn xác.'}
                   </p>
                </div>
             </Reveal>
@@ -260,7 +260,7 @@ export default function ContactContent({ settings }: { settings: any }) {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title={locale === 'en' ? 'BiotechVet map - Lien Phuong Industrial Cluster, Hong Van, Thuong Tin, Hanoi' : 'Bản đồ BiotechVet - Cụm CN Liên Phương, Xã Hồng Vân, Thường Tín, Hà Nội'}
+                  title={locale === 'en' ? 'VTAX Office Map' : 'Bản đồ VTAX'}
                />
             </Reveal>
          </div>

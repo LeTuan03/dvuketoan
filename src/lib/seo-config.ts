@@ -1,12 +1,12 @@
-/**
+﻿/**
  * SEO Configuration
  * Centralized configuration for SEO-related settings
  */
 
 export const SEO_CONFIG = {
-  BASE_URL: "https://binovet.com.vn",
-  SITE_NAME: "BINOVET",
-  SITE_DESCRIPTION: "BINOVET - Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam",
+  BASE_URL: "https://VTAX.com.vn",
+  SITE_NAME: "VTAX",
+  SITE_DESCRIPTION: "VTAX - Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam",
   COMPANY_NAME: "BIOTECHNOLOGY VETERINARY.,J.S.C",
   
   // Default Images
@@ -16,12 +16,12 @@ export const SEO_CONFIG = {
   LOGO_IMAGE: "/images/logo.png",
   
   // Social Media
-  FACEBOOK_URL: "https://www.facebook.com/binovet",
-  YOUTUBE_URL: "https://www.youtube.com/binovet",
+  FACEBOOK_URL: "https://www.facebook.com/VTAX",
+  YOUTUBE_URL: "https://www.youtube.com/VTAX",
   
   // Contact
   PHONE: "+84-xxx-xxx-xxx",
-  EMAIL: "contact@binovet.com.vn",
+  EMAIL: "contact@VTAX.com.vn",
   
   // Image Dimensions
   OG_IMAGE_WIDTH: 1200,
@@ -34,13 +34,13 @@ export const SEO_CONFIG = {
   // SEO Keywords
   CORE_KEYWORDS: [
     "dược thú y",
-    "binovet",
+    "VTAX",
     "chăn nuôi",
     "gmp-who",
     "phòng bệnh vật nuôi",
     "điều trị bệnh thú y",
     "công nghệ usa",
-    "binovet"
+    "VTAX"
   ],
   
   // Pages

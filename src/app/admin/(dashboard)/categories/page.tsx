@@ -116,7 +116,7 @@ function CategoryManagementContent() {
   const handleDelete = (id: number) => {
     modal.confirm({
       title: 'Xác nhận xóa',
-      content: 'Việc xóa danh mục này có thể ảnh hưởng đến hiển thị của các sản phẩm liên quan. Bạn có chắc chắn?',
+      content: 'Việc xóa danh mục này có thể ảnh hưởng đến hiển thị của các dịch vụ liên quan. Bạn có chắc chắn?',
       okText: 'Xóa',
       okType: 'danger',
       onOk: async () => {
@@ -158,7 +158,7 @@ function CategoryManagementContent() {
       title: 'Tên danh mục',
       dataIndex: 'name',
       key: 'name',
-      render: (text: string) => <span className="font-semibold text-binovet-dark">{text}</span>
+      render: (text: string) => <span className="font-semibold text-vtax-dark">{text}</span>
     },
     {
       title: 'Tên danh mục (EN)',
@@ -196,7 +196,7 @@ function CategoryManagementContent() {
       className="space-y-6 pb-0"
     >
       <AdminPageHeader
-        title="Danh mục sản phẩm"
+        title="Danh mục dịch vụ"
         breadcrumbItems={[
           { title: 'Admin', href: '/admin' },
           { title: 'Danh mục' },

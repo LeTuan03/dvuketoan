@@ -50,7 +50,7 @@ export default function GalleryGrid({ items, emptyText = 'Chưa có nội dung.'
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 className="transition-transform duration-700 group-hover:scale-105"
               />
-              <div className={`absolute inset-0 flex items-center justify-center transition-all ${item.type === 'video' ? 'bg-binovet-dark/35 group-hover:bg-binovet-dark/20' : 'bg-binovet-dark/0 group-hover:bg-binovet-dark/15'}`}>
+              <div className={`absolute inset-0 flex items-center justify-center transition-all ${item.type === 'video' ? 'bg-vtax-dark/35 group-hover:bg-vtax-dark/20' : 'bg-vtax-dark/0 group-hover:bg-vtax-dark/15'}`}>
                 {item.type === 'video' ? (
                   <span className="w-16 h-16 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition-transform">
                     <PlayCircle size={40} />
@@ -79,7 +79,7 @@ export default function GalleryGrid({ items, emptyText = 'Chưa có nội dung.'
           >
             <button
               type="button"
-              className="absolute inset-0 bg-binovet-dark/95 cursor-pointer"
+              className="absolute inset-0 bg-vtax-dark/95 cursor-pointer"
               onClick={() => setSelected(null)}
               aria-label="Close"
             />

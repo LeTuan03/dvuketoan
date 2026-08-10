@@ -100,7 +100,7 @@ export default function AdminSettingsPage() {
                       <Input size="large" className="rounded-xl" prefix={<MailOutlined />} />
                     </Form.Item>
                     <Form.Item name="website" label="Website">
-                      <Input size="large" className="rounded-xl" prefix={<GlobalOutlined />} placeholder="https://binovet.com/" />
+                      <Input size="large" className="rounded-xl" prefix={<GlobalOutlined />} placeholder="https://VTAX.com/" />
                     </Form.Item>
                     <Button type="primary" size="large" htmlType="submit" className="rounded-xl px-10 font-semibold uppercase tracking-wide text-xs h-12 shadow-lg shadow-primary/20">Cập nhật ngay</Button>
                   </div>
@@ -130,12 +130,12 @@ export default function AdminSettingsPage() {
                 label: <span className="flex items-center gap-2 font-bold"><UserOutlined /> Hỗ trợ kỹ thuật</span>,
                 children: (
                   <div className="p-8 max-h-[calc(100vh-300px)] overflow-y-auto">
-                    <h3 className="text-xl font-semibold mb-6 border-b pb-2 tracking-tight text-primary">Thông tin Bác sĩ thú y</h3>
-                    <Form.Item name={['support', 'doctorName']} label="Họ tên BSTY">
+                    <h3 className="text-xl font-semibold mb-6 border-b pb-2 tracking-tight text-primary">Thông tin Chuyên gia tư vấn</h3>
+                    <Form.Item name={['support', 'doctorName']} label="Họ tên Chuyên gia">
                       <Input size="large" className="rounded-xl" />
                     </Form.Item>
                     <Form.Item name={['support', 'doctorRole']} label="Chức danh">
-                      <Input size="large" className="rounded-xl" placeholder="Giám đốc Kỹ thuật" />
+                      <Input size="large" className="rounded-xl" placeholder="Giám đốc Chuyên môn / Chuyên gia Thuế" />
                     </Form.Item>
                     <Form.Item name={['support', 'doctorPhone']} label="Số điện thoại hỗ trợ">
                       <Input size="large" className="rounded-xl" prefix={<PhoneOutlined />} />
@@ -143,7 +143,7 @@ export default function AdminSettingsPage() {
                     <Form.Item name={['support', 'doctorEmail']} label="Email hỗ trợ">
                       <Input size="large" className="rounded-xl" prefix={<MailOutlined />} />
                     </Form.Item>
-                    <Button type="primary" size="large" htmlType="submit" className="rounded-xl px-10 font-semibold uppercase tracking-wide text-xs h-12 shadow-lg shadow-primary/20">Cập nhật hồ sơ BSTY</Button>
+                    <Button type="primary" size="large" htmlType="submit" className="rounded-xl px-10 font-semibold uppercase tracking-wide text-xs h-12 shadow-lg shadow-primary/20">Cập nhật hồ sơ Chuyên gia</Button>
                   </div>
                 )
               }

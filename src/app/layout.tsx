@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Script from "next/script";
 import { Be_Vietnam_Pro } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -26,13 +26,13 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C",
-    template: "%s | BINOVET"
+    default: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
+    template: "%s | VTAX"
   },
-  description: "BINOVET tự hào là đơn vị tiên phong trong sản xuất và phân phối dược thú y trang trại tại Việt Nam với công nghệ tiên tiến từ Hoa Kỳ. Nhà máy đạt tiêu chuẩn GMP-WHO.",
-  keywords: ["dược thú y", "binovet", "chăn nuôi", "gmp-who", "phòng bệnh vật nuôi", "điều trị bệnh thú y"],
-  authors: [{ name: "BINOVET Team" }],
-  metadataBase: new URL("https://binovet.com.vn"),
+  description: "VTAX tự hào là đơn vị tiên phong trong sản xuất và phân phối dược thú y trang trại tại Việt Nam với công nghệ tiên tiến từ Hoa Kỳ. Nhà máy đạt tiêu chuẩn GMP-WHO.",
+  keywords: ["dược thú y", "VTAX", "chăn nuôi", "gmp-who", "phòng bệnh vật nuôi", "điều trị bệnh thú y"],
+  authors: [{ name: "VTAX Team" }],
+  metadataBase: new URL("https://VTAX.com.vn"),
   robots: {
     index: true,
     follow: true,
@@ -47,22 +47,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://binovet.com.vn",
-    siteName: "BINOVET",
-    title: "BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C",
+    url: "https://VTAX.com.vn",
+    siteName: "VTAX",
+    title: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
     description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam. Nhà máy đạt chuẩn GMP-WHO.",
     images: [
       {
         url: "/images/about.svg",
         width: 1200,
         height: 630,
-        alt: "BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C",
+        alt: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C",
+    title: "VTAX - BIOTECHNOLOGY VETERINARY.,J.S.C",
     description: "Tiên phong sản xuất dược thú y công nghệ USA tại Việt Nam.",
     images: ["/images/about.svg"],
   },
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     google: 'chW742CBbHiq1N1wt4y4l9zpfbcqZhjEOaXaOTVDbcI',
   },
   alternates: {
-    canonical: "https://binovet.com.vn",
+    canonical: "https://VTAX.com.vn",
   },
   category: "veterinary",
   classification: "Pharmaceutical",
@@ -140,11 +140,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "url": "https://binovet.com.vn",
-              "name": "BINOVET",
+              "url": "https://VTAX.com.vn",
+              "name": "VTAX",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://binovet.com/search?q={search_term_string}",
+                "target": "https://VTAX.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

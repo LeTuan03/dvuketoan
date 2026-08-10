@@ -2,25 +2,23 @@
   "nav": {
     "home": "Trang chủ",
     "about": "Giới thiệu",
-    "products": "Sản phẩm",
-    "handbook": "Cẩm nang",
-    "news": "Tin tức",
-    "catalogue": "Thư viện ảnh",
-    "recruitment": "Tuyển dụng",
+    "services": "Dịch vụ",
+    "knowledge": "Kiến thức",
+    "lookup": "Tra cứu",
     "contact": "Liên hệ"
   },
   "header": {
-    "consultBuy": "Tư vấn mua hàng",
-    "slogan": "BINOVET - Đồng hành cùng ngành chăn nuôi toàn cầu",
-    "companyName": "BIOTECHNOLOGY VETERINARY.,J.S.C",
+    "consultBuy": "Đăng ký tư vấn",
+    "slogan": "VTAX - Chuyên gia kế toán & thuế cho doanh nghiệp",
+    "companyName": "CÔNG TY DỊCH VỤ KẾ TOÁN VTAX",
     "searchPlaceholder": "Tìm kiếm...",
-    "allProducts": "Tất cả sản phẩm"
+    "allProducts": "Tất cả dịch vụ"
   },
   "common": {
     "readMore": "Xem thêm",
     "viewAll": "Xem tất cả",
     "discover": "Khám phá",
-    "readNews": "Đọc bản tin",
+    "readNews": "Đọc bài viết",
     "loading": "Đang tải...",
     "search": "Tìm kiếm",
     "backHome": "Về trang chủ"
@@ -28,48 +26,48 @@
   "home": {
     "about": {
       "eyebrow": "Về Chúng Tôi",
-      "titleLine1": "BIOTECHNOLOGY",
-      "titleLine2": "VETERINARY.,J.S.C",
-      "paragraph": "Binovet Pharmaceuticals tự hào là đơn vị dẫn đầu trong ứng dụng công nghệ sinh học Hoa Kỳ vào sản xuất dược phẩm thú y tại Việt Nam. Chúng tôi cam kết mang lại giải pháp y tế tối ưu, giúp nâng cao năng suất chăn nuôi bền vững.",
-      "badgeYears": "Năm Phát Triển Khẳng Định Vị Thế",
-      "feature1Title": "Chất lượng GMP-WHO",
-      "feature1Desc": "Dây chuyền sản xuất hiện đại, quy trình kiểm soát nghiêm ngặt theo tiêu chuẩn quốc tế.",
-      "feature2Title": "Hỗ trợ kỹ thuật 24/7",
-      "feature2Desc": "Đội ngũ chuyên gia giàu kinh nghiệm luôn sẵn sàng đồng hành cùng các chủ trang trại.",
-      "ctaJourney": "Hành trình của chúng tôi",
-      "ctaCatalogue": "Thư viện ảnh & video"
+      "titleLine1": "ĐẠI LÝ THUẾ",
+      "titleLine2": "VTAX",
+      "paragraph": "VTAX tự hào là đơn vị hàng đầu cung cấp dịch vụ kế toán, thuế và tư vấn pháp lý doanh nghiệp tại Việt Nam. Chúng tôi đồng hành cùng sự phát triển bền vững của doanh nghiệp bạn.",
+      "badgeYears": "Năm Đồng Hành Cùng Doanh Nghiệp",
+      "feature1Title": "Chuyên nghiệp & Chính xác",
+      "feature1Desc": "Đội ngũ chuyên viên giàu kinh nghiệm, nắm vững luật pháp, đảm bảo số liệu minh bạch, chuẩn xác.",
+      "feature2Title": "Hỗ trợ tận tâm",
+      "feature2Desc": "Luôn sẵn sàng tư vấn, giải đáp mọi thắc mắc và đồng hành cùng doanh nghiệp 24/7.",
+      "ctaJourney": "Tìm hiểu thêm",
+      "ctaCatalogue": "Hồ sơ năng lực"
     },
     "featured": {
-      "eyebrow": "Sản phẩm chất lượng",
-      "titleA": "Sản Phẩm",
+      "eyebrow": "Dịch vụ chuyên nghiệp",
+      "titleA": "Dịch Vụ",
       "titleB": "Nổi Bật",
-      "sub": "Các dòng dược phẩm thú y bán chạy nhất và được tin dùng rộng rãi trên thị trường",
-      "viewAll": "Tất cả sản phẩm"
+      "sub": "Các giải pháp tài chính, kế toán và thuế toàn diện giúp doanh nghiệp an tâm phát triển.",
+      "viewAll": "Xem tất cả dịch vụ"
     },
     "why": {
       "eyebrow": "Giá trị cốt lõi",
       "titleA": "Tại Sao Chọn",
-      "titleB": "BINOVET?",
-      "sub": "Sứ mệnh của chúng tôi là cung cấp những giải pháp y tế tối ưu, giúp bảo vệ và nâng cao năng suất đàn vật nuôi tại Việt Nam.",
+      "titleB": "VTAX?",
+      "sub": "Sứ mệnh của chúng tôi là bảo vệ an toàn tài chính và tối ưu hóa chi phí thuế cho doanh nghiệp.",
       "features": [
-        { "title": "Công nghệ USA", "desc": "Ứng dụng công nghệ tiên tiến từ Hoa Kỳ trong sản xuất dược thú y" },
-        { "title": "Đạt chuẩn GMP", "desc": "Nhà máy đạt chuẩn chất lượng GMP-WHO về sản xuất dược phẩm" },
-        { "title": "200+ Sản phẩm", "desc": "Chất lượng ứng dụng trong chăn nuôi thú y. BTV đã trở thành người bạn đồng hành tin cậy của nhà nông" },
-        { "title": "20+ Năm", "desc": "Năm 2005, BTV thành lập bằng nhiệt huyết, trí tuệ và bằng cả cái tâm của đội ngũ các nhà khoa học đầu ngành Việt Nam trong lĩnh vực chăn nuôi thú y." },
-        { "title": "200+ Khách hàng", "desc": "Đại lý cấp 1, cấp 2 ở gần 30 tỉnh thành trải dài khắp miền Bắc, miền Trung, miền Nam và miền Tây." }
+        { "title": "Bảo mật tuyệt đối", "desc": "Cam kết bảo mật 100% thông tin và dữ liệu tài chính của khách hàng." },
+        { "title": "Chi phí hợp lý", "desc": "Cung cấp các gói dịch vụ đa dạng, phù hợp với quy mô của từng doanh nghiệp." },
+        { "title": "Trách nhiệm cao", "desc": "VTAX chịu hoàn toàn trách nhiệm giải trình trước cơ quan thuế." },
+        { "title": "Đồng hành lâu dài", "desc": "Hàng ngàn doanh nghiệp đã tin tưởng và gắn bó cùng VTAX qua nhiều năm." },
+        { "title": "Hệ thống toàn quốc", "desc": "Mạng lưới văn phòng và chi nhánh rộng khắp, sẵn sàng phục vụ doanh nghiệp mọi lúc mọi nơi." }
       ]
     },
     "disease": {
-      "titleA": "Kỹ Thuật",
-      "titleB": "Chăn Nuôi",
-      "sub": "Kiến thức chuyên sâu về các bệnh thường gặp, cách phòng chống và phác đồ điều trị an toàn",
+      "titleA": "Kiến Thức",
+      "titleB": "Pháp Lý",
+      "sub": "Cập nhật các quy định mới nhất về thuế, kế toán và luật doanh nghiệp.",
       "cta": "Khám phá",
-      "badge": "Cẩm nang"
+      "badge": "Kiến thức"
     },
     "news": {
       "titleA": "Tin Tức",
-      "titleB": "Nổi Bật",
-      "sub": "Bản tin thị trường chăn nuôi, hoạt động nổi bật của công ty và những cập nhật mới nhất",
+      "titleB": "Thị Trường",
+      "sub": "Điểm tin tài chính, chính sách mới và các hoạt động nổi bật của VTAX.",
       "cta": "Đọc bản tin"
     }
   },
@@ -79,29 +77,29 @@
     "email": "Email",
     "website": "Website",
     "southBranch": "Chi nhánh miền Nam",
-    "productsTitle": "Sản phẩm",
-    "vetOnly": "CHỈ DÙNG TRONG THÚ Y",
-    "allProducts": "Tất cả sản phẩm",
-    "techSupport": "Hỗ trợ kỹ thuật",
+    "productsTitle": "Dịch vụ",
+    "vetOnly": "CHUYÊN NGHIỆP - TẬN TÂM",
+    "allProducts": "Tất cả dịch vụ",
+    "techSupport": "Hỗ trợ khách hàng",
     "connectWithUs": "Kết nối với chúng tôi",
     "quickLinks": "Liên kết nhanh",
-    "copyright": "Bản quyền thuộc về BINOVET - BIOTECHNOLOGY VETERINARY.,J.S.C. Bảo lưu mọi quyền."
+    "copyright": "Bản quyền thuộc về VTAX. Bảo lưu mọi quyền."
   },
   "admin": {
     "catalogue": {
       "page": {
-        "title": "Quản lý Catalogue & Tài liệu",
-        "breadcrumb": "Quản lý Catalogue",
+        "title": "Quản lý Tài liệu",
+        "breadcrumb": "Quản lý Tài liệu",
         "add": "Thêm tài liệu mới",
         "editTitle": "Chỉnh sửa tài liệu",
         "addTitle": "Thêm tài liệu mới"
       },
       "filter": {
-        "searchPlaceholder": "Tìm theo tiêu đề tài liệu...",
+        "searchPlaceholder": "Tìm theo tiêu đề...",
         "type": "Định dạng"
       },
       "table": {
-        "title": "Tiêu đề tài liệu",
+        "title": "Tiêu đề",
         "type": "Định dạng",
         "size": "Dung lượng",
         "link": "Link",
@@ -114,14 +112,14 @@
         "confirmDelete": "Xác nhận xóa",
         "deleteText": "Bạn có chắc chắn muốn xóa \"{title}\" không?",
         "deleteSuccess": "Đã xóa thành công",
-        "deleteError": "Lỗi khi xóa tài liệu",
+        "deleteError": "Lỗi khi xóa",
         "updateSuccess": "Cập nhật thành công",
         "createSuccess": "Thêm mới thành công",
         "saveError": "Lỗi khi lưu dữ liệu",
-        "fetchError": "Không thể tải dữ liệu catalogue",
+        "fetchError": "Không thể tải dữ liệu",
         "uploadSuccess": "Tải lên thành công",
-        "uploadError": "Lỗi tải lên tài liệu",
-        "titleLabel": "Tiêu đề tài liệu",
+        "uploadError": "Lỗi tải lên",
+        "titleLabel": "Tiêu đề",
         "titleRequired": "Vui lòng nhập tiêu đề",
         "typeLabel": "Định dạng",
         "typeRequired": "Vui lòng chọn định dạng",
@@ -134,7 +132,7 @@
         "update": "Cập nhật",
         "add": "Thêm mới",
         "chooseFile": "Chọn file tải lên",
-        "filePlaceholder": "VD: Catalogue Sản phẩm biotechvet 2026",
+        "filePlaceholder": "VD: Hồ sơ năng lực VTAX",
         "sizePlaceholder": "VD: 24.5 MB",
         "linkPlaceholder": "https://..."
       }

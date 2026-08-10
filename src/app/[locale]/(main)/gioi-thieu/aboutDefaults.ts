@@ -48,247 +48,241 @@ export type AboutContentResolved = {
 
 export const aboutDefaults: AboutContentResolved = {
   gioiThieu: {
-    title: 'Tổng quan về BINOVET',
+    title: 'Tổng quan về VTAX',
     paragraph1:
-      'BINOVET là thương hiệu dược thú y thuộc BIOTECHNOLOGY VETERINARY.,J.S.C. Với hơn 20 năm phát triển, chúng tôi tự hào mang đến các giải pháp dược phẩm chất lượng cao, ứng dụng công nghệ hiện đại từ Hoa Kỳ.',
+      'VTAX tự hào là một trong những đơn vị dẫn đầu trong lĩnh vực cung cấp dịch vụ kế toán, đại lý thuế và tư vấn tài chính doanh nghiệp tại Việt Nam.',
     paragraph2:
-      'Chúng tôi hướng đến việc liên tục đổi mới, cải tiến chất lượng và dịch vụ, đáp ứng nhu cầu ngày càng cao của ngành chăn nuôi trong và ngoài nước.',
-    stat1Number: '200+',
-    stat1Label: 'Sản phẩm',
-    stat2Number: '63',
-    stat2Label: 'Tỉnh thành',
+      'Với bề dày kinh nghiệm và đội ngũ chuyên gia tận tâm, chúng tôi cam kết mang lại sự an tâm tuyệt đối về tài chính, giúp khách hàng tối ưu chi phí và tuân thủ chặt chẽ các quy định pháp luật hiện hành.',
+    stat1Number: '2000+',
+    stat1Label: 'Doanh nghiệp',
+    stat2Number: '15+',
+    stat2Label: 'Năm kinh nghiệm',
   },
   lichSu: {
     title: 'Lịch sử hình thành',
     intro:
-      'Hành trình đầy tự hào của binovet trong suốt hơn hai thập kỷ cống hiến cho ngành chăn nuôi Việt Nam.',
+      'Hành trình đầy tự hào của VTAX trong suốt 15 năm cống hiến cho sự phát triển của các doanh nghiệp Việt.',
     timeline: [
       {
-        year: '2002',
-        text: 'BIOTECHNOLOGY VETERINARY.,J.S.C chính thức được thành lập, đặt nền móng cho sự ra đời của thương hiệu BINOVET.',
-      },
-      {
         year: '2010',
-        text: 'Khánh thành nhà máy sản xuất dược thú y đầu tiên đạt chuẩn GMP-WHO, khẳng định vị thế về chất lượng trên thị trường trong nước.',
+        text: 'Chính thức được thành lập, cung cấp dịch vụ kế toán thuế cho các doanh nghiệp vừa và nhỏ.',
       },
       {
-        year: '2018',
-        text: 'Mở rộng hệ sinh thái Sanford Pharma USA và Viaprotic, ứng dụng công nghệ hiện đại từ Hoa Kỳ vào sản xuất chuyên sâu.',
+        year: '2015',
+        text: 'Mở rộng chi nhánh tại TP.HCM và Đà Nẵng, chính thức trở thành Đại lý thuế được Bộ Tài chính cấp phép.',
+      },
+      {
+        year: '2020',
+        text: 'Áp dụng công nghệ số hóa toàn diện vào quy trình quản lý hồ sơ và báo cáo tài chính.',
       },
       {
         year: 'Hiện tại',
-        text: 'Trở thành tập đoàn dược phẩm thú y hàng đầu Việt Nam với mạng lưới hơn 1.000 đại lý và xuất khẩu sang nhiều thị trường quốc tế.',
+        text: 'Khẳng định vị thế hàng đầu với mạng lưới hàng ngàn khách hàng tin dùng trên toàn quốc.',
       },
     ],
   },
   tamNhin: {
     visionTitle: 'Tầm nhìn',
     visionText:
-      'Trở thành thương hiệu thuốc thú y toàn cầu, tiên phong cung cấp các giải pháp chăm sóc sức khỏe động vật chất lượng cao, góp phần nâng cao hiệu quả chăn nuôi và đồng hành cùng sự phát triển bền vững của ngành nông nghiệp trên thế giới.',
+      'Trở thành tập đoàn tư vấn tài chính, kế toán và đại lý thuế uy tín nhất Việt Nam, là điểm tựa vững chắc cho mọi doanh nghiệp trên bước đường vươn tới thành công.',
     missionTitle: 'Sứ mệnh',
     missionText:
-      'Binovet cam kết nghiên cứu, phát triển và cung cấp các sản phẩm thuốc thú y, dinh dưỡng và giải pháp chăm sóc sức khỏe vật nuôi đạt tiêu chuẩn quốc tế. Chúng tôi không ngừng đổi mới công nghệ, nâng cao chất lượng sản phẩm và mở rộng hợp tác toàn cầu nhằm mang đến những giải pháp hiệu quả, an toàn và bền vững cho khách hàng và đối tác trên toàn thế giới.',
+      'VTAX cam kết bảo vệ an toàn tài chính, tối ưu hóa lợi ích và giải quyết triệt để mọi rủi ro về thuế, giúp doanh nghiệp yên tâm tập trung vào hoạt động kinh doanh cốt lõi.',
     coreTitle: 'Giá trị cốt lõi',
     coreValues: [
       {
-        title: 'Chất lượng quốc tế (Global Quality)',
-        desc: 'Mọi sản phẩm của Binovet được nghiên cứu, sản xuất và kiểm soát theo các tiêu chuẩn quốc tế, đảm bảo hiệu quả, an toàn và ổn định.',
+        title: 'Chuyên nghiệp (Professional)',
+        desc: 'Đội ngũ chuyên viên giàu kinh nghiệm, nắm bắt kịp thời và chính xác mọi thay đổi của luật pháp.',
       },
       {
-        title: 'Đổi mới sáng tạo (Innovation)',
-        desc: 'Không ngừng đầu tư vào nghiên cứu và phát triển (R&D), ứng dụng công nghệ sinh học hiện đại để tạo ra những giải pháp thú y tiên tiến.',
+        title: 'Tận tâm (Dedicated)',
+        desc: 'Luôn đặt lợi ích của khách hàng lên hàng đầu, đồng hành giải quyết mọi khó khăn 24/7.',
       },
       {
-        title: 'Uy tín & Trách nhiệm (Integrity)',
-        desc: 'Xây dựng niềm tin bằng chất lượng, sự minh bạch và trách nhiệm trong mọi hoạt động đối với khách hàng, đối tác và cộng đồng.',
+        title: 'Bảo mật (Confidential)',
+        desc: 'Cam kết bảo mật tuyệt đối 100% dữ liệu tài chính và thông tin nội bộ của doanh nghiệp.',
       },
       {
-        title: 'Hợp tác toàn cầu (Global Partnership)',
-        desc: 'Phát triển các mối quan hệ hợp tác bền vững với nhà phân phối và đối tác quốc tế, cùng kiến tạo giá trị và thúc đẩy sự phát triển của ngành chăn nuôi.',
+        title: 'Chính trực (Integrity)',
+        desc: 'Minh bạch trong mọi số liệu báo cáo, đảm bảo chuẩn mực đạo đức nghề nghiệp.',
       },
       {
-        title: 'Phát triển bền vững (Sustainability)',
-        desc: 'Hướng đến sự hài hòa giữa hiệu quả kinh tế, sức khỏe vật nuôi, bảo vệ môi trường và sự phát triển lâu dài của ngành chăn nuôi toàn cầu.',
+        title: 'Tối ưu hóa (Optimization)',
+        desc: 'Cung cấp giải pháp tối ưu nhằm tiết kiệm chi phí và thời gian tối đa cho đối tác.',
       },
     ],
     quoteText:
-      '"Chất lượng là danh dự, sự hài lòng của bà con là thước đo thành công của Binovet."',
-    quoteAuthor: 'Ban Lãnh Đạo',
-    quoteRole: 'binovet Group',
+      '"Sự an tâm của khách hàng là thước đo thành công lớn nhất của chúng tôi."',
+    quoteAuthor: 'Ban Giám Đốc',
+    quoteRole: 'VTAX Group',
   },
   coSo: {
-    title: 'Cơ sở vật chất',
+    title: 'Mạng lưới hoạt động',
     intro:
-      'BINOVET đầu tư hệ thống trang thiết bị máy móc tiên tiến, dây chuyền sản xuất khép kín vận hành theo tiêu chuẩn GMP-WHO nghiêm ngặt nhất.',
-    cardTitle: 'Nhà máy',
-    cardText: 'Trung tâm nghiên cứu và kiểm soát chất lượng đầu ra khắt khe.',
+      'VTAX sở hữu hệ thống chi nhánh và văn phòng giao dịch hiện đại trên khắp cả nước, ứng dụng phần mềm quản lý tiên tiến.',
+    cardTitle: 'Trụ sở chính',
+    cardText: 'Trung tâm tư vấn chiến lược và xử lý hồ sơ chuyên sâu.',
     stats: [
-      { number: '03', label: 'Nhà máy lớn' },
-      { number: '10+', label: 'Dây chuyền' },
-      { number: '5k', label: 'Diện tích m²' },
-      { number: 'Top', label: 'Thương hiệu' },
+      { number: '03', label: 'Văn phòng lớn' },
+      { number: '50+', label: 'Chuyên gia' },
+      { number: '24/7', label: 'Hỗ trợ' },
+      { number: 'Top 5', label: 'Đại lý thuế' },
     ],
   },
   coCau: {
-    title: 'Cơ cấu tổ chức',
+    title: 'Đội ngũ nhân sự',
     intro:
-      'Hệ thống quản trị tinh gọn với đội ngũ nhân sự chất lượng cao, tận tâm và chuyên nghiệp.',
+      'Hệ thống được vận hành bởi đội ngũ Kiểm toán viên (CPA), Chuyên gia thuế (CTA) và Luật sư doanh nghiệp dày dạn kinh nghiệm.',
     roles: [
-      'Hội đồng Quản trị',
-      'Tổng Giám đốc',
-      'Khối Sản xuất - Kỹ thuật',
-      'Khối Kinh doanh - Marketing',
-      'Khối Hành chính - Nhân sự',
+      'Ban Giám đốc',
+      'Khối Dịch vụ Kế toán',
+      'Khối Tư vấn Thuế',
+      'Khối Tư vấn Pháp lý',
+      'Khối Chăm sóc Khách hàng',
     ],
     quoteText:
-      '"Chúng tôi tin rằng con người là tài sản quý giá nhất. Tại binovet, mỗi cá nhân đều là một mắt xích quan trọng trong hành trình bảo vệ sự phát triển rực rỡ của ngành chăn nuôi."',
+      '"Tại VTAX, mỗi nhân viên không chỉ là người làm nghề, mà còn là một chuyên gia đồng hành giải bài toán tài chính khó nhất cho doanh nghiệp."',
   },
   thanhTuu: {
     heading: 'Thành tựu',
     title:
-      'Sau hơn 20 năm hình thành và phát triển, với tư duy sáng tạo, mạnh dạn đổi mới và nỗ lực không ngừng. Thương hiệu dược thú y BINOVET đã trở thành một trong những doanh nghiệp lớn hàng đầu trên thị trường Việt Nam, đóng góp tích cực vào sự phát triển của đất nước nói chung và ngành chăn nuôi – thú y nói riêng. Với những thành tựu nổi bật, thương hiệu dược thú y BINOVET đã nhận được những danh hiệu và giải thưởng cao quý',
+      'Trải qua nhiều năm hoạt động, VTAX tự hào nhận được sự tin tưởng của hàng ngàn khách hàng và các giải thưởng uy tín trong ngành dịch vụ tài chính - kế toán.',
     images: [
       {
         url: '',
         subtitle: 'Giải thưởng',
-        title: '"Doanh nghiệp Uy tín\n– Phát triển bền vững 2012"',
+        title: '"Đại lý Thuế tiêu biểu 2022"',
       },
       {
         url: '',
-        subtitle: 'Giải thưởng',
-        title: '"Huy chương Vàng\nvì Sức khoẻ Cộng đồng 2015"',
+        subtitle: 'Bằng khen',
+        title: '"Đơn vị tư vấn uy tín 2023"',
       },
       {
         url: '',
         subtitle: 'Danh hiệu',
-        title: '"Thương hiệu Uy tín\nvì Sức khoẻ 2015"',
+        title: '"Top 10 Dịch vụ Kế toán xuất sắc"',
       },
     ],
   },
 };
 
-/**
- * English fallback content for the About page. The admin editor only stores the
- * canonical (Vietnamese) content, so when the visitor is browsing in English and
- * a field has not been overridden we fall back to these translations instead of
- * the Vietnamese defaults.
- */
 export const aboutDefaultsEn: AboutContentResolved = {
   gioiThieu: {
-    title: 'BINOVET Overview',
+    title: 'VTAX Overview',
     paragraph1:
-      'BINOVET is a veterinary pharmaceutical brand of the Veterinary Biotechnology JSC. With more than 20 years of growth, we are proud to deliver high-quality pharmaceutical solutions powered by advanced American technology.',
+      'VTAX is proud to be a leading provider of accounting services, tax agency, and corporate financial consulting in Vietnam.',
     paragraph2:
-      'We pursue continuous innovation, improving our quality and service to meet the ever-rising demands of the livestock industry at home and abroad.',
-    stat1Number: '200+',
-    stat1Label: 'Products',
-    stat2Number: '63',
-    stat2Label: 'Provinces',
+      'With years of experience and a dedicated team of experts, we commit to providing absolute financial peace of mind, helping clients optimize costs and strictly comply with current legal regulations.',
+    stat1Number: '2000+',
+    stat1Label: 'Businesses',
+    stat2Number: '15+',
+    stat2Label: 'Years of Experience',
   },
   lichSu: {
     title: 'Our History',
     intro:
-      "A proud journey across more than two decades of dedication to Vietnam's livestock industry.",
+      "A proud 15-year journey dedicated to the growth and success of Vietnamese enterprises.",
     timeline: [
       {
-        year: '2002',
-        text: 'The Veterinary Biotechnology JSC was officially founded, laying the foundation for the birth of the BINOVET brand.',
-      },
-      {
         year: '2010',
-        text: 'Inaugurated our first GMP-WHO certified veterinary pharmaceutical factory, affirming our reputation for quality in the domestic market.',
+        text: 'Officially founded, providing tax accounting services for small and medium-sized enterprises.',
       },
       {
-        year: '2018',
-        text: 'Expanded the Sanford Pharma USA and Viaprotic ecosystem, applying advanced American technology to specialised production.',
+        year: '2015',
+        text: 'Expanded branches to Ho Chi Minh City and Da Nang, officially became a licensed Tax Agent by the Ministry of Finance.',
+      },
+      {
+        year: '2020',
+        text: 'Implemented comprehensive digital technology into financial reporting and document management processes.',
       },
       {
         year: 'Today',
-        text: "Became one of Vietnam's leading veterinary pharmaceutical groups, with a network of over 1,000 distributors and exports to many international markets.",
+        text: 'Affirmed our leading position with a network of thousands of trusted clients nationwide.',
       },
     ],
   },
   tamNhin: {
     visionTitle: 'Vision',
     visionText:
-      'To become a global veterinary pharmaceutical brand, pioneering high-quality animal health solutions that improve livestock productivity and accompany the sustainable development of agriculture worldwide.',
+      'To become the most reputable financial consulting, accounting, and tax agency group in Vietnam, serving as a solid foundation for every business on their path to success.',
     missionTitle: 'Mission',
     missionText:
-      'Binovet is committed to researching, developing and supplying veterinary medicines, nutrition and animal health solutions that meet international standards. We continuously innovate our technology, raise product quality and expand global cooperation to deliver effective, safe and sustainable solutions for customers and partners around the world.',
+      'VTAX is committed to protecting financial security, optimizing benefits, and thoroughly resolving all tax risks, enabling businesses to focus entirely on their core operations.',
     coreTitle: 'Core Values',
     coreValues: [
       {
-        title: 'Global Quality',
-        desc: 'Every Binovet product is researched, manufactured and controlled to international standards, ensuring efficacy, safety and consistency.',
+        title: 'Professional',
+        desc: 'An experienced team of specialists who promptly and accurately grasp all changes in the law.',
       },
       {
-        title: 'Innovation',
-        desc: 'We continuously invest in research and development (R&D) and apply modern biotechnology to create advanced veterinary solutions.',
+        title: 'Dedicated',
+        desc: 'Always putting clients\' interests first, working alongside them to overcome challenges 24/7.',
+      },
+      {
+        title: 'Confidential',
+        desc: 'Commitment to 100% absolute confidentiality of clients\' financial data and internal information.',
       },
       {
         title: 'Integrity',
-        desc: 'We build trust through quality, transparency and responsibility in every activity with our customers, partners and community.',
+        desc: 'Transparency in all reported figures, ensuring high professional ethical standards.',
       },
       {
-        title: 'Global Partnership',
-        desc: 'We develop sustainable partnerships with distributors and international partners to co-create value and advance the livestock industry.',
-      },
-      {
-        title: 'Sustainability',
-        desc: 'We strive for harmony between economic efficiency, animal health, environmental protection and the long-term growth of the global livestock industry.',
+        title: 'Optimization',
+        desc: 'Providing optimal solutions to save maximum time and costs for our partners.',
       },
     ],
     quoteText:
-      '"Quality is our honour, and the satisfaction of farmers is the true measure of Binovet\'s success."',
-    quoteAuthor: 'Board of Leadership',
-    quoteRole: 'binovet Group',
+      '"Our clients\' peace of mind is the greatest measure of our success."',
+    quoteAuthor: 'Board of Directors',
+    quoteRole: 'VTAX Group',
   },
   coSo: {
-    title: 'Facilities',
+    title: 'Operations Network',
     intro:
-      'BINOVET invests in advanced machinery and closed-loop production lines operated to the strictest GMP-WHO standards.',
-    cardTitle: 'Factory',
-    cardText: 'A research centre with rigorous output quality control.',
+      'VTAX operates a modern network of branches and transaction offices nationwide, utilizing advanced management software.',
+    cardTitle: 'Headquarters',
+    cardText: 'The center for strategic consulting and specialized document processing.',
     stats: [
-      { number: '03', label: 'Large factories' },
-      { number: '10+', label: 'Production lines' },
-      { number: '5k', label: 'Area (m²)' },
-      { number: 'Top', label: 'Brand' },
+      { number: '03', label: 'Major Offices' },
+      { number: '50+', label: 'Experts' },
+      { number: '24/7', label: 'Support' },
+      { number: 'Top 5', label: 'Tax Agents' },
     ],
   },
   coCau: {
-    title: 'Organisational Structure',
+    title: 'Our Team',
     intro:
-      'A lean management system staffed by a dedicated, professional and highly skilled team.',
+      'Our system is operated by a highly experienced team of Certified Public Accountants (CPA), Certified Tax Agents (CTA), and corporate lawyers.',
     roles: [
       'Board of Directors',
-      'General Director',
-      'Production & Technical Division',
-      'Sales & Marketing Division',
-      'Administration & HR Division',
+      'Accounting Services Division',
+      'Tax Consulting Division',
+      'Legal Consulting Division',
+      'Customer Care Division',
     ],
     quoteText:
-      '"We believe people are our most valuable asset. At binovet, every individual is a vital link in the journey to protect the thriving growth of the livestock industry."',
+      '"At VTAX, every employee is not just a practitioner, but an expert companion solving the most difficult financial equations for businesses."',
   },
   thanhTuu: {
     heading: 'Achievements',
     title:
-      "After more than 20 years of growth — driven by creative thinking, bold innovation and relentless effort — the BINOVET veterinary pharmaceutical brand has become one of the leading enterprises in the Vietnamese market, contributing actively to the country's development and to the livestock and veterinary sector in particular. For these outstanding achievements, BINOVET has received prestigious titles and awards.",
+      'Over the years, VTAX has proudly earned the trust of thousands of clients and received prestigious awards in the financial-accounting services sector.',
     images: [
       {
         url: '',
         subtitle: 'Award',
-        title: '"Reputable Enterprise\n– Sustainable Development 2012"',
+        title: '"Outstanding Tax Agent 2022"',
       },
       {
         url: '',
-        subtitle: 'Award',
-        title: '"Gold Medal\nfor Community Health 2015"',
+        subtitle: 'Certificate',
+        title: '"Reputable Consulting Firm 2023"',
       },
       {
         url: '',
         subtitle: 'Title',
-        title: '"Reputable Brand\nfor Health 2015"',
+        title: '"Top 10 Excellent Accounting Services"',
       },
     ],
   },

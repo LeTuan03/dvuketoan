@@ -291,10 +291,10 @@ function HandbookManagementContent() {
   return (
     <div className="space-y-6">
       <AdminPageHeader
-        title="Cẩm nang chăn nuôi"
+        title="Kiến thức"
         breadcrumbItems={[
           { title: 'Admin', href: '/admin' },
-          { title: 'Cẩm nang chăn nuôi' },
+          { title: 'Kiến thức' },
         ]}
       />
 
@@ -344,7 +344,7 @@ function HandbookManagementContent() {
       </div>
 
       <Modal
-        title={<span className="text-xl font-semibold text-[#0c2236] tracking-tight">{editingId ? 'Chỉnh sửa Cẩm nang' : 'Soạn thảo Cẩm nang mới'}</span>}
+        title={<span className="text-xl font-semibold text-[#0c2236] tracking-tight">{editingId ? 'Chỉnh sửa Kiến thức' : 'Soạn thảo Kiến thức mới'}</span>}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={() => setIsModalOpen(false)}
@@ -367,7 +367,7 @@ function HandbookManagementContent() {
               className="rounded-xl"
               disabled
               options={[
-                { label: 'Cẩm nang chăn nuôi', value: 'cam-nang' },
+                { label: 'Kiến thức', value: 'cam-nang' },
               ]}
             />
           </Form.Item>

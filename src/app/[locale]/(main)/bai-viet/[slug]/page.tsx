@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   if (!raw || raw.isDraft) {
     return {
-      title: locale === 'en' ? 'Article not found - binovet' : 'Bài viết không tìm thấy - binovet',
+      title: locale === 'en' ? 'Article not found - VTAX' : 'Bài viết không tìm thấy - VTAX',
       description: locale === 'en' ? 'The article you are looking for does not exist.' : 'Bài viết bạn tìm kiếm không tồn tại.',
     };
   }
@@ -79,19 +79,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const articleImage = article.thumbnail || "/images/default-article.svg";
 
   return {
-    title: `${article.title} - binovet`,
+    title: `${article.title} - VTAX`,
     description: plainTextContent,
-    keywords: ['binovet', 'dược thú y', 'chăn nuôi', article.title?.toLowerCase()].filter(Boolean),
-    authors: [{ name: "binovet Editor" }],
+    keywords: ['VTAX', 'dược thú y', 'chăn nuôi', article.title?.toLowerCase()].filter(Boolean),
+    authors: [{ name: "VTAX Editor" }],
     robots: "index, follow",
     openGraph: {
       type: "article",
       title: article.title,
       description: plainTextContent,
-      url: `https://binovet.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`,
-      siteName: "BINOVET",
+      url: `https://VTAX.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`,
+      siteName: "VTAX",
       publishedTime: article.publishDate,
-      authors: ["Binovet Team"],
+      authors: ["VTAX Team"],
       images: [
         {
           url: articleImage,
@@ -108,7 +108,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [articleImage],
     },
     alternates: {
-      canonical: `https://binovet.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`,
+      canonical: `https://VTAX.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`,
     },
   };
 }
@@ -163,19 +163,19 @@ export default async function ArticleDetailPage({ params }: Readonly<{ params: P
                 "@type": "ListItem",
                 "position": 1,
                 "name": locale === 'en' ? "Home" : "Trang chủ",
-                "item": `https://binovet.com.vn${localePath(locale, '/')}`
+                "item": `https://VTAX.com.vn${localePath(locale, '/')}`
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": locale === 'en' ? "News" : "Tin tức",
-                "item": `https://binovet.com.vn${localePath(locale, '/tin-tuc')}`
+                "item": `https://VTAX.com.vn${localePath(locale, '/tin-tuc')}`
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": article.title,
-                "item": `https://binovet.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`
+                "item": `https://VTAX.com.vn${localePath(locale, `/bai-viet/${article.slug}`)}`
               }
             ]
           })

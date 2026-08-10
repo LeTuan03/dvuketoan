@@ -105,7 +105,7 @@ function AdminNewsPageContent() {
             <img src={record.thumbnail} alt={text} className="w-full h-full object-cover" />
           </div>
           <div>
-            <div className="font-bold text-binovet-dark text-sm line-clamp-1">{text}</div>
+            <div className="font-bold text-vtax-dark text-sm line-clamp-1">{text}</div>
             <div className="flex items-center gap-2 mt-1">
               <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{record.publishDate}</span>
             </div>

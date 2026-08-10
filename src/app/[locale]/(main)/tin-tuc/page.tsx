@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
 import { articleService, settingService } from '@/services';
@@ -16,18 +16,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = resolveLocale(p.locale);
   const isEn = locale === 'en';
   return {
-    title: isEn ? 'News & Articles - binovet' : 'Tin Tức & Bài Viết - binovet',
+    title: isEn ? 'News & Articles - VTAX' : 'Tin Tức & Bài Viết - VTAX',
     description: isEn
-      ? 'The latest news on binovet activities, veterinary industry events and digital transformation trends in modern animal husbandry.'
-      : 'Cập nhật tin tức mới nhất về các hoạt động của binovet, sự kiện ngành thú y và xu hướng chuyển đổi số trong chăn nuôi hiện đại.',
-    keywords: ['tin tức binovet', 'bài viết thú y', 'chăn nuôi', 'sự kiện ngành', 'kiến thức thú y'],
+      ? 'The latest news on VTAX activities, veterinary industry events and digital transformation trends in modern animal husbandry.'
+      : 'Cập nhật tin tức mới nhất về các hoạt động của VTAX, sự kiện ngành thú y và xu hướng chuyển đổi số trong chăn nuôi hiện đại.',
+    keywords: ['tin tức VTAX', 'bài viết thú y', 'chăn nuôi', 'sự kiện ngành', 'kiến thức thú y'],
     robots: 'index, follow',
     openGraph: {
-      title: isEn ? 'News & Articles - binovet' : 'Tin Tức & Bài Viết - binovet',
+      title: isEn ? 'News & Articles - VTAX' : 'Tin Tức & Bài Viết - VTAX',
       description: isEn
-        ? 'The latest news on binovet activities and veterinary industry events.'
-        : 'Cập nhật tin tức mới nhất về các hoạt động của binovet và sự kiện ngành thú y.',
-      url: `https://binovet.com.vn${localePath(locale, '/tin-tuc')}`,
+        ? 'The latest news on VTAX activities and veterinary industry events.'
+        : 'Cập nhật tin tức mới nhất về các hoạt động của VTAX và sự kiện ngành thú y.',
+      url: `https://VTAX.com.vn${localePath(locale, '/tin-tuc')}`,
       images: [
         {
           url: '/images/about.svg',
@@ -57,8 +57,8 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
       <PageHero
         locale={locale}
         eyebrow={locale === 'en' ? 'Newsroom' : 'Bản tin'}
-        title={locale === 'en' ? 'Binovet News' : 'Tin Tức Binovet'}
-        subtitle={locale === 'en' ? 'The latest news on Binovet activities, veterinary industry events and digital transformation trends in modern animal husbandry.' : 'Cập nhật tin tức mới nhất về các hoạt động của binovet, sự kiện ngành thú y và xu hướng chuyển đổi số trong chăn nuôi hiện đại.'}
+        title={locale === 'en' ? 'VTAX News' : 'Tin Tức VTAX'}
+        subtitle={locale === 'en' ? 'The latest news on VTAX activities, veterinary industry events and digital transformation trends in modern animal husbandry.' : 'Cập nhật tin tức mới nhất về các hoạt động của VTAX, sự kiện ngành thú y và xu hướng chuyển đổi số trong chăn nuôi hiện đại.'}
         breadcrumb={[{ label: locale === 'en' ? 'News' : 'Tin tức' }]}
       />
 
@@ -101,7 +101,7 @@ export default async function NewsPage({ params }: { params: Promise<{ locale: s
                    </div>
                    <h3 className="font-display font-semibold text-lg text-ink leading-tight">{locale === 'en' ? 'Media support' : 'Hỗ trợ truyền thông'}</h3>
                 </div>
-                <p className="text-sm text-ink-soft mb-6 leading-relaxed">{locale === 'en' ? 'We always listen and are ready to share information about the animal husbandry industry as well as binovet\'s international cooperation activities.' : 'Chúng tôi luôn lắng nghe và sẵn sàng chia sẻ thông tin về ngành chăn nuôi cũng như các hoạt động hợp tác quốc tế của binovet.'}</p>
+                <p className="text-sm text-ink-soft mb-6 leading-relaxed">{locale === 'en' ? 'We always listen and are ready to share information about the animal husbandry industry as well as VTAX\'s international cooperation activities.' : 'Chúng tôi luôn lắng nghe và sẵn sàng chia sẻ thông tin về ngành chăn nuôi cũng như các hoạt động hợp tác quốc tế của VTAX.'}</p>
                 <div className="space-y-3">
                    <div className="p-4 bg-cream rounded-xl flex items-center gap-3 border border-line">
                       <Phone size={16} className="text-secondary shrink-0" />

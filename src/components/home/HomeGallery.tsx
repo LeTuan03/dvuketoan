@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from 'react';
 import { X, ZoomIn, PlayCircle } from 'lucide-react';
@@ -38,7 +38,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
           eyebrow="Thư viện"
           title="Video &"
           accent="Hình ảnh"
-          subtitle="Khám phá quy mô nhà máy và các hoạt động nổi bật của BINOVET"
+          subtitle="Khám phá quy mô nhà máy và các hoạt động nổi bật của VTAX"
           className="mb-16"
         />
 
@@ -64,7 +64,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
                 </div>
                 <div className="absolute bottom-7 left-7 right-7 text-left">
                    <div className="eyebrow text-secondary mb-3">Featured Video</div>
-                   <h3 className="font-display text-2xl font-semibold text-white leading-snug">{featuredVideo?.title || 'Phim giới thiệu BINOVET'}</h3>
+                   <h3 className="font-display text-2xl font-semibold text-white leading-snug">{featuredVideo?.title || 'Phim giới thiệu VTAX'}</h3>
                 </div>
              </button>
              <div className="card-elegant p-7 flex items-center justify-between gap-5">
@@ -164,7 +164,7 @@ export default function HomeGallery({ images, videos, youtubeUrl }: HomeGalleryP
                     {selectedItem.title}
                   </h3>
                   <p className="text-ink-soft text-sm leading-relaxed mb-10">
-                    Nội dung trực thuộc thư viện truyền thông chính thức của BINOVET.
+                    Nội dung trực thuộc thư viện truyền thông chính thức của VTAX.
                   </p>
                   <button
                     onClick={() => setSelectedItem(null)}
